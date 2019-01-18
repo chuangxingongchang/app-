@@ -94,7 +94,7 @@ function addsettlePicker() {
 		value: "3",
 		text: '月末结算'
 	}, {
-		value: "4",
+		value: "4", 
 		text: '完工结算'
 	}]);
 	var attSettles = document.getElementById('attSettle');
