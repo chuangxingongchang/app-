@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<style>
+			@import url("../../css/forum/mui.css");
+			@import url("../../css/forum/fourm_emit_article.css");
+		</style>
+	</head>
+
+	<body>
+
+		<div class="mui-content" id="content">
+			<!--导航-->
+			<div class="mui-slider">
+				<a class="mui-action-back  mui-icon mui-icon-left-nav mui-pull-left" style="z-index: 999;position: absolute;margin-top: 7px;margin-left: 10px;"></a>
+				<div style="width: 50%;margin: auto;" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<a name="article" class="mui-control-item" href="#item1">发帖</a>
+					<a name="comment" class="mui-control-item" href="#item2">回帖</a>
+				</div>
+				<div style="margin-left: 25%;" id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-3"></div>
+
+				<div id="main" class="mui-slider-group">
+					<div id="item1" class="mui-slider-item mui-control-content mui-active">
+						<script id="article" type="text/html">
+							<!--发帖-->
+							<article id="article_id">
+								{{if personalArticle != null}} {{each personalArticle as value index}}
+								<ul class="mui-table-view " style="border-bottom: 1px solid #6D6D72;">
+									<li name="{{value.id}}" class="mui-table-view-cell mui-media">
+										<div class="mui-media-body">
+											<!--标题-->
+											<b>{{value.title}}</b>
+											<p class="mui-ellipsis">
+												{{value.contentDescribe}}
+											</p>
+											<p class="mui-ellipsis ">
+												<!--2019年1月7日16:59:50-->
+												<span>{{value.createTime}}</span>
+												<!--浏览量-->
+												<span class=" mui-icon mui-icon-chatbubble difination-span-left difination-p-color">{{value.browseConut}}</span>
+												<!--评论-->
+												<span class="difination-p-color difination-span-left mui-icon mui-icon-chat">{{value.commentCount}}</span>
+											</p>
+										</div>
+									</li>
+								</ul>
+								{{/each}} {{/if}}
+							</article>
+						</script>
+					</div>
+					<div id="item2" class="mui-slider-item mui-control-content">
+						<script id="comment" type="text/html">
+							<comment id="comment_id">
+								{{if articleList != null}} {{each articleList as value index}}
+								<!--回帖-->
+								<ul class="mui-table-view ">
+									<li class="mui-table-view-cell mui-media">
+										<content>
+											<div class="mui-media-body">
+												<coen name="{{value.id}}">
+													<!--标题-->
+													<b>{{value.title}}</b>
+													<p class="mui-ellipsis">
+														{{value.contentDescribe}}
+													</p>
+												</coen>
+												{{each articleUserList as user index}} {{if user.id == value.fkUserKey}}
+												<p class="mui-ellipsis ">
+													<!--谁发的帖子-->
+													<span class="difination-p-color difination-span-left"><a name="{{value.id}}" href="javascript.void(0)">{{user.nickname}}</a></span>
+													<!--2019年1月7日16:59:50-->
+													<span class="difination-p-color difination-span-left ">{{value.createTime}}</span>
+													<!--评论-->
+													<span class="difination-p-color difination-span-left mui-icon mui-icon-chat">{{value.commentCount}}</span>
+												</p>
+												{{/if}} {{/each}}
+											</div>
+										</content>
+									</li>
+								</ul>
+								{{/each}} {{/if}}
+							</comment>
+						</script>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</body>
+	<script src="../../js/forum/mui.js"></script>
+	<script src="../../js/forum/forum_emit_article.js"></script>
+	<script src="../../js/forum/template-web.js"></script>
+	<script type="text/javascript">
+		mui.init({
+			preloadPages: [{
+					url: 'forum_personal.html',
+					id: 'forum_personal.html'
+				},
+				{
+					url: 'forum_article_main_content.html',
+					id: 'forum_article_main_content.html'
+				}
+			],
+			pullRefresh: {
+				container: '#content',
+				down: {
+					style: 'circle',
+					callback:pulldownfresh
+				},
+				up: {
+					contentrefresh: '正在加载...',
+					callback:pullupfresh
+				}
+			},
+			gestureConfig: {
+				tap: true, //默认为true
+				doubletap: true, //默认为false
+				longtap: false, //默认为false
+				swipe: true, //默认为true
+				drag: true, //默认为true
+				hold: false, //默认为false，不监听
+				release: false //默认为false，不监听
+			}
+		})
+	</script>
+
+</html>

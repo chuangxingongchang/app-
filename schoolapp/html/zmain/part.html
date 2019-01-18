@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../resource/webviewGroup.js"></script>
+		<script src="../../js/openwindow.js"></script>
+		<style>
+			@import url("../../css/partTime/part.css");
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">发布</h1>
+		</header>
+		<div class="mui-content">
+			<div id="slider" class="mui-slider mui-fullscreen">
+				<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<div class="mui-scroll">
+						<a class="mui-control-item ss mui-active " href="#item1mobile" data-wid="../parttime/signup.html">
+							待接取
+						</a>
+						<a class="mui-control-item ss" href="#item2mobile" data-wid="../parttime/goParttime.html">
+							进行
+						</a>
+						<a class="mui-control-item ss" href="#item3mobile" data-wid="../parttime/endParttime.html">
+							已完成
+						</a>
+						<a class="mui-control-item" id="newcreate">
+							新建岗位
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="butts">
+				<nav class="mui-bar mui-bar-tab">
+					<a class="mui-tab-item" id="firstp">
+						<span class="mui-icon mui-icon-home"></span>
+						<span class="mui-tab-label">首页</span>
+					</a>
+					<a class="mui-tab-item mui-active" id="parttp">
+						<span class="mui-icon mui-icon-paperplane"></span>
+						<span class="mui-tab-label">发布</span>
+					</a>
+					<a class="mui-tab-item" id="jobtp">
+						<span class="mui-icon mui-icon-flag"></span>
+						<span class="mui-tab-label">校园兼职</span>
+					</a>
+					<a class="mui-tab-item" id="centertp">
+					<span class="mui-icon mui-icon-gear"></span>
+						<span class="mui-tab-label">个人中心</span>
+					</a>
+				</nav>
+			</div>
+		</div>
+		<script>
+			mui.init();
+			mui.plusReady(function() {
+				var _self = plus.webview.currentWebview();
+				var group = new webviewGroup(_self.id, {
+					items: [{
+						id: "../parttime/signup.html",
+						url: "../parttime/signup.html",
+						extras: {}
+					}, {
+						id: "../parttime/goParttime.html",
+						url: "../parttime/goParttime.html",
+						extras: {}
+					}, {
+						id: "../parttime/endParttime.html",
+						url: "../parttime/endParttime.html",
+						extras: {}
+					}],
+					onChange: function(obj) {
+						var c = document.querySelector(".mui-control-item.mui-active");
+						if(c) {
+							c.classList.remove("mui-active");
+						}
+						var target = document.querySelector(".mui-scroll .mui-control-item:nth-child(" + (parseInt(obj.index) + 1) + ")");
+						target.classList.add("mui-active");
+						if(target.scrollIntoView) {
+							target.scrollIntoView();
+						}
+					}
+				});
+				mui(".mui-scroll").on("tap", ".mui-control-item.ss", function(e) {
+					var wid = this.getAttribute("data-wid");
+					group.switchTab(wid);
+				});
+				open("firstp",'first.html');
+				open("parttp",'part.html');
+				open("jobtp",'job.html');
+				open("centertp",'centero.html');
+			});
+			
+			mui.back = function() {
+				var _self = plus.webview.currentWebview();
+				_self.close("auto");
+			}
+			document.getElementById("newcreate").addEventListener('tap',function(){
+				mui.openWindow({
+					url : '../parttime/newParttime.html',
+					id : '../parttime/newParttime.html'
+				})
+			})
+		</script>
+	</body>
+
+</html>

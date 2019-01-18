@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../../css/mui.min.css" rel="stylesheet" />
+		<script src="../../../js/mui.min.js"></script>
+		<script src="../../../js/openwindow.js"></script>
+		<style>
+			#headers {
+				background-color: black;
+			}
+			
+			#headers h1 {
+				color: white;
+			}
+			.word_contents textarea{
+				height: 300px;
+				width: 100%;
+				
+			}
+			.word_contents{
+				line-height: 100%;
+			}
+			.workcontens{
+				text-indent: 2em;padding-top: 20px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		<header class="mui-bar mui-bar-nav" id="headers">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" id="topart"></a>
+		    <h1 class="mui-title">岗位内容及要求</h1>
+		</header>
+		<div class="mui-content">
+			<div class="workcontens">
+		    	<strong>描述：</strong>
+		    </div>
+		    <div class="word_contents">
+		    	<textarea placeholder="为了方便您招到合适的兼客，请详细填写岗位的工作内容。" id="thesContent"></textarea>
+		    </div>
+		    <div class="mui-content-padded">
+				<button id='tojobContent' type="button" class="mui-btn mui-btn-block mui-btn-primary">内容提交</button>
+			</div>
+		</div>
+	</body>
+	<script>
+		document.getElementById('tojobContent').addEventListener('tap',function(){
+			var thescontent = mui("#thesContent")[0].value;
+			var pageOne = plus.webview.getWebviewById('../newParttime.html');
+			mui.fire(pageOne,"content",{contents : thescontent});
+			plus.webview.create("../newParttime.html").show();
+		})
+	</script>
+</html>

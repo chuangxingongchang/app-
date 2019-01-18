@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<style>
+			@import url("../../css/forum/mui.css");
+			@import url("../../css/forum/forum_personal_mind_fans.css");
+		</style>
+	</head>
+
+	<body>
+
+		<div class="mui-content">
+
+			<!--导航-->
+			<div class="mui-slider">
+				<a class="mui-action-back  mui-icon mui-icon-left-nav mui-pull-left" style="z-index: 999;position: absolute;margin-top: 7px;margin-left:10px;"></a>
+				<div style="width: 50%;margin: auto;" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<a id="mind_hand" class="mui-control-item" href="#item1">关注</a>
+					<a id="fans_hand" class="mui-control-item" href="#item2">粉丝</a>
+				</div>
+				<div style="margin-left: 25%;" id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-3"></div>
+
+				<div class="mui-slider-group" id="sliderGroup">
+
+					<div id="item1" class="mui-slider-item mui-control-content mui-active">
+						<script id="temp" type="text/html">
+							<!--关注 关注 关注 关注 关注 关注 关注 -->
+							{{if mindUserList != null}} 
+							{{each mindUserList as value index}}
+							
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell mui-media">
+									<!--作者头像-->
+									<img name="{{value.id}}" class="difination-img-radius mui-media-object mui-pull-left" src="{{value.avatar}}">
+									<div class="mui-media-body">
+										<!--用户名-->
+										{{value.nickname}}
+										<!--签名-->
+										<p style="width: 80%;" class="mui-ellipsis">{{value.nickname}}</p>
+									</div>
+									<!--关注-->
+										<button set="no"    name="{{value.id}}" type="button" class="{{value.nickname}}{{value.truename}} difination-mind difination-hidden mui-btn mui-btn-warning mui-btn-outlined mui-pull-right">关注</button>
+										<button set="yes"   name="{{value.id}}" type="button" class="{{value.nickname}}{{value.truename}} difination-mind difination-hidden mui-btn mui-btn-outlined mui-pull-right">已关注</button>
+								</li>
+							</ul>  
+							{{/each}} {{/if}}
+						</script> 
+					</div>
+					<div id="item2" class="mui-slider-item mui-control-content">
+						<script id="temp2" type="text/html">
+							{{if fansUserList != null}} {{each fansUserList as value index}}
+							<!--粉丝 粉丝 粉丝  粉丝 粉丝 粉丝-->
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell mui-media">
+									<!--作者头像-->
+									<img name="{{value.id}}" class="difination-img-radius mui-media-object mui-pull-left" src="{{value.avatar}}">
+									<div class="mui-media-body">
+										<!--用户名-->
+										{{value.nickname}}
+										<!--签名-->
+										{{if value.nickname != null}}
+										<p style="width: 80%;" class="mui-ellipsis">{{value.nickname}}</p>
+										{{else}}
+										<p style="width: 80%;" class="mui-ellipsis">此人偷懒没写签名</p>
+										{{/if}}
+									</div>
+									<!--关注-->
+									<button set="no"    name="{{value.id}}" type="button" class="{{value.nickname}}{{value.truename}} difination-fans difination-hidden mui-btn mui-btn-warning mui-btn-outlined mui-pull-right">关注</button>
+									<button set="yes"   name="{{value.id}}" type="button" class="{{value.nickname}}{{value.truename}} difination-fans mui-btn mui-btn-outlined mui-pull-right">已关注</button>
+								</li>
+							</ul>
+							{{/each}} {{/if}}
+						</script>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</body>
+	<script src="../../js/forum/mui.js"></script>
+	<script src="../../js/forum/template-web.js"></script>
+	<script src="../../js/forum/forum_personale_mind_fans.js"></script>
+	<script type="text/javascript">
+		mui.init({
+			preloadPages:[{
+				url:'forum_personal.html',
+				id:'forum_personal.html'
+			}]
+		})
+	</script>
+
+</html>

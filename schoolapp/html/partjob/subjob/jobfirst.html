@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../../css/mui.min.css" rel="stylesheet" />
+		<script src="../../../js/mui.min.js"></script>
+		<script src="../../../js/template-web.js"></script>
+		<script src="../../../js/job/jobon.js"></script>
+		<style>
+			.job_content .job_content_one ul li .content_a .mui-media-body span {
+				display: block;
+			}
+			
+			.content_money {
+				color: red;
+			}
+			
+			.main_content span {
+				display: block;
+			}
+			
+			.main_content span:first-child {
+				font-size: 20px;
+				overflow: hidden;
+			}
+			
+			.main_content span:last-child,
+			.main_content_v {
+				font-size: 14px;
+				color: #929292;
+			}
+			
+			.mui-table-view-cell .mui-badge {
+				font-size: 16px;
+				color: red;
+			}
+			
+			.jobNothing{
+				height: 490px;
+			}
+			.jobNothing span{
+				font-size: 20px;padding-top: 10px;
+				margin-left: 90px;color: #797979;
+			}
+			.jobNothing img{
+				margin-left: 60px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		<div class="mui-content">
+			<div class="job_content">
+				<div class="job_content_one" id="jobContent">
+					<script id="plur" type="text/html">
+						<ul class="mui-table-view" id="uls">
+							{{if ms.status==true}}
+							{{ each plur as pl}}
+							<li class="mui-table-view-cell mui-media" id="{{pl.id}}" name="{{pl.fkPublisher}}">
+								{{each unit as wo}} {{if wo.id == pl.fkUnit}}
+								<img class="mui-media-object mui-pull-left" src="../{{wo.iconlocation}}" alt="图片"> {{/if}} {{/each}}
+								<div class=" mui-media-body main_content">
+									<span>{{pl.subject}}</span>
+									<span class="main_content_v">{{pl.wordtime}}</span>
+									<span class="mui-ellipsis">{{pl.workcontent}}</span>
+								</div>
+								<div class="mui-badge mui-badge-inverted">
+									￥<span>{{pl.money}}</span> 
+									{{each unit as un}} 
+									{{if un.id == pl.fkUnit}}
+									<span class="{{un.style}}">{{un.style}}</span>
+									{{/if}} 
+									{{/each}}
+								</div>
+							</li>
+							{{/each}}
+							{{/if}}
+							{{if ms.status==false}}
+							<div class="mui-table-view-cell mui-media" id="thenothings">
+								<span id="nothings">该学校当前无兼职,敬请等待任务发布。</span>
+							</div>
+							{{/if}}
+						</ul>
+					</script>
+				</div>
+		</div>
+	</body>
+	<script>
+		var user = JSON.parse(localStorage.getItem('tuser'));
+		var fkSchoolId ="";
+		mui.plusReady(function(){
+			attrMainJob();
+			toPage("#jobContent", '../job_details/job_one.html');
+		})
+		//获取兼职信息
+		function attrMainJob() {
+			if(user!=null){
+				fkSchoolId = user.fkSchoolId;
+			}
+			if(fkSchoolId != null&&fkSchoolId!="") {
+				mui.ajax({
+					url: 'http://172.19.129.6:86/plur/selectPlurSchool',
+					type: 'post',
+					data: {
+						fkSchoolId: user.fkSchoolId
+					},
+					dataType: 'json',
+		
+					success: function(data) {
+						var html = template('plur', data);
+						document.getElementById('jobContent').innerHTML = html;
+					},
+					error: function() {}
+				})
+			} else {
+				mui.alert("获取学校失败,请先设置学校");
+				mui.openWindow({
+					url: '../../percenter/controll/controllchild/school.html',
+					id: '../../percenter/controll/controllchild/school.html'
+				})
+			}
+		}
+	</script>
+</html>

@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/openwindow.js"></script>
+		<script src="../../js/first/login.js"></script>
+		<style>
+			.infoName{
+				height:220px;
+			}
+			#headers{
+				width:100px;margin: 50px auto;
+			}
+			.userImg{
+				width: 100px;height: 100px;border-radius: 50%;
+			}
+			#reg,#forgetPassword{
+				color: #0062CC;
+			}
+		</style>
+	</head>
+
+	<body>
+		
+		<script type="text/javascript">
+			mui.init();
+		</script>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">登录</h1> 
+		</header>
+		
+		 <div class="mui-content">
+	 		<div class="mui-table-view-cell infoName">
+	 			<div id="headers">
+	 				<img class="userImg" src="../../image/header/h1.jpg" id="userImg"/>
+	 			</div>
+	 		</div>
+	 		<div class="tologin">
+				<div id="login-form" class="mui-input-group">
+					<div class="mui-input-row" id="taccount">
+						<label>账号</label>
+						<input id="phoneno" type="text" class="mui-input-clear mui-input" placeholder="你的电话号码"/>
+					</div>
+					<div class="mui-input-row">
+						<label>密码</label>
+						<input id="password" type="password" class="mui-input-password" placeholder="你的密码"/>
+					</div>
+				</div> 
+				
+				<!-- <div class="mui-input-group">
+					<ul class="mui-table-view mui-table-view-chevron">
+						<li class="mui-table-view-cell">
+							自动登录
+							<div id="autoLogin" class="mui-switch">
+								<div class="mui-switch-handle"></div>
+							</div>
+						</li>
+					</ul>
+			    </div> -->
+			    <div class="mui-content-padded">
+					<button id='login' type="button" class="mui-btn mui-btn-block mui-btn-primary">登录</button>
+					<div class="link-area"><span id='reg'>注册账号</span> <span class="spliter">|</span> <span id='forgetPassword'>忘记密码</span>
+					</div>
+			    </div>
+			</div>
+		 </div>
+	</body>
+	<script>
+		mui.plusReady(function(){
+			document.getElementById('login').addEventListener('tap',function(){
+				myLogin();
+			})
+		})
+	</script>
+</html>

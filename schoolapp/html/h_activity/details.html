@@ -1,0 +1,216 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/mui.js"></script>
+		<script type="text/javascript" src="../../js/js_util/template-web.js"></script>
+		<script type="text/javascript" src="../../js/jquery.js"></script>
+		<script type="text/javascript">
+			//活动id
+			var idnum;
+			//当前登录user信息
+			var user = JSON.parse(localStorage.getItem('tuser'));
+			//当前用户登录id
+			var currentUserId = user.id;
+			var internet = "http://172.19.129.6:86";
+			mui.init();
+			
+			/**
+			 * 监听事件
+			 */
+			window.addEventListener("detailsPageEvent", function(e) {
+				//从当前的父页面li标签get id
+				idnum = e.detail.id;
+				//alert(idnum)
+				$.ajax({
+					type: "post",
+					url: internet + "/activity/getActivityById",
+					data: {
+						id: idnum,
+					},
+					dataType: "json",
+					async: true,
+					success: function(data) {
+						var test = template("tpl", data);
+						$("#tpl_html").html(test);
+						var time = data.obj.activitytime;
+						var time1 = data.obj.createtime;
+						var endDate = new Date(time);
+						var releaseDate = new Date(time1);
+						/*
+						 * 毫秒数转换成时间格式
+						 */
+						var formatDate = function(date) {
+							var y = date.getFullYear();
+							var m = date.getMonth() + 1;
+							m = m < 10 ? ('0' + m) : m;
+							var d = date.getDate();
+							d = d < 10 ? ('0' + d) : d;
+							var h = date.getHours();
+							var minute = date.getMinutes();
+							minute = minute < 10 ? ('0' + minute) : minute;
+							var second = date.getSeconds();
+							second = minute < 10 ? ('0' + second) : second;
+							return y + '-' + m + '-' + d + ' ' + h + ':' + minute + ':' + second;
+						};
+						$("#endTime").text(formatDate(endDate));
+						$("#releaseTime").text(formatDate(releaseDate));
+
+						//查询发布活动者
+						var uid = data.obj.fkUserid;
+						currentNum = data.obj.currentnum;
+						console.log("jinru监听事件：" + currentNum);
+						$.ajax({
+							type: "post",
+							url: internet + "/touser/getByIdUserName",
+							async: true,
+							data: {
+								uid: uid,
+							},
+							dataType: "json",
+							success: function(data) {
+								var uName = data.user.nickname;
+								var phone = data.user.phoneno;
+								$("#organizer").text(uName);
+								$("#phone").text(phone);
+							}
+						});
+
+						$.ajax({
+							type: "post",
+							url: internet + "/activityuser/getInterById",
+							data: {
+								acId: idnum,
+							},
+							dataType: "json",
+							async: true,
+							success: function(data) {
+								booleanUser(data)
+							}
+
+						});
+
+					}
+				});
+			});
+
+			function booleanUser(data) {
+				var arr = data.activityUserList;
+				console.log(arr);
+				var b = true;
+				for (var i = 0; i < arr.length; i++) {
+					if (arr[i].userId == currentUserId) {
+						b = false;
+						break;
+					} else {
+						b = true;
+					}
+				}
+				if (!b) {
+					//当登录的用户和活动发布用户相等,默认为已报名
+					$('#butF').text('已报名参加');
+				} else {
+					$('#butF').html('<button class="mui-btn mui-btn-primary mui-btn-outlined" id="but">报名参加</button>')
+
+				}
+			}
+			
+			
+			mui.plusReady(function() {				
+				mui('#butF').on('tap', 'button', function() {
+					alert(document.querySelectorAll(".mui-btn-outlined").length)
+					//点击参加报名 添加到数据库
+					console.log("当前登录用户id: "+currentUserId);
+					console.log("活动id: " + idnum);
+					$.ajax({
+						type: "post",
+						url: internet + "/activityuser/insertActvtUser",
+						dataType: "json",
+						data: {
+							userId : currentUserId ,
+							acId: idnum,
+						},
+						async: true,
+						success: function(data){
+							alert("报名成功");
+							$('#butF').text('已报名参加');
+						}
+					});
+					var curr = $("#currentNum").text();
+					console.log(curr);
+				})
+			});
+		</script>
+
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">活动详情</h1>
+		</header>
+		<div class="mui-content">
+			<div id="tpl_html">
+				<script type="text/html" id="tpl">
+					<div>
+						<p>主题：<b id="a_title"><%=obj.titles%></b></p>
+					</div>
+					<div id="">
+						<p>活动图片</p>
+					</div>
+					<div id="uploadImg">
+						<img src="<%=obj.images%>" id="userImg" style="width:350px; height: 150px;" />
+					</div>
+					<div>
+						<p>内容：
+							<%=obj.content%>
+						</p>
+					</div>
+					<div>
+						<p>地点：
+							<%=obj.address%>
+						</p>
+					</div>
+					<div>
+						<p>注意事项：
+							<%=obj.precautions%>
+						</p>
+					</div>
+					<div>
+						<p>要求：
+							<%=obj.claim%>
+						</p>
+					</div>
+					<div>
+						<p>对象：
+							<%=obj.objects%>
+						</p>
+					</div>
+					<div>
+						<p id="currentNum">当前报名人数：
+							<%=obj.currentnum%>
+						</p>
+					</div>
+				</script>
+			</div>
+			<div>
+				<p>截止时间：<span id="endTime"></span></p>
+			</div>
+			<div>
+				<p>组织者：<span id="organizer"></span></p>
+				<p>联系电话：<span id="phone"></span></p>
+			</div>
+			<div>
+				<p>发布时间：<span id="releaseTime"></span></p>
+			</div>
+				<p id="butF"><button class="mui-btn mui-btn-primary mui-btn-outlined" id="but">报名参加</button></p>
+
+		</div>
+	</body>
+
+</html>

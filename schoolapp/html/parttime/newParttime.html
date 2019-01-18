@@ -1,0 +1,334 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link href="../../css/mui.picker.min.css" rel="stylesheet" />
+		<link href="../../css/mui.poppicker.css" rel="stylesheet" />
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../resource/mui.picker.min.js"></script>
+		<script src="../../resource/mui.poppicker.js"></script>
+		<script src="../../js/openwindow.js"></script>
+		<script src="../../js/allTypenext.js"></script>
+		<style>
+			#headers {
+				background-color: black;
+			}
+			
+			#headers h1 {
+				color: white;
+			}
+			.mui-content{
+				background-color: white;
+			}
+			.newcon .newimg img{
+				width: 25px;height: 25px;margin-left: 20px;
+			}
+			
+			.newcon .newimg{
+			  width: 50px;display: inline-block;
+			}
+			.newcon input{
+				border-top-width: 0;
+				border-right-width: 0;
+				border-left-width: 0;
+			}
+			.newcon .newinputo{
+				width: 85%;
+			}
+			.newcon .newinputt{
+				width: 42%;
+			}
+			.newcon .tt{
+				margin-left: 53px;
+			}
+			#newtitle{
+				margin-top: 10px;
+			}
+			#theContent{
+				overflow: hidden;margin-left:10px ;height: 200px;width: 360px;
+			}
+			.mui-content input{
+				color: #333333;
+			}
+			#the{
+				display: inline-block;
+			}
+		</style>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		<header class="mui-bar mui-bar-nav" id="headers">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">新建岗位</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-input-row newcon">
+				<div class="newimg">
+					<img src="../../image/newcreate/title.png" />
+				</div>
+				<input class="mui-input-clear newinputo" type="text" maxlength="20" placeholder="发布主题，字数3-20以内" id="newtitle">
+			</div>
+			<div class="mui-input-row mui-navigate-right newcon" id="workStyle">
+				<div class="newimg">
+					<img src="../../image/newcreate/menu.png" />
+				</div>
+				<input class="newinputo" type="text" readonly="readonly" placeholder="岗位类型" id="worktype">
+			</div>
+			<div class="mui-input-row newcon">
+				<div class="newimg">
+					<img src="../../image/newcreate/account.png" />
+				</div>
+				<input class="newinputt" type="text" readonly="readonly" placeholder="开始日期" id="startdate">
+				<input class="newinputt" type="text" readonly="readonly" placeholder="结束日期" id="enddate">
+			</div>
+			<div class="mui-input-row newcon">
+				<div class="newimg">
+					<img src="../../image/newcreate/deplet.png" />
+				</div>
+				<input class="newinputo" type="text" readonly="readonly" placeholder="+添加报名截止日期" id="deadline">
+			</div>
+			<div class="mui-input-row newcon">
+				<div class="newimg">
+					<img src="../../image/newcreate/role.png" />
+				</div>
+				<input class="newinputo" type="text" placeholder="总人数" id="persono">
+			</div>
+			<div class="mui-input-row newcon">
+				<div class="newimg">
+					<img src="../../image/newcreate/overage.png" />
+				</div>
+				<input class="newinputt" type="text" placeholder="报酬(如：100)" id="pays">
+				<input class="newinputt" type="text" readonly="readonly" placeholder="报酬单位" id="moneyday">
+				<input class="newinputt tt" type="text" readonly="readonly" placeholder="结算方式" id="settles">
+				<input class="newinputt" type="text" readonly="readonly" placeholder="时间类型" id="timetype">
+			</div>
+
+			<div class="mui-input-row newcon" id="workContent">
+				<div class="newimg">
+					<img src="../../image/newcreate/log.png" />
+				</div>
+				<div id="the">
+					<p>福利要求：</p>
+				</div>
+				<textarea class="newinputo" type="text" placeholder="有什么工作内容，福利和特殊要求？" id="theContent" /></textarea>
+			</div>
+			<div class="mui-input-row newcon">
+				<div class="newimg">
+					<img src="../../image/newcreate/locations.png" />
+				</div>
+				<input class="mui-input-clear newinputo" type="text" placeholder="集合所在位置" id="addr">
+			</div>
+			<div class="mui-input-row newcon">
+				<div class="newimg">
+					<img src="../../image/newcreate/phone.png" />
+				</div>
+				<input class="newinputt" type="text" readonly="readonly" placeholder="联系人" id="thisUser">
+				<input class="newinputt" type="text" readonly="readonly" placeholder="联系电话" id="thisPhone">
+			</div>
+
+			<div class="mui-content-padded" id='toMypart'>
+				<button type="button" class="mui-btn mui-btn-block mui-btn-primary">确认发布</button>
+			</div>
+		</div>
+	</body>
+	<script>
+		var workType = "";
+		var workId = 0;
+		var startDate = "";
+		var endDate = "";
+		var deadline = "";
+		var persono = "";
+		var pay = "";
+		var moneyday = "";
+		var moneyid = 0;
+		var settles = "";
+		var settleid = 0;
+		var timetype = "";
+		var timeid = 0;
+		var contents = "";
+		var addr = "";
+		var id = 0;
+		var school = 0;
+		var user = "";
+		var arr = new Array();
+		mui.plusReady(function() {
+			var phoneno = localStorage.getItem('phone');
+			if (phoneno != null) {
+				mui.ajax({
+					url: 'http://172.19.129.6:86/touser/getUser',
+					type: 'post',
+					async: false,
+					data: {
+						phoneno,
+						phoneno
+					},
+					dataType: 'json',
+					success: function(data) {
+						if (data.scms.status == false) {
+							mui.alert("main获取用户失败");
+						} else {
+							user = data.tuser;
+						}
+					}
+				})
+			}
+			mui("#thisUser")[0].value = user.truename;
+			mui("#thisPhone")[0].value = user.phoneno;
+			addtimePicker();
+			addunitPicker();
+			addsettlePicker();
+			addworkPicker();
+		})
+		document.getElementById('startdate').addEventListener('tap', function() {
+			var dDate = new Date();
+			var minDate = new Date();
+			plus.nativeUI.pickDate(function(e) {
+				var d = e.date;
+				arr[0] = d.getFullYear();
+				arr[1] = (d.getMonth() + 1);
+				arr[2] = d.getDate();
+				mui("#startdate")[0].value = (d.getMonth() + 1) + "/" + d.getDate();
+			}, function(e) {
+				mui.toast("您没有选择日期");
+			}, {
+				title: "请选择日期",
+				date: dDate,
+				minDate: minDate
+			});
+
+		})
+		document.getElementById('enddate').addEventListener('tap', function() {
+			if (arr.length > 0) {
+				var dDate = new Date();
+				var minDate = new Date();
+				minDate.setFullYear(arr[0], arr[1] - 1, arr[2]);
+				plus.nativeUI.pickDate(function(e) {
+					var d = e.date;
+					mui("#enddate")[0].value = (d.getMonth() + 1) + "/" + d.getDate();
+				}, function(e) {
+					mui.toast("您没有选择日期");
+				}, {
+					title: "请选择日期",
+					date: dDate,
+					minDate: minDate
+				});
+			} else {
+				mui.alert("请选择开始日期");
+			}
+
+		})
+
+		document.getElementById('deadline').addEventListener('tap', function() {
+			var dDate = new Date();
+			var minDate = new Date();
+			plus.nativeUI.pickDate(function(e) {
+				var d = e.date;
+				mui("#deadline")[0].value = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+			}, function(e) {
+				mui.toast("您没有选择日期");
+			}, {
+				title: "请选择日期",
+				date: dDate,
+				minDate: minDate
+			});
+		})
+		document.getElementById('toMypart').addEventListener('tap', function() {
+			contents = mui("#theContent")[0].value;
+			persono = mui("#persono")[0].value;
+			pay = mui("#pays")[0].value;
+			addr = mui("#addr")[0].value;
+			workType = mui("#worktype")[0].value;
+			startDate = mui("#startdate")[0].value;
+			endDate = mui("#enddate")[0].value;
+			deadline = mui("#deadline")[0].value;
+			moneyday = mui("#moneyday")[0].value;
+			settles = mui("#settles")[0].value;
+			timetype = mui("#timetype")[0].value;
+			id = user.id;
+			school = user.fkSchoolId;
+			var cycletime = startDate + "-" + endDate;
+			var title = mui("#newtitle")[0].value;
+			var titleReg = /^[\u4e00-\u9fa5\w]{3,20}$/;
+			var personReg = /^[1-9]\d*$/;
+			var myDate = new Date();
+			var year = myDate.getFullYear();
+			var month = myDate.getMonth() + 1;
+			var date = myDate.getDate();
+			var now = year + "-" + month + "-" + date;
+			if (titleReg.test(title)) {
+				if ("" != workType) {
+					if ("" != startDate && "" != endDate) {
+						if ("" != deadline) {
+							if (personReg.test(persono)) {
+								if (personReg.test(pay) && moneyday != "" && settles != "" && timetype != "") {
+									if ("" != contents) {
+										if ("" != addr) {
+											mui.ajax({
+												url: "http://172.19.129.6:86/plur/insertPlur",
+												type: 'post',
+												data: {
+													subject: title,
+													fkWorktype: workId,
+													wordtime: cycletime,
+													endtime: deadline,
+													persons: persono,
+													money: pay,
+													fkUnit: moneyid,
+													fkSettle: settleid,
+													fkTimetype: timeid,
+													workcontent: contents,
+													workaddress: addr,
+													fkPublisher: id,
+													fkSchool: school,
+													releasetime: now,
+													fkWorkstate: 1
+												},
+												dataType: 'json',
+												success: function(data) {
+													if (data.ms.status == true) {
+														mui.openWindow({
+															url: '../zmain/part.html',
+															id: '../zmain/part.html'
+														})
+													} else {
+														mui.alert("系统问题，发布失败")
+													}
+												},
+												error: function(xhr, type, errorThrown) {
+													console.log(type);
+												}
+											})
+										} else {
+											mui.alert("请输入集合所在地")
+										}
+									} else {
+										mui.alert("工作内容不能为空")
+									}
+								} else {
+									mui.alert("请输入正确的报酬方式")
+								}
+							} else {
+								mui.alert("总人数设置错误");
+							}
+						} else {
+							mui.alert("请选择报名截止日期")
+						}
+					} else {
+						mui.alert("开始时间或结束日期没有选择")
+					}
+				} else {
+					mui.alert("岗位类型不能为空")
+				}
+			} else {
+				mui.alert("您的主题输入有误");
+			}
+		})
+	</script>
+</html>

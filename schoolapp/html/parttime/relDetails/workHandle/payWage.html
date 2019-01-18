@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../../../css/mui.min.css" rel="stylesheet" />
+		<script src="../../../../js/mui.min.js"></script>
+		<script src="../../../../js/template-web.js"></script>
+		<style>
+			#headers {
+				background-color: black;
+			}
+			
+			#headers h1 {
+				color: white;
+			}
+			.main_content ul li img{
+				width:50px;height:50px;border-radius: 50%;
+			}
+			.main_content span {
+				display: block;
+			}
+			
+			.main_content span:first-child {
+				font-size: 16px;
+				overflow: hidden;
+			}
+			
+			.main_content span:last-child,
+			.main_content_v {
+				font-size: 14px;
+				color: #929292;
+			}
+			.endState span{
+				font-size: 16px;color: #007AFF;
+			}
+			#autMoney_v{
+				display: inline-block;margin-top: 10px;margin-right: 40px;
+			}
+			.autMoney button{
+				margin-bottom: 20px;
+			}
+			#moneyno{
+				margin-left: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		<header class="mui-bar mui-bar-nav" id="headers">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">工资结算</h1>
+		</header>
+		<div class="mui-content">
+			<div class="allPerson" id="signUser">
+				<script id="thisign" type="text/html">
+					<ul class="mui-table-view">
+						{{each enduser eu}}
+						<li class="mui-table-view-cell mui-media" id="{{eu.id}}" name="{{eu.truename}}">
+							<img class="mui-media-object mui-pull-left" src="{{eu.avatar}}" alt="图片">
+							<div class=" mui-media-body main_content">
+								<span>姓名：{{eu.truename}}</span>
+								<span class="main_content_v">电话：{{eu.phoneno}}</span>
+								<span class="mui-ellipsis">性别：{{eu.sex}}</span>
+							</div>
+							<div class="mui-badge mui-badge-inverted endState">
+								{{each endMoney em}}
+								{{if em.pkUid==eu.id}}
+								<span>工资:{{em.signmoney}}元</span>
+								{{/if}}
+								{{/each}}
+							</div>
+						</li>
+						{{/each}}
+					</ul>
+					</script>
+			</div>
+			<div class="autMoney">
+				<nav class="mui-bar mui-bar-tab">
+				    <a class="mui-tab-item mui-active">
+				    	<div id="autMoney_v">
+				    		<span >您一共要支付:</span><span><i id="moneyno">0.0</i>元</span>
+				    	</div>
+				       <button id="topays" type="button" class="mui-btn mui-btn-blue mui-btn-outlined">确认支付</button>
+				    </a>
+				</nav>
+			</div>
+		</div>
+		<script>
+			var pkPlurid;
+			mui.plusReady(function() {
+				window.addEventListener('topayWage', function(ew) {
+					var signstate = ew.detail.signstate;
+					pkPlurid = ew.detail.pkPlurid;
+					mui.ajax({
+						url: 'http://172.19.129.6:86/sign/signupEnd',
+						type: 'post',
+						data: {
+							pkPlurid: pkPlurid,
+							signstate: signstate
+						},
+						dataType: 'json',
+						success: function(data) {
+							mui("#moneyno")[0].innerHTML = data.mm.data;
+							var html = template('thisign', data);
+							document.getElementById('signUser').innerHTML = html;
+						},
+						error: function(xhr, type, errorThrown) {
+							console.log(type)
+						}
+					})
+				})
+			})
+			document.getElementById('topays').addEventListener('tap',function() {
+				var summoney = mui("#moneyno")[0].innerText;
+				var btnArray = ['取消', '确定'];
+				mui.confirm("是否确认支付"+summoney+"元？", '', btnArray, function(e) {
+						if(e.index == 1) {
+							mui.ajax({
+								url : 'http://172.19.129.6:86/sign/updateUserMoney',
+								type: 'post',
+								data: {
+									pkPlurid:pkPlurid,
+									summoney:summoney
+								},
+								timeout : 10000,
+								dataType: 'json',
+								success : function(data){
+									if(data.upMoney.status==false){
+										mui.alert(data.upMoney.msg);
+									}else{
+										mui.alert("支付成功");
+										mui.openWindow({
+										url : '../../../zmain/part.html',
+										id  : '../../../zmain/part.html'
+									})
+									}
+								}
+							})
+						 }else{
+						 	mui.toast("支付失败");
+						 }
+				  })
+			})
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/template-web.js"></script>
+		<script src="../../js/openwindow.js"></script>
+		<script src="../../resource/bottom.js"></script>
+		<script src="../../js/job/jobon.js"></script>
+		<style>
+			.newse ul li span {
+				display: block;
+				font-size: 16px;
+				color: #6D6D72;
+			}
+			
+			.newse ul li span:first-child {
+				font-size: 20px;
+				color: black;
+				font-weight: 400;
+				margin: 10px 0;
+			}
+			
+			#seMony {
+				font-size: 18px;
+				color: #6D6D72;
+			}
+			
+			#nothings {
+				font-size: 18px;
+			}
+			.thisse p{
+				padding: 10px;text-indent: 2em;
+			}
+			#noth p{
+				height: 30px;text-indent: 1em;color: #007AFF;
+			}
+			.jobNothing{
+				height: 395px;
+			}
+			.jobNothing span{
+				font-size: 20px;padding-top: 10px;
+				margin-left: 90px;color: #EC971F;
+			}
+		</style>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<div class="thisse">
+			 <p>新发布，记录最新发布的任务，当人员足够自动下架到<strong>进行任务</strong>功能页面</p>
+			</div>
+			<div class="newse" id="publisherPlur">
+				<script id="pubsher" type="text/html">
+					<ul class="mui-table-view">
+						{{if ms.status==true}} {{each publisher pu}}
+						<li class="mui-table-view-cell mui-media" id="{{pu.id}}" name="{{pu.fkPublisher}}">
+							<a class="mui-navigate-right">
+								<div class="mui-media-body">
+									<span>{{pu.subject}}</span>
+									<span class="mui-ellipsis">招聘人数 :{{pu.persons}}人</span>
+									<span class="mui-ellipsis">发布日期  :{{pu.releasetime}}</span>
+									<span class="mui-ellipsis">当前状态  :招募中</span>
+								</div>
+								<div class="mui-badge mui-badge-inverted">
+									<span id="seMony">详情</span>
+								</div>
+							</a>
+						</li>
+						{{/each}} 
+						
+						{{/if}}
+						<div id="noth"><p>没有更多信息了</p></div>
+						{{if ms.status==false}}
+						<div class="mui-table-view-cell mui-media jobNothing">
+							<img src="../../image/nothing/没有任务.png" /> 
+							<span id="nothings">没有新发布的任务</span>
+						</div>
+						{{/if}}
+						
+					</ul>
+				</script>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var user = JSON.parse(localStorage.getItem('tuser'));
+		var fkPublisher = "";
+		mui.plusReady(function() {
+			if(user!=null){
+				fkPublisher = user.id;
+			}
+			if(!fkPublisher||fkPublisher == ""){
+				mui.toast("请登录")
+			}else{
+				mui.ajax({
+					url: 'http://172.19.129.6:86/plur/publisher',
+					type: 'post',
+					async : false,
+					timeout :10000,
+					data: {
+						fkPublisher: fkPublisher
+					},
+					dataType: 'json',
+					success: function(data) {
+						var html = template("pubsher",data);
+						document.getElementById('publisherPlur').innerHTML = html;
+					}
+				})
+			}
+			toPage("#publisherPlur", 'relDetails/detailsWork.html');
+		})
+	</script>
+
+</html>

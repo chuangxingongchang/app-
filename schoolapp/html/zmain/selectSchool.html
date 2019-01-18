@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link href="../../css/mui.indexedlist.css" rel="stylesheet" />
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/mui.indexedlist.js"></script>
+		<script src="../../js/selectSchool.js"></script>
+		<style>
+				html,
+			body {
+				height: 100%;
+				overflow: hidden;
+			}
+			.mui-bar {
+				-webkit-box-shadow: none;
+				box-shadow: none;
+			}
+			#done.mui-disabled{
+				color: gray;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">请选择学校</h1>
+			<button id="dones" type="button" class="mui-btn-link mui-pull-right">完成</button>
+		</header>
+		<div class="mui-content">
+			<div id='list' class="mui-indexed-list">
+				<div class="mui-indexed-list-search mui-input-row mui-search">
+					<input type="search" class="mui-input-clear mui-indexed-list-search-input" placeholder="搜索学校">
+				</div>
+				<div class="mui-indexed-list-bar">
+					<a>A</a>
+					<a>B</a>
+					<a>C</a>
+					<a>D</a>
+					<a>E</a>
+					<a>F</a>
+					<a>G</a>
+					<a>H</a>
+					<a>I</a>
+					<a>J</a>
+					<a>K</a>
+					<a>L</a>
+					<a>M</a>
+					<a>N</a>
+					<a>O</a>
+					<a>P</a>
+					<a>Q</a>
+					<a>R</a>
+					<a>S</a>
+					<a>T</a>
+					<a>U</a>
+					<a>V</a>
+					<a>W</a>
+					<a>X</a>
+					<a>Y</a>
+					<a>Z</a>
+				</div>
+
+				<div class="mui-indexed-list-alert"></div>
+				<div class="mui-indexed-list-inner">
+					<div class="mui-indexed-list-empty-alert">没有数据</div>
+					<ul class="mui-input-group">
+						<li data-group="A" class="mui-table-view-divider mui-indexed-list-group">A</li>
+						<li data-value="AKU" data-tags="AKeSu" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+							<input name="radio1" type="radio" />阿拉善职业技术学院</li>
+						<li data-value="BPL" data-tags="ALaShanKou" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+							<input name="radio1" type="radio" />鞍山师范学院</li>
+						<li data-value="AAT" data-tags="ALeTai" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+							<input name="radio1" type="radio" />安徽大学</li>
+						<li data-value="NGQ" data-tags="ALiKunSha" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+							<input name="radio1" type="radio" />安徽工业大学</li>
+						<li data-value="AQG" data-tags="AnQingTianZhuShan" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+							<input name="radio1" type="radio" />安徽理工大学</li>
+						<li data-value="MFM" data-tags="AoMenGuoJi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+							<input name="radio1" type="radio" />安徽农业大学</li>
+						<li data-group="B" class="mui-table-view-divider mui-indexed-list-group">B</li>
+                        <li data-value="BSD" data-tags="BaoShan" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>北京大学</li>
+                        <li data-value="BAV" data-tags="BaoTou" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>北京交通大学</li>
+                        <li data-value="BHY" data-tags="BeiHaiFuCheng" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>北京工业大学</li>
+                        <li data-value="NAY" data-tags="BeiJingNanYuan" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>北京理工大学</li>
+                        <li data-value="PEK" data-tags="BeiJingShouDuGuoJi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>北京邮电大学</li>
+						<li data-value="PEK" data-tags="BeiJingShouDuGuoJi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+							<input name="radio1" type="radio"/>北京建筑大学</li>
+                        <li data-group="C" class="mui-table-view-divider mui-indexed-list-group">C</li>
+                        <li data-value="NBS" data-tags="ChangBaiShan" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>承德医学院</li>
+                        <li data-value="CGQ" data-tags="ChangChunLongJiaGuoJi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>长春理工大学</li>
+                        <li data-value="CGD" data-tags="ChangDeTaoHuaYuan" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>长春工程学院</li>
+                        <li data-value="BPX" data-tags="ChangDuBangDa" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>常州大学</li>
+                        <li data-value="CSX" data-tags="ChangShaHuangHuaGuoJi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>长江大学</li>
+                        <li data-value="CIH" data-tags="ChangZhiWangCun" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>长沙理工大学</li>
+                        <li data-value="CZX" data-tags="ChangZhouBenNiu" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>长沙学院</li>
+                        <li data-value="CTU" data-tags="ChengDuShuangLiuGuoJi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>成都理工大学</li>
+                        <li data-value="CIF" data-tags="ChiFeng" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>成都中医药大学</li>
+						 <li data-value="CTU" data-tags="ChengDuShuangLiuGuoJi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>重庆大学</li>
+                        <li data-value="CIF" data-tags="ChiFeng" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>重庆邮电大学</li>	
+                        <li data-group="D" class="mui-table-view-divider mui-indexed-list-group">D</li>
+                        <li data-value="DLU" data-tags="DaLi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>大连理工大学</li>
+                        <li data-value="DLC" data-tags="DaLianZhouShuiZiGuoJi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>电子科技大学</li>
+                        <li data-value="DQA" data-tags="DaQingSaErTu" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>东北大学</li>
+                        <li data-value="DAT" data-tags="DaTongDongWangZhuang" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>东北财经大学</li>
+                        <li data-value="DAX" data-tags="DaZhouHeShi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>东莞理工学院</li>
+                        <li data-value="DDG" data-tags="DanDongLangTou" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>东北师范大学</li>
+                        <li data-value="LUM" data-tags="DeHongMangShi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>东北林业大学</li>
+                        <li data-value="DIG" data-tags="DiQingXiangGeLiLa" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>东华大学</li>
+                        <li data-value="DOY" data-tags="DongYing" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>东南大学</li>
+                        <li data-value="DNH" data-tags="DunHuang" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>对外经济贸易大学</li>
+                        <li data-group="E" class="mui-table-view-divider mui-indexed-list-group">E</li>
+                        <li data-value="DSN" data-tags="EErDuoSi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>鄂尔多斯职业学院</li>
+                
+                        <li data-group="F" class="mui-table-view-divider mui-indexed-list-group">F</li>
+                        <li data-value="FUG" data-tags="FuYangXiGuan" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>复旦大学</li>
+                        <li data-value="FOC" data-tags="FuZhouChangLeGuoJi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>福州大学</li>
+                        <li data-group="G" class="mui-table-view-divider mui-indexed-list-group">G</li>
+                        <li data-value="KOW" data-tags="GanZhouHuangJin" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>广东海洋大学</li>
+                        <li data-value="GOQ" data-tags="GeErMu" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>广州大学</li>
+                        <li data-value="GYU" data-tags="GuYuanLiuPanShan" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>广东工业大学</li>
+                        <li data-value="GYS" data-tags="GuangYuanPanLong" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>广西民族大学</li>
+                        <li data-value="CAN" data-tags="GuangZhouBaiYunGuoJi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>广西大学</li>
+                        <li data-value="KWL" data-tags="GuiLinLiangJiangGuoJi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>贵州大学</li>
+                        <li data-value="KWE" data-tags="GuiYangLongDongBaoGuoJi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>贵州财经大学</li>
+                        <li data-group="H" class="mui-table-view-divider mui-indexed-list-group">H</li>
+                        <li data-value="HRB" data-tags="HaErBinTaiPingGuoJi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>河北工业大学</li>
+                        <li data-value="HMI" data-tags="HaMi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>河北大学</li>
+                        <li data-value="HAK" data-tags="HaiKouMeiLanGuoJi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>河北农业大学</li>
+                        <li data-value="HLD" data-tags="HaiLaErDongShanGuoJi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>黑龙江大学</li>
+                        <li data-value="HDG" data-tags="HanDan" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>哈尔滨理工大学</li>
+                        <li data-value="HZG" data-tags="HanZhong" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>哈尔滨石油学院</li>
+                        <li data-value="HGH" data-tags="HangZhouXiaoShanGuoJi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>华东理工大学</li>
+                        <li data-value="HFE" data-tags="HeFeiLuoGangGuoJi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>湖北大学</li>
+                        <li data-value="HTN" data-tags="HeTian" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>杭州电子科技大学</li>
+                        <li data-value="HEK" data-tags="HeiHe" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>淮海工学院</li>
+                        <li data-value="HET" data-tags="HuHeHaoTeBaiTaGuoJi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>合肥工业大学</li>
+                        <li data-value="HIA" data-tags="HuaiAnLianShui" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>河南工业大学</li>
+                        <li data-value="TXN" data-tags="HuangShanTunXiGuoJi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>河南理工大学</li>
+                        <li data-group="J" class="mui-table-view-divider mui-indexed-list-group">J</li>
+                        <li data-value="TNA" data-tags="JiNanYaoQiangGuoJi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>吉林大学</li>
+                        <li data-value="JNG" data-tags="JiNingQuFu" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>吉林农业大学</li>
+                        <li data-value="JXA" data-tags="JiXiXingKaiHu" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>江苏大学</li>
+                        <li data-value="JMU" data-tags="JiaMuSiDongJiao" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>江苏理工学院</li>
+                        <li data-value="JGN" data-tags="JiaYuGuan" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>江西理工大学</li>
+                        <li data-value="JNZ" data-tags="JinZhouXiaoLingZi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>江西农业大学</li>
+                        <li data-value="JDZ" data-tags="JingDeZhen" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>九江职业大学</li>
+          
+                        <li data-group="K" class="mui-table-view-divider mui-indexed-list-group">K</li>
+                        <li data-value="KHG" data-tags="KaShi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>开封大学</li>
+                        <li data-value="KRY" data-tags="KeLaMaYi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>昆明理工大学</li>
+                        <li data-value="KCA" data-tags="KuCheGuiZi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>昆明医科大学</li>
+                 
+                        <li data-group="L" class="mui-table-view-divider mui-indexed-list-group">L</li>
+                        <li data-value="LXA" data-tags="LaSaGongGa" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>辽宁大学</li>
+                        <li data-value="LHW" data-tags="LanZhouZhongChuan" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>辽宁工业大学</li>
+                        <li data-value="LJG" data-tags="LiJiangSanYi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>鲁东大学</li>
+                        <li data-value="HZH" data-tags="LiPing" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>黎明职业大学</li>
+                        
+                        <li data-group="M" class="mui-table-view-divider mui-indexed-list-group">M</li>
+                        <li data-value="NZH" data-tags="ManZhouLiXiJiao" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>闽南师范大学</li>
+                        <li data-value="MIG" data-tags="MianYangNanJiao" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>绵阳师范学院</li>
+                        <li data-value="OHE" data-tags="MoHeGuLian" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>眉山职业技术学院</li>
+                        <li data-value="MDG" data-tags="MuDanJiangHaiLang" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>闽南理工学院</li>
+                        <li data-group="N" class="mui-table-view-divider mui-indexed-list-group">N</li>
+                        <li data-value="KHN" data-tags="NanChangChangBeiGuoJi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>南开大学</li>
+                        <li data-value="NAO" data-tags="NanChongGaoPing" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>内蒙古大学</li>
+                        <li data-value="NKG" data-tags="NanJingLuKouGuoJi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>南京大学</li>
+                        <li data-value="NNG" data-tags="NanNingWuXu" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>南京理工大学</li>
+                        <li data-value="NTG" data-tags="NanTongXingDong" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>南京工业大学</li>
+                        <li data-value="NNY" data-tags="NanYangJiangYing" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>宁波大学</li>
+                        <li data-value="NGB" data-tags="NingBoLiSheGuoJi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>宁波工程学院</li>
+                        <li data-group="P" class="mui-table-view-divider mui-indexed-list-group">P</li>
+                        <li data-value="SYM" data-tags="PuErSiMao" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>平顶山学院</li>
+                        <li data-group="Q" class="mui-table-view-divider mui-indexed-list-group">Q</li>
+                        <li data-value="NDG" data-tags="QiQiHaErSanJiaZi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>齐齐哈尔大学</li>
+                        <li data-value="SHP" data-tags="QinHuangDaoShanHaiGuan" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>清华大学</li>
+                        <li data-value="TAO" data-tags="QingDaoLiuTingGuoJi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>衢州学院</li>
+                        <li data-value="JUZ" data-tags="QuZhou" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>泉州师范学院</li>
+                        <li data-value="JJN" data-tags="QuanZhouJinJiang" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>青岛科技大学</li>
+                        <li data-group="R" class="mui-table-view-divider mui-indexed-list-group">R</li>
+                        <li data-value="RKZ" data-tags="RiKaZeHePing" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>日照职业技术学院</li>
+                        <li data-group="S" class="mui-table-view-divider mui-indexed-list-group">S</li>
+                        <li data-value="SYX" data-tags="SanYaFengHuangGuoJi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>首都医科大学</li>
+                        <li data-value="SWA" data-tags="ShanTouWaiSha" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>石家庄学院</li>
+                        <li data-value="SHA" data-tags="ShangHaiHongQiaoGuoJi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>山西大学</li>
+                        <li data-value="PVG" data-tags="ShangHaiPuDongGuoJi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>山西大同大学</li>
+                        <li data-value="SZX" data-tags="ShenChouBaoAnGuoJi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>四川大学</li>
+                        <li data-value="SHE" data-tags="ShenYangTaoXianGuoJi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>四川工商学院</li>
+                        <li data-value="SJW" data-tags="ShiJiaZhuangZhengDingGuoJi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>沈阳工业大学</li>
+                        <li data-value="WUX" data-tags="SuNanShuoFangGuoJi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>沈阳理工大学</li>
+                        <li data-group="T" class="mui-table-view-divider mui-indexed-list-group">T</li>
+                        <li data-value="TCG" data-tags="TaCheng" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>天津工业大学</li>
+                        <li data-value="TYN" data-tags="TaiYuanWuSuGuoJi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>天津大学</li>
+                        <li data-value="HYN" data-tags="TaiZhouLuQiao-HuangYanJiChang" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>天津外国语大学</li>
+                        <li data-value="TVS" data-tags="TangShanSanNvHe" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>唐山学院</li>
+                        <li data-value="TCZ" data-tags="TengChongTuoFeng" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>太原理工大学</li>
+                        <li data-value="TSN" data-tags="TianJinBinHaiGuoJi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>太原学院</li>
+                        <li data-value="TGO" data-tags="TongLiao" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>同济大学</li>
+                        <li data-value="TEN" data-tags="TongRenFengHuang" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>台湾大学</li>
+                        <li data-group="W" class="mui-table-view-divider mui-indexed-list-group">W</li>
+                        <li data-value="WXN" data-tags="WanZhouWuQiao" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>外交学院</li>
+                        <li data-value="WEF" data-tags="WeiFang" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>温州医科大学</li>
+                        <li data-value="WEH" data-tags="WeiHaiDaShuiBo" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>武汉科技大学</li>
+                        <li data-value="WNH" data-tags="WenShanPuZheHei" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>武汉大学</li>
+                        <li data-value="WNZ" data-tags="WenZhouYongQiangGuoJi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>武汉理工大学</li>
+                        <li data-value="WUA" data-tags="WuHai" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>武昌理工学院</li>
+                        <li data-value="WUH" data-tags="WuHanTianHeGuoJi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>武昌职业学院</li>
+                        
+                        <li data-group="X" class="mui-table-view-divider mui-indexed-list-group">X</li>
+                        <li data-value="XIY" data-tags="XiAnXianYangGuoJi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>徐州工程学院</li>
+                        <li data-value="XIC" data-tags="XiChangQingShan" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>厦门大学</li>
+                        <li data-value="XIL" data-tags="XiLinHaoTe" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>许昌学院</li>
+                        <li data-value="XNN" data-tags="XiNingCaoJiaBao" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>湘南学院</li>
+                        <li data-value="JHG" data-tags="XiShuangBanNaGaSa" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>西南大学</li>
+                        <li data-value="XMN" data-tags="XiaMenGaoQiGuoJi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>西南交通大学</li>
+                        <li data-value="HKG" data-tags="XiangGangGuoJi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>新疆大学</li>
+                        <li data-value="XFN" data-tags="XiangYangLiuJi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>西华大学</li>
+                        <li data-value="ACX" data-tags="XingYi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>西安交通大学</li>
+                        <li data-value="XUZ" data-tags="XuZhouGuanYin" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>西藏大学</li>
+					    <li data-value="JHG" data-tags="XiShuangBanNaGaSa" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>新疆大学</li>
+                        <li data-group="Y" class="mui-table-view-divider mui-indexed-list-group">Y</li>
+                        <li data-value="ENY" data-tags="YanAnErShiLiBao" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>燕山大学</li>
+                        <li data-value="YNZ" data-tags="YanCheng" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>延边大学</li>
+                        <li data-value="YNJ" data-tags="YanJiChaoYangChuan" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>扬州大学</li>
+                        <li data-value="YNT" data-tags="YanTaiLaiShanGuoJi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>烟台大学</li>
+                        <li data-value="YBP" data-tags="YiBinCaiBa" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>云南大学</li>
+                        <li data-value="YIH" data-tags="YiChangSanXia" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>云南财经大学</li>
+                        <li data-value="LDS" data-tags="YiChunLinDu" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>伊犁师范学院</li>
+                       
+                        <li data-group="Z" class="mui-table-view-divider mui-indexed-list-group">Z</li>
+                        <li data-value="ZHA" data-tags="ZhanJiang" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>中国人民大学</li>
+                        <li data-value="ZAT" data-tags="ZhaoTong" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>中国农业大学</li>
+                        <li data-value="CGO" data-tags="ZhengZhouXinZhengGuoJi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>中北大学</li>
+                        <li data-value="HJJ" data-tags="ZhiJiang" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>浙江大学</li>
+                        <li data-value="CKG" data-tags="ZhongQingJiangBeiGuoJi" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>浙江理工大学</li>
+                        <li data-value="ZHY" data-tags="ZhongWeiXiangShan" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>郑州大学</li>
+                        <li data-value="HSN" data-tags="ZhouShanZhuJiaJian" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>遵义医学院</li>
+                        <li data-value="ZUH" data-tags="ZhuHaiSanZao" class="mui-table-view-cell mui-indexed-list-item mui-radio mui-left">
+                            <input name="radio1" type="radio"/>昭通学院</li>
+					</ul>
+				</div>
+			</div>
+			<div class="mui-content-padded">
+				<p id="info"></p>
+			</div>
+		</div>
+		<!--<script src="../js/mui.grouplist.testdata.js"></script>-->
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+		</script>
+	</body>
+
+</html>

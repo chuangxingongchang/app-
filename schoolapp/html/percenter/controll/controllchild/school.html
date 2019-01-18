@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../../../css/mui.min.css" rel="stylesheet" />
+		<script src="../../../../js/mui.min.js"></script>
+		<script src="../../../../resource/allSchool.js"></script>
+		<style>
+			#heads,
+			#heads button {
+				background-color: black;
+			}
+			
+			#heads button {
+				color: green;
+				font-size: 16px;
+			}
+			
+			.pt p {
+				margin: 20px 20px;
+			}
+			
+			#complete {
+				float: right;
+				margin-top: 5px;
+				border: none;
+			}
+			#cmbCity{
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header id="heads" class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<span class="mui-title" style="color: white;">修改学校</span><button id="complete">完成</button>
+		</header>
+		<div class="mui-content">
+			<div class="pt">
+				<p>设置了学校，会给您带来更多帮助，您可以更加方便进行任务发布、兼职、论坛等功能</p>
+			</div>
+			<div class="selects">
+				<select id="cmbProvince" name="cmbProvince"></select>
+				<select id="cmbCity" name="cmbCity"></select>
+				<select id="cmbArea" name="cmbArea"></select>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			mui.init()
+			addressInit('cmbProvince', 'cmbCity', 'cmbArea');
+			document.getElementById("complete").addEventListener('tap', function() {
+				var schoolcity = mui("#cmbProvince")[0].value;
+				var school = mui("#cmbArea")[0].value;
+				var user = JSON.parse(localStorage.getItem('tuser'));
+				var id = "";
+				if(user!=null){
+					id = user.id
+				}
+				if(school != null && school != "") {
+					if(id!=null&&""!=id){
+						mui.ajax({
+							url: 'http://172.19.129.6:86/school/updateMyschool',
+							type: 'post',
+							dataType: 'json',
+							data: {
+								id: user.id,
+								schoolname: school,
+								schoolcity: schoolcity
+							},
+							success: function(data) {
+								if(data.ms.status == true) {
+									mui.openWindow({
+										url: '../sets.html',
+										id: '../sets.html'
+									});
+								} else {
+									alert(data.ms.msg);
+								}
+							}
+						})
+					}
+				} else {
+					mui.alert("输入学校错误");
+				}
+			})
+		</script>
+	</body>
+
+</html>

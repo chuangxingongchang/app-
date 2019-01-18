@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<script src="../../js/mui.min.js"></script>
+		<style>
+			.hs h2 {
+				text-align: center;
+				margin: 20px;
+			}
+			
+			#reg-form {
+				margin-top: 50px;
+			}
+			
+			#input-one input {
+				width: 70%;
+			}
+			
+			#input-one button {
+				margin-top: 3px;
+			}
+		</style>
+	</head>
+
+	<body>
+		
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		</header>
+		<div class="mui-content">
+			<div class="hs">
+				<h2>忘记密码 </h2></div>
+			<div id="reg-form" class="mui-input-group">
+				<div id="reg_two">
+					<div class="mui-input-row" id="input-one">
+						<input id="phoneno" type="text" class="mui-input" placeholder="请输入电话号码" />
+						<button class="mui-badge-blue" id="sends">发送验证码</button>
+					</div>
+					<div class="mui-input-row" id="input-two">
+						<input id="codes" type="text" class="mui-input-clear mui-input" placeholder="请输入验证码" />
+					</div>
+					<div class="mui-input-row" id="input-three">
+						<input id="newpassword" type="password" class="mui-input-password" placeholder="请输入新密码" />
+					</div>
+					<div class="mui-input-row" id="input-three">
+						<input id="repassword" type="password" class="mui-input-password" placeholder="请再次输入新密码" />
+					</div>
+				</div>
+			</div>
+			<div class="mui-content-padded">
+				<button id='updatepw' type="button" class="mui-btn mui-btn-block mui-btn-primary">修改</button>
+			</div>
+		</div>
+		<script>
+			var codes = "";
+			document.getElementById("updatepw").addEventListener("tap", function() {
+				var pwReg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{5,20}$/;
+				var phReg = /^1(3|4|5|7|8)\d{9}$/;
+				var phoneno = mui("#phoneno")[0].value;
+				var code = mui("#codes")[0].value;
+				var pword = mui("#newpassword")[0].value;
+				var repword = mui("#repassword")[0].value;
+
+				if(phoneno != null && phReg.test(phoneno)) {
+					if(code != null && code != "") {
+						if(codes ==code){
+							if(pword != null && pwReg.test(pword)) {
+								if(pword == repword) {
+									console.log("进入ajax")
+									mui.ajax({
+										url: "http://172.19.129.6:86/touser/forgetpword",
+										type: 'post',
+										dataType: 'json',
+										data: {
+											phoneno: mui("#phoneno")[0].value,
+											code: mui("#codes")[0].value,
+											pword: mui("#newpassword")[0].value
+										},
+										success: function(data) {
+											if(!data.message.status) {
+												mui.alert(data.message.msg);
+											} else {
+												mui.alert(data.message.msg);
+												mui.openWindow({
+													url: 'login.html',
+													id: 'login.html'
+												})
+											}
+										}
+									})
+								} else {
+									mui.toast("两次密码不一致");
+								}
+							} else {
+								mui.toast("请输入密码");
+							}
+						}else{
+							mui.toast("验证码输入有误");
+						}
+					} else {
+						mui.toast("请输入验证码");
+					}
+				} else {
+					mui.toast("电话号码输入错误");
+				}
+			});
+			document.getElementById("sends").addEventListener("tap", function() {
+				mui.ajax({
+					type: "post",
+					url: "http://172.19.129.6:86/touser/mycode",
+					data: {
+						phoneno: mui("#phoneno")[0].value
+					},
+					dataType: "json",
+					success: function(data) {
+						if(!data.mss.status) {
+							mui.openWindow({
+								url : '../zmain/error.html',
+								id  : '../zmain/error.html'
+							})
+						}else{
+							codes  = data.mss.data;
+						}
+					}
+				})
+			});
+		</script>
+	</body>
+
+</html>

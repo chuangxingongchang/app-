@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/forum/mui.css" rel="stylesheet" />
+		<style>
+			.difination-span-left {
+				margin-left: 10px;
+			}
+			
+			.difination-p-color {
+				font-size: 13px;
+				color: #999999;
+			}
+			
+			.mui-table-view {
+				border-bottom: 1px solid #A9A9A9;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">我的收藏</h1>
+		</header>
+
+		<div class="mui-content" id='main'>
+			<script id="temp" type="text/html">
+				{{each articleAllSign as value index}} {{each articleSignUser as user index}} {{if value.fkUserKey == user.id}}
+				<ul class="mui-table-view ">
+					<li class="mui-table-view-cell mui-media">
+						<content>
+							<div class="mui-media-body">
+								<coen name="{{value.id}}">
+									<!--标题-->
+									<b>{{value.title}}</b>
+									<p class="mui-ellipsis">
+										{{value.contentDescribe}}
+									</p>
+								</coen>
+								<p class="mui-ellipsis ">
+									<!--谁发的帖子-->
+									<span class="difination-p-color difination-span-left"><a name="{{value.id}}" href="javascript.void(0)">{{user.nickname}}</a></span>
+									<!--2019年1月7日16:59:50-->
+									<span class="difination-p-color difination-span-left ">{{value.createTime}}</span>
+									<!--评论-->
+									<span class="difination-p-color difination-span-left mui-icon mui-icon-chat">{{value.commentCount}}</span>
+								</p>
+							</div>
+						</content>
+					</li>
+				</ul>
+				{{/if}} {{/each}} {{/each}}
+			</script>
+
+		</div>
+
+	</body>
+	<script src="../../js/forum/mui.js"></script>
+	<script src="../../js/forum/template-web.js"></script>
+	<script src="../../js/forum/forum_article_sign.js"></script>
+	<script type="text/javascript">
+		mui.init({
+			preloadPages: [{
+					url: 'forum_article_main_content.html',
+					id: 'orum_article_main_content.html'
+				},
+				{
+					url: 'forum_personal.html',
+					id: 'forum_personal.html'
+
+				}
+			]
+		})
+	</script>
+
+</html>

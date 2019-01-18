@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	</head>
+	<link rel="stylesheet" type="text/css" href="../../css/forum/mui.css" />
+	<link rel="stylesheet" type="text/css" href="../../css/forum/forum_index_coumt_subPage.css" />
+
+	<body id="body">
+
+		<div id="templates_li" style="margin-top: -15px;" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<script id="templates" type="text/html">
+					<ul class="mui-table-view  mui-table-view-chevron">
+						{{each listTypeForumVo as value index}}
+
+						<li class="mui-table-view-cell mui-media">
+							<label name="{{value.id}}">
+								<div class="mui-media-body">
+								<span>{{value.title}}</span>
+								<p class="mui-ellipsis">{{value.contentDescribe}}</p>
+							</div>
+								
+							</label>
+
+							<div class="difination-div-top5px">
+								<p class="mui-ellipsis">
+									<img name="{{value.fkUserKey.id}}" class="difination-img-radius" src="{{value.fkUserKey.avatar}}" />
+									<span>{{value.fkUserKey.nickname}}</span>
+									<span class="difination-span-left">{{value.createTime}}</span>
+									<span class="difination-span-left mui-icon mui-icon-chatbubble difination-span-font">{{value.browseConut}}</span>
+									<span class="difination-span-left mui-icon mui-icon-chatboxes difination-span-font">{{value.commentCount}}</span>
+								</p>
+							</div>
+						</li>
+						{{/each}}
+					</ul>
+
+				</script>
+			</div>
+		</div>
+	</body>
+	<script src="../../js/forum/mui.js"></script>
+	<script src="../../js/forum/forum_index_content_subPage.js"></script>
+	<script src="../../js/forum/template-web.js"></script>
+	<script src="../../js/forum/jquery3.3.js"></script>
+	<script src="../../js/common/alert_error.js"></script>
+	<script type="text/javascript">
+		mui.init({
+			pullRefresh: {
+				container: ".mui-scroll-wrapper", //下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
+				down: {
+					contentdown: "下拉可以刷新", //可选，在下拉可刷新状态时，下拉刷新控件上显示的标题内容
+					contentover: "释放立即刷新", //可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
+					callback: function() {
+						if(b) {
+							setTimeout(pullDownRefresh, 1500)
+						} else {
+							mui.toast("没有更多数据", 700)
+							mui('#templates_li').pullRefresh().endPulldown()
+						}
+
+					}
+
+				},
+				up: {
+					callback: function() {
+						if(b) {
+							setTimeout(pullUpRefresh, 1500)
+							mui.toast("正在加载", 1000)
+						} else {
+							mui.toast("没有更多数据", 700)
+							mui('#templates_li').pullRefresh().endPullup()
+						}
+
+					}
+				}
+			},
+			preloadPages: [{
+					url: 'forum_article_main_content.html',
+					id: 'forum_article_main_content.html'
+				},
+				{
+					url: 'forum_personal.html',
+					id: 'forum_personal.html'
+				}
+			]
+
+		})
+	</script>
+
+</html>

@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+	<!-- 我的活动page -->
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../../css/css_activity/myActivity.css" />
+		<script type="text/javascript" src="../../js/js_util/template-web.js"></script>
+		<script type="text/javascript" src="../../js/jquery.js"></script>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init({
+				preloadPages: [{
+					url: "userActivity.html",
+					id: "userActivity.html"
+				}]
+			})
+			var internet = "http://172.19.129.6:86";
+			var user = JSON.parse(localStorage.getItem('tuser'));
+			$(function() {
+				/*
+				 * 1、获取当前userid
+				 * 2、查询对应自己发布的活动
+				 * 
+				 */
+				var userId = "";
+				userId = user.id;
+				$.ajax({
+					type: "post",
+					url: internet + "/activity/selectByUserIdActivity",
+					async: true,
+					dataType: "json",
+					data: {
+						fkUserid: userId,
+					},
+					success: function(data) {
+						var temp = template("tpl",data)
+						$("#myActivityList").html(temp);
+					}
+				});
+				mui("#myActivityList").on("tap", "li", function(e) {
+					var prPage = plus.webview.getWebviewById('userActivity.html')
+					mui.fire(prPage, "userDetailsPageEvent", {
+						id: this.getAttribute("id")
+					});
+					mui.openWindow({
+						id: "userActivity.html"
+					});
+					
+				});
+				
+			})
+		</script>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">我的活动</h1>
+		</header>
+		<div class="mui-content">
+			<div id="">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell mui-collapse">
+						<a class="mui-navigate-right" href="#">我的活动</a>
+						<div class="mui-collapse-content">
+							<div id="or_list">
+								<ol id="myActivityList">
+									<script type="text/html" id="tpl">
+										<%for(var i=0; i<userActivity.length; i++){%>
+											<li id="<%=userActivity[i].id%>">
+											<a href="" style="color: yellowgreen"><%=userActivity[i].titles%></a>
+											</li>
+										<%}%>
+									</script>
+								</ol>
+							</div>
+						</div>
+					</li>
+					<li class="mui-table-view-cell mui-collapse">
+						<a class="mui-navigate-right" href="#">已报名活动</a>
+						<div class="mui-collapse-content">
+							<div id="activity_list">
+								<ul>
+									<li>活动标题1&nbsp;&nbsp;<span style="color: red;">审核中...</span></li>
+									<li>活动标题2&nbsp;&nbsp;<span style="color: #2AC845">审核已通过，请注意准时参加</span></li>
+								</ul>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div id="">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<a href="organization.html">发布活动</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+	</body>
+
+</html>

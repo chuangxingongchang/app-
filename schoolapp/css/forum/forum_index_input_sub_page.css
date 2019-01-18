@@ -1,0 +1,103 @@
+
+			.difination-label {
+				color: #E7481D;
+				font-size: 20px;
+			}
+			
+			.difination-type-a {
+				color: #FFFFFF;
+			}
+			
+			.difination-input {
+				width: 100%;
+				height: 50px;
+				margin-top: 20px;
+			}
+			
+			.difination-input input {
+				background-color: rgba(255, 255, 255, 0.4);
+				border-radius: 15px;
+			}
+			
+			.difination-input-hidden input {
+				background-color: rgba(255, 255, 255, 255);
+				border-radius: 30px;
+				height: 30px;
+				width: 85%;
+				font-size: 15px;
+			}
+			
+			.difination-input-hidden {
+				width: 100%;
+				position: absolute;
+				background: #FC150B;
+				height: 50px;
+			}
+			
+			.difination-hidden-div {
+				width: 100%;
+				position: fixed;
+				z-index: 1000;
+			}
+			
+			.difination-div-top15px {
+				margin-top: 15px;
+			}
+			
+			.difination-clear {
+				margin-left: 6px;
+				color: #FFFFFF;
+			}
+			
+			.difination-content {
+				margin-top: 60px;
+			}
+			
+			.difination-hot ul li {
+				list-style: none;
+				float: left;
+				margin-left: 5px;
+				margin-top: 10px;
+			}
+			
+			.difination-hot ul li button {
+				border: 1px solid #A9A9A9;
+				border-radius: 10px;
+			}
+			
+			.difination-history {
+				margin-top: 200px;
+			}
+			
+			.difination-history ul li {
+				list-style: none;
+			}
+			
+			.mui-table-view-cell label {
+				font-size: 14px;
+				color: black;
+			}
+			
+			.mui-table-view-cell span {
+				font-size: 15px;
+				color: #ACACB4;
+			}
+			
+			.difination-img-radius {
+				width: 20px;
+				height: 20px;
+				border-radius: 50%;
+				margin-bottom: -5px;
+			}
+			
+			.difination-span-left {
+				margin-left: 10px;
+			}
+			
+			.difination-left-7px {
+				margin-left: 7px;
+			}
+			
+			.mui-ellipsis span {
+				font-size: 10px;
+			}

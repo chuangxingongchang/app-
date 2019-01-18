@@ -1,0 +1,204 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<style>
+			@import url("../../css/forum/mui.css");
+			@import url("../../css/forum/forum_article_main_content.css");
+		</style>
+	</head>
+
+	<body>
+
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<!--分享-->
+			<!-- <span class="mui-icon mui-icon-pengyouquan mui-pull-right"></span>-->
+		</header>
+		<div id="main" style="margin-bottom: 40px;">
+			<script id="tempMain" type="text/html">
+				<!--标题-->
+				<ul class="mui-table-view difination-ul-maggin">
+					<li class="mui-table-view-cell mui-media">
+						<div class="mui-media-body">
+							<h4>{{articleVo.title}}</h4>
+							<p class="mui-ellipsis">{{articleVo.createTime}}</p>
+						</div>
+					</li>
+				</ul>
+
+				<!--user 谁的文章-->
+				<user>
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell mui-media">
+							<!--作者头像-->
+							<!--<img class="mui-media-object mui-pull-left" src="../../image/u=2178990121,1636008986&fm=200&gp=0.jpg">-->
+							<img class="mui-media-object mui-pull-left" src="{{articleVo.fkUserKey.avatar}}">
+							<mind>
+								<button name="yes" style="display: none;" type="button" class="mui-btn mui-btn-outlined mui-pull-right">已关注</button>
+								<button name="no" style="display: none;" type="button" class="mui-btn mui-btn-warning mui-btn-outlined mui-pull-right">关注</button>
+							</mind>
+							<div class="mui-media-body">
+								<!--作者名称-->
+								<p class="mui-ellipsis difination-p-font-size15px">{{articleVo.fkUserKey.nickname}}</p>
+								<!--作者等级图片-->
+								<p class="mui-ellipsis">
+									<img class="difination-imgW40H20" src="{{UserIntegralIco.url}}" />
+								</p>
+							</div>
+						</li>
+
+					</ul>
+				</user>
+				<!--主要内容-->
+				<div class="mui-content">
+
+				</div>
+
+				<!--相关推送-->
+				<div class="difination-maggin-top40px">相关文章</div>
+				<relevant>
+				{{each articleRelevantList as relevant index}}
+				<ul class="mui-table-view " name="{{relevant.id}}">
+					<li class="mui-table-view-cell mui-media">
+						<div class="mui-media-body">
+							<!--标题-->
+							<h4>{{relevant.title}}</h4>
+							<p class="mui-ellipsis ">
+								<!--头像-->
+								<span>  
+							<img class="difination-img-radius" src="{{relevant.fkUserKey.avatar}}"/>
+							</span>
+								<!--名字-->
+								<span class="difination-span-left">{{relevant.fkUserKey.nickname}}</span>
+								<!--2019年1月7日16:59:50-->
+								<span class="difination-span-left">{{relevant.createTime}}</span>
+								<!--浏览量-->
+								<span class=" mui-icon mui-icon-chatbubble difination-left-7px">{{relevant.browseConut}}</span>
+							</p>
+						</div>
+					</li>
+				</ul>
+				{{/each}}
+				</relevant>
+				<!--评论-->
+				{{if articleListComment == null}}
+				<div class="difination-maggin-top40px">没有评论</div>
+				{{else}}
+				<div class="difination-maggin-top40px">评论</div>
+				<div id="comment-supper" class="difination-comment-supper">
+					{{each articleListComment as comment index1}} {{each articleCommentUserList commentUser index}} {{if comment.fkUserKey == commentUser.id}}
+					<ul class="{{comment.ranks}} mui-table-view difination-comment">
+						<comment type="2" set="{{comment.id}}" ranks="{{comment.ranks}}" id="comment" title="{{commentUser.id}}" name="{{commentUser.nickname}}">
+							<li class="mui-table-view-cell mui-media">
+								<div class="mui-media-body">
+									<p class="mui-ellipsis ">
+										<!--评论者头像-->
+										<span>
+								<img class="difination-img-radius" src="{{commentUser.avatar}}"/>
+								</span>
+										<!--名字-->
+										<span class="difination-span-left">{{commentUser.nickname}}</span>
+										<!--2019年1月7日16:59:50-->
+										<span class="difination-span-left">{{comment.createTime}}</span>
+										<span class="difination-span-left">{{comment.ranks}}</span>
+									</p>
+									<!--评论内容-->
+									<label style="font-size: 13px;">{{comment.contentText}}</label>
+								</div>
+							</li>
+						</comment>
+						<!--评论回复内容-->
+						{{if articleCommentReplyList != null}} {{each articleCommentReplyList as replay index}} {{each articleCommentReplyUserList as replayUser ind}} {{if comment.id == replay.fkForumCommentKey}} {{if replayUser.id == replay.fkUserKey && comment.ranks == replay.ranks}}
+						<li name="{{replayUser.nickname}}" class="mui-table-view-cell mui-media">
+							<!--回复内容-->
+							{{if ind == 0}}
+							<span style="float: left;color: #929292;font-size: 13px;">回复:</span> {{/if}}
+							<div style="margin-left:40px ;margin-top: -20px;float:right;width: 90%;">
+								<span style="font-size: 13px;">{{replay.contentText}}
+							</span>
+								<co></co>
+								<p class="mui-ellipsis ">
+									<!--评论者头像-->
+									<span> 
+								<img class="difination-img-radius" src="{{replayUser.avatar}}"/>
+								</span>
+									<!--名字-->
+									<span class="difination-span-left">{{replayUser.nickname}}</span>
+									<!--2019年1月7日16:59:50-->
+									<span class="difination-span-left">{{replay.createTime}}</span>
+
+								</p>
+							</div>
+						</li>
+						{{/if}} {{/if}} {{/each}} {{/each}} {{/if}}
+					</ul>
+					{{/if}} {{/each}} {{/each}}
+				</div>
+		</div>
+
+		{{/if}}
+
+		</script>
+		</div>
+		<!--评论的输入框-->
+		<nav class="mui-bar mui-bar-tab">
+			<input id="input_comment" placeholder="想对Ta说点什么" onblur="longtapFocus()" type="text" style="	
+				width: 70%;
+				height:35px;
+				margin: 7px;
+				background: #F3F0EF;
+				float: left;
+				font-size: 15px;
+				border-radius: 5px;" />
+			<!--点赞  收藏-->
+			<div class="difination-maggin15px" style="width: 26%;float: right;">
+				<!--点赞-->
+				<span name="yes" style="position: absolute;display: none;border:20px solid rgba(255,255,255,0.1)" class="difination-maggin-left10px">
+					<img  class="difination-img-radius"  src="../../image/dianzai.gif"/>
+				</span>
+
+				<span name="no" style="position: absolute;display: none;border:20px solid rgba(255,255,255,0.1)" class="difination-maggin-left10px">
+					<img class="difination-img-radius" src="../../image/meizan.gif"/>
+				</span>
+
+				<!--收藏-->
+
+				<label name='yes' style="position: absolute;display: none;border:20px solid rgba(255,255,255,0.1)" class="difination-maggin-left50px">
+					<img  class=" difination-img-radius" src="../../image/yello.gif"/>
+				</label>
+
+				<label name="no" style="position: absolute;display: none;border:20px solid rgba(255,255,255,0.1)" class="difination-maggin-left50px">
+					<img  class=" difination-img-radius" src="../../image/null.gif"/>
+				</label>
+
+			</div>
+		</nav>
+
+	</body>
+	<script src="../../js/forum/mui.js"></script>
+	<script src="../../js/forum/template-web.js"></script>
+	<script src="../../js/forum/forum_article_main_content.js"></script>
+	<script type="text/javascript">
+		mui.init({
+
+			gestureConfig: {
+				tap: true, //默认为true
+				doubletap: true, //默认为false
+				longtap: true, //默认为false
+				swipe: true, //默认为true
+				drag: true, //默认为true
+				hold: false, //默认为false，不监听
+				release: true //默认为false，不监听
+			},
+			preloadPages:[{
+				url:'forum_personal.html',
+				id:'forum_personal.html'
+			}]
+		})
+	</script>
+
+</html>

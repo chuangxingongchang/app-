@@ -1,0 +1,16 @@
+#city{
+	color: #555555;margin: 20px 20px;
+}
+#held .mui-icon-contact{
+	margin-left: 260px;
+}
+
+.mains ul li{
+	float: left;
+}
+.mains ul li:first-child{
+	color: red;
+}
+#jobmore,#activitymore{
+	display: inline-block;
+}

@@ -1,0 +1,212 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../../css/mui.min.css" rel="stylesheet" />
+		<script src="../../../js/mui.min.js"></script>
+		<script src="../../../js/template-web.js"></script>
+		<style>
+			#headers {
+				background-color: black;
+			}
+			
+			#headers a {
+				color: white;
+				font-size: 16px;
+				margin-top: 5px;
+			}
+			
+			#headers h1 {
+				color: white;
+			}
+			
+			.word_one {
+				width: 100%;
+				position: relative;
+				height: 70px;
+			}
+			
+			.word_one .word_one-one {
+				width: 60%;
+				float: left;
+				font-size: 20px;
+				margin: 20px 0px 0 20px;
+				overflow: hidden;
+			}
+			
+			.word_one .word_one-two {
+				width: 28%;
+				float: right;
+				color: red;
+				margin-top: 20px;
+			}
+			
+			.word_two .word_two-one {
+				display: inline-block;
+				margin-left: 20px;
+				font-size: 13px;
+				color: #929292;
+			}
+			
+			.word_three ul {
+				list-style: none;
+				padding: 20px;
+			}
+			
+			.word_three ul li {
+				color: ;
+				font-size: 15px;
+				
+			}
+			
+			ul li span:last-child{
+				color: #007AFF;
+			}
+			.word_four .mui-table-view {
+				height: 80px;
+				background-image: url(../../../image/background/7548d5d9df913029f13ab9f57061b34b.jpg);
+			}
+			
+			.word_four ul li {
+				padding-top: 30px;
+				color: #797979;
+			}
+			
+			.word_content label {
+				margin-left: 20px;
+				color: #797979;
+			}
+			
+			.word_content p {
+				text-indent: 2em;
+				margin: 1em;
+				text-align: justify;
+				line-height: 2;
+				font-size: 15px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav" id="headers">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left">返回</a>
+			<h1 class="mui-title">我的岗位详情</h1>
+		</header>
+		<div class="mui-content">
+			<div id="thisJob">
+				<script id="thisplur" type="text/html">
+					<div class="word_one">
+						<div class="word_one-one">
+							<b>{{thisplur.subject}}</b>
+						</div>
+						{{each unit as un a}}
+						{{if thisplur.fkUnit==un.id}}
+						<div class="word_one-two">
+							￥<span>{{thisplur.money}}</span><span>{{un.style}}</span>
+						</div>
+						{{/if}}
+						{{/each}}
+					</div>
+					<div class="word_two">
+						<div class="word_two-one">
+							<span>{{thisplur.releasetime}}</span>发布
+						</div>
+						<div class="word_two-one">
+							<span>{{thisplur.counts}}</span>次浏览
+						</div>
+					</div>
+					<div class="word_three">
+						<ul>
+							<li><span>需要人数：</span><span>{{thisplur.persons}}人</span></li>
+							<li><span>结款时间：</span><span>{{thisplur.settlemethod}}</span></li>
+							<li><span>付款方式：</span><span>在线支付</span></li>
+						</ul>
+					</div>
+					<div class="word_four">
+						<ul class="mui-table-view">
+							<li class="mui-table-view-cell">
+								<label>
+		    	                	工作地点：
+		    	            </label>
+								<span>{{thisplur.workaddress}}</span>
+								<span class="mui-icon mui-icon-location mui-pull-right"></span>
+							</li>
+						</ul>
+					</div>
+					<div class="word_three">
+						<ul>
+							<li><span>工作日期：</span><span>{{thisplur.wordtime}}</span></li>
+							<li><span>报名截止：</span><span>{{thisplur.endtime}}</span></li>
+						</ul>
+					</div>
+					<div class="word_content">
+						<label>工作描述：</label>
+						<p>{{thisplur.workcontent}}</p>
+					</div>
+					<div class="worb_person">
+						<ul class="mui-table-view">
+							<li class="mui-table-view-cell">
+								<label>发布人&nbsp;&nbsp;&nbsp;&nbsp;：</label>
+								<span>{{pushuser.truename}}</span>
+							</li>
+							<li class="mui-table-view-cell">
+								<label>电话号码&nbsp;：</label>
+								<span>{{pushuser.phoneno}}</span>
+							</li>
+							<li class="mui-table-view-cell">
+								<label>岗位状态&nbsp;：</label>
+								{{if pushuser.credit<40}}
+								<span>☆☆</span>
+								{{/if}}
+								{{if pushuser.credit>=40&&pushuser.credit<=60}}
+								<span>☆☆☆</span>
+								{{/if}}
+								{{if pushuser.credit>60&&pushuser.credit<=80}}
+								<span>☆☆☆☆</span>
+								{{/if}}
+								{{if pushuser.credit>80}}
+								<span>☆☆☆☆☆</span>
+								{{/if}}
+							</li>
+							<li class="mui-table-view-cell">
+								<label>信用等级&nbsp;：</label>
+								<span>{{pushuser.credit}}</span>
+							</li>
+						</ul>
+					</div>
+				</script>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			mui.init()
+			mui.plusReady(function() {
+				window.addEventListener('myid', function(event) {
+					var id  = event.detail.jobid;
+					var uid = event.detail.uid;
+					if(id != null) {
+						mui.ajax({
+							url: 'http://172.19.129.6:86/plur/getThisPlur',
+							type: 'post',
+							data: {
+								id: id,fkPublisher:uid
+							},
+							dataType: 'json',
+							success: function(data) {
+								var html = template('thisplur', data);
+								document.getElementById('thisJob').innerHTML = html;
+							}
+						})
+					} else {
+						mui.alert("获取数据失败");
+					}
+
+				}, false);
+			})
+		</script>
+	</body>
+
+</html>

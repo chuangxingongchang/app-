@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<style> 
+			@import url("../../css/forum/mui.css");
+			@import url("../../css/forum/forum_personal.css");
+		</style>   
+	</head> 
+  
+	<body>
+		<div id="article_write"  class="difination-write">
+			<button style="background-color:rgba(255,255,255,0.1) ;">写文章</button>
+		</div>
+		<!--背景图-->
+		<div id="main">
+			<script id="temp" type="text/html">
+				<div class="difination-backgroud">
+					<!--返回箭头-->
+					<a class="difination-maggin-left-right mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="margin-left: 10px;"></a>
+					<!--谁的个人信息-->
+					<ul class="difination-personal-name" style="width: 100%;">
+						<li style="width: 90%;">
+							<img class="difination-img-radius mui-media-object mui-pull-left" src="{{user[0].avatar}}">
+							<div class="mui-media-body  mui-pull-right " style="width: 80%;">
+								<div class="difination-personal-name-p ">
+									<!--名称-->
+									<p style="font-size: 20px;color: black;">{{user[0].nickname}}</p>
+									<br/>
+									<!--签名-->
+									<p style="color: #222222;">{{user[0].nickname}}</p>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<!--关注  粉丝  访客-->
+				<mind>
+					<nav class="mui-bar-tab">
+						<a name='1' class="mui-tab-item ">
+							<span class="mui-icon difination-span-font-size20px">{{totalMindItem}}</span>
+							<span class="mui-tab-label difination-span-font-color">关注</span>
+						</a>
+						<a name='2' class="mui-tab-item">
+							<span class="mui-icon difination-span-font-size20px">{{totalFansItem}}</span>
+							<span class="mui-tab-label difination-span-font-color">粉丝</span>
+						</a>
+						<label class="mui-tab-item">
+						<span class="mui-icon difination-span-font-size20px">{{totalArticleBrowse}}</span>
+						<span class="mui-tab-label difination-span-font-color">访客</span>
+					</label>
+					</nav>
+				</mind>
+				<article>
+					<!--论坛-->
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell mui-media difination-li-height">
+							<!--论坛Log-->
+							<img style="height: 30px;" class="mui-media-object mui-pull-left" src="../../image/ebabf5d63f294582d4a15c0986d261b7.jpg">
+							<b class="mui-media-object mui-pull-left">论坛</b>
+							<!--等级图标-->
+							<img style="width: 40px;height: 20px;margin-top: 10px;" class=" mui-pull-left" src="../../image/u=2178990121,1636008986&fm=200&gp=0.jpg">
+							<span class="mui-media-object mui-pull-right difination-font-size-color ">{{totalArticleItem}}篇</span>
+						</li>
+					</ul>
+				</article>
+				{{if thisUser == user[0].id}}
+				<!--论坛收藏-->
+				<sign>
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell mui-media difination-li-height">
+							<!--论坛Log-->
+							<img style="height: 30px;" class=" mui-media-object mui-pull-left" src="../../image/yello.gif">
+							<b class="mui-media-object mui-pull-left">收藏</b>
+							<span class="difination-font-size-color mui-media-object mui-pull-right">{{totalSignItem}}篇</span>
+						</li>
+					</ul>
+				</sign>
+				{{/if}}
+
+				<!--最新动态-->
+				<div class="difination-maggin-top20px">
+					最新动态
+				</div>
+				<hot>
+					{{each newsArticleList as value index}} {{each newsUserList as user indexUser}} {{if value.fkUserKey == user.id}}
+					<ul name="{{value.id}}" class="mui-table-view">
+						<li class="mui-table-view-cell mui-media">
+							<div class="mui-media-body">
+								<!--标题-->
+								<b>{{value.title}}</b>
+								<p class="mui-ellipsis">
+									{{#value.contentDescribe}}
+								</p>
+								<p class="mui-ellipsis ">
+									<!--2019年1月7日16:59:50-->
+									<span>{{value.createTime}}</span>
+									<!--浏览量-->
+									<span class=" mui-icon mui-icon-chatbubble difination-span-left difination-p-color">{{value.browseConut}}</span>
+									<!--评论-->
+									<span class="difination-p-color difination-span-left mui-icon mui-icon-chat">{{value.commentCount}}</span>
+								</p>
+							</div>
+						</li>
+					</ul>
+					{{/if}} {{/each}} {{/each}}
+				</hot>
+			</script>
+		</div>
+	</body>
+	<script src="../../js/forum/mui.js"></script>
+	<script src="../../js/forum/template-web.js"></script>
+	<script src="../../js/forum/forum_personal.js"></script>
+	<script src="../../js/common/JSONparse.js"></script>
+	<script src="../../js/common/alert_error.js"></script>
+	<script type="text/javascript">
+		mui.init({
+			preloadPages: [{
+					url: 'forum_write_article.html',
+					id: 'forum_write_article.html'
+				},
+				{
+					url: 'forum_personale_mind_fans.html',
+					id: 'forum_personale_mind_fans.html'
+				},
+				{
+					url: 'forum_emit_article.html',
+					id: 'forum_emit_article.html'
+				},
+				{
+					url: 'forum_emit_article.html',
+					id: 'forum_emit_article.html'
+				},
+				{
+					url: 'forum_article_sign.html',
+					id: 'forum_article_sign.html'
+				}
+			]
+		})
+	</script>
+
+</html>

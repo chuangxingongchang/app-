@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/template-web.js"></script>
+		<script src="../../js/openwindow.js"></script>
+		<style>
+			#headers{
+				background-color: black;
+			}
+			#headers a{
+				color: white;font-size: 16px;margin-top: 5px;
+			}
+			#headers h1{
+				color: white;
+			}
+			.main_content span{
+				display: block;
+			}
+			.main_content span:first-child{
+				font-size: 20px;overflow: hidden;
+			}
+			.main_content span:last-child{
+				font-size: 14px;color:#929292;
+			}
+			.mui-table-view-cell .mui-badge{
+				font-size: 22px;color: green;
+			}
+			#icomNothing{
+				height: 600px;
+			}
+			#icomNothing img{
+				margin-top: 50px;text-align: center;
+			}
+			#icomNothing span{
+				font-size: 20px;color: #6D6D72;margin-left: 50px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav" id="headers">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left">返回</a>
+		    <h1 class="mui-title">收入明细</h1> 
+		</header>
+		<div class="mui-content">
+			<div id="incomes">
+				<script id="myicome" type="text/html">
+					<ul class="mui-table-view" id="uls">
+						{{if inm.status==true}}
+						{{each inmlist nl}}
+					    <li class="mui-table-view-cell">
+					    	<div class="main_content">
+					    		<span>{{nl.content}}</span>
+					    		<span>{{nl.moneytime}}</span>
+					    	</div>
+					    	<div class="mui-badge mui-badge-inverted">
+					    		+<span>{{nl.moneys}}元</span>
+					    	</div>
+					    </li>
+					    {{/each}}
+					    {{/if}}
+					    {{if inm.status==false}}
+					    <li class="mui-table-view-cell" id="icomNothing">
+					    	<div class="main_content" id="gotoJob">
+					    		<img src="../../image/nothing/无数据.png" />
+					    		<span>您当前没有收入，去<a>兼职<a>!</span>
+					        </div>
+					    </li>
+					    {{/if}}
+					</ul>
+				</script>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			mui.init()
+			var user = JSON.parse(localStorage.getItem('tuser'));
+			mui.plusReady(function(){
+				mui.ajax({
+					url : 'http:/172.19.129.6:86/income/myincome',
+					type: 'post',
+					data: {fkUid:user.id},
+					async   : false,
+					timeout : 10000,
+					dataType: 'json',
+					success : function(data){
+						var html = template('myicome',data);
+						document.getElementById('incomes').innerHTML = html;
+					},
+					error   : function(timeout,xhr,type,errorThrown){
+						mui.alert("请求超时...");
+					}
+				})
+				open("gotoJob","../zmain/job.html");
+			})
+			
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,99 @@
+{
+  "index.html": {
+    "refer": [
+      "html/first.html"
+    ],
+    "resources": []
+  },
+  "html/first.html": {
+    "resources": [
+      "html/button.html"
+    ],
+    "refer": [
+      "html/button.html"
+    ]
+  },
+  "html/button.html": {
+    "refer": [
+      "html/partjob/job.html"
+    ],
+    "resources": []
+  },
+  "html/partjob/job.html": {
+    "resources": [
+      "html/button.html"
+    ],
+    "refer": [
+      "html/partjob/job_details/job_one.html",
+      "html/button.html",
+      "html/partjob/job_details/my_job_coke.html"
+    ]
+  },
+  "html/zmain/first.html": {
+    "refer": [
+      "html/zmain/part.html",
+      "html/zmain/job.html",
+      "html/person/login.html",
+      "html/zmain/centero.html"
+    ]
+  },
+  "html/zmain/centero.html": {
+    "resources": [
+      "image/percenter/logo/_ý.png",
+      "image/percenter/logo/L\u001a(.png",
+      "image/percenter/logo/ýn(.png",
+      "image/percenter/logo/\u0011ý\fý(.png",
+      "image/percenter/logo/cý(.png",
+      "image/percenter/logo/ýL(.png",
+      "image/percenter/logo/\u0011ýýU(.png",
+      "image/percenter/logo/_ð.png",
+      "image/percenter/logo/L(.png",
+      "image/percenter/logo/¾n(.png",
+      "image/percenter/logo/„‹(.png",
+      "image/percenter/logo/c‰(.png",
+      "image/percenter/logo/öL(.png",
+      "image/percenter/logo/„ÝU(.png"
+    ],
+    "refer": [
+      "html/percenter/controll/moneys.html",
+      "html/partjob/job_details/myjob.html",
+      "html/zmain/first.html",
+      "html/percenter/controll/sets.html",
+      "html/mass/mass_next/WDST.html"
+    ]
+  },
+  "html/person/login.html": {
+    "refer": [
+      "html/zmain/first.html"
+    ]
+  },
+  "html/zmain/part.html": {
+    "refer": [
+      "html/parttime/relDetails/detailsWork.html",
+      "html/parttime/goParttime.html",
+      "html/parttime/endParttime.html"
+    ]
+  },
+  "html/zmain/job.html": {
+    "refer": [
+      "html/partjob/job_details/job_one.html",
+      "html/zmain/first.html"
+    ]
+  },
+  "html/parttime/goParttime.html": {
+    "refer": [
+      "html/zmain/part.html",
+      "html/parttime/relDetails/detailsGo.html"
+    ]
+  },
+  "html/parttime/endParttime.html": {
+    "refer": [
+      "html/parttime/relDetails/detailsEnd.html"
+    ]
+  },
+  "html/partjob/job_details/myjob.html": {
+    "refer": [
+      "html/partjob/job_details/job_two.html"
+    ]
+  }
+}

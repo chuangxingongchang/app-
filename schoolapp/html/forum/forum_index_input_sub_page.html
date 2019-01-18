@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/forum/mui.css" rel="stylesheet" />
+		<style>
+			@import url("../../css/forum/forum_index_input_sub_page.css");
+		</style>
+	</head>
+
+	<body>
+		<!--隐藏DIV boos-->
+		<!--隐藏DIV搜索栏-->
+		<header class="mui-bar mui-bar-nav" style="margin-left: -10px;">
+			<div class="difination-input-hidden">
+				<div class="difination-div-top15px">
+					<input id="input" type="text" placeholder="搜索内容">
+					<a id="input_clear" class="mui-action-back  difination-clear">取消</a>
+				</div>
+			</div>
+		</header>
+
+		<div class="difination-content" id="center" style=" display: none;margin-left: 40%;width: 100%;height: 100px; font-size: 15px;color: #797979;">没有相关数据</div>
+		<!--隐藏DIVcontent-->
+		<div style="display: none;" id="content" class="difination-content ">
+			<!--搜索栏  的 JS拼接部分 start-->
+			<script id="contentTemp" type="text/html">
+				{{each farticle as value index}}
+				<ul class="mui-table-view ">
+					<li name="{{value.id}}" class="mui-table-view-cell mui-media">
+						<div class="mui-media-body">
+							<!--标题-->
+							<h4>{{value.title}}</h4>
+							<p class="mui-ellipsis">{{value.contentDescribe}}</p>
+							<p class="mui-ellipsis ">
+								<!--头像-->
+								<span>
+									<img class="difination-img-radius" src="{{value.fkUserKey.avatar}}"/>
+								</span>
+								<!--名字-->
+								<span class="difination-span-left">{{value.fkUserKey.nickname}}</span>
+								<!--2019年1月7日16:59:50-->
+								<span class="difination-span-left">{{value.createTime}}</span>
+								<!--浏览量-->
+								<span class=" mui-icon mui-icon-chatbubble difination-left-7px">{{value.browseConut}}</span>
+							</p>
+						</div>
+					</li>
+				</ul>
+				{{/each}}
+			</script>
+		</div>
+		<!--搜索栏  的 JS拼接部分 end-->
+		<div id="history-content" class="difination-content">
+			<!--热门 start-->
+			<!--<div class="difination-hot">
+					<b>热门搜索</b>
+					<ul>
+						<li><button>呵呵</button></li>
+						<li><button>呵呵</button></li>
+						<li><button>呵呵</button></li>
+						<li><button>呵呵</button></li>
+						<li><button>呵呵</button></li>
+						<li><button>呵呵</button></li>
+						<li><button>呵呵</button></li>
+						<li><button>呵呵</button></li>
+					</ul>
+
+				</div>-->
+			<!--热门 end-->
+			<!--历史搜索-->
+			<b style="  font-size: 15px;color: #797979;margin-left: 40%;">搜索历史</b>
+			<div id="history" class="mui-content">
+				<!--class="difination-history"-->
+				<script id="temp" type="text/html">
+					{{each name as value index}}
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell ">
+							<span class="mui-icon mui-icon-refresh"></span>
+							<label name="true">
+					        		{{value.title}}
+					        </label>
+							<a name="{{value.title}}" class="mui-pull-right mui-icon mui-icon-closeempty"> </a>
+						</li>
+					</ul>
+					{{/each}}
+				</script>
+			</div>
+			<!--end-->
+		</div>
+
+		<!--以上是 DIV 隐藏搜索栏 end-->
+	</body>
+	<script src="../../js/forum/mui.js"></script>
+	<script src="../../js/forum/forum_index_input_sub_page.js"></script>
+	<script src="../../js/forum/template-web.js"></script>
+	<script type="text/javascript">
+		mui.init({
+			preloadPages: [{
+				url: 'forum_article_main_content.html',
+				id: 'forum_article_main_content.html'
+			}],
+			pullRefresh: {
+				container: '#content',
+				up: {
+					contentrefresh: "正在加载...", //可选，正在加载状态时，上拉加载控件上显示的标题内容
+					contentnomore: '没有更多数据了', //可选，请求完毕若没有更多数据时显示的提醒内容；
+					callback: pullupfresh //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+				}
+			}
+		})
+	</script>
+
+</html>

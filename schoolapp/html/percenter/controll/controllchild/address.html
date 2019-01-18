@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../../../css/mui.min.css" rel="stylesheet" />
+		<script src="../../../../resource/distpicker.js"></script>
+		<style>
+			#heads,
+			#heads button {
+				background-color: black;
+			}
+			
+			#heads button {
+				color: green;
+				font-size: 16px;
+			}
+			
+			.mui-input-row {
+				margin-bottom: 20px;
+			}
+			
+			#addrs input {
+				width: 80%;
+			}
+			
+			.selects {
+				margin-top: 20px;
+			}
+			
+			#complete {
+				float: right;
+				margin-top: 5px;
+				border: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header id="heads" class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<span class="mui-title" style="color: white;">我的地址</span><button id="complete">完成</button>
+		</header>
+		<div class="mui-content">
+			<div class="selects">
+				<select id="cmbProvince" name="cmbProvince"></select>
+				<select id="cmbCity" name="cmbCity"></select>
+				<select id="cmbArea" name="cmbArea"></select>
+				<input type="text" placeholder="详细地址" />
+			</div>
+		</div>
+		<script src="../../../../js/mui.min.js"></script>
+		<script>
+		</script>
+		<script type="text/javascript">
+			mui.init()
+			addressInit('cmbProvince', 'cmbCity', 'cmbArea');
+			document.getElementById("complete").addEventListener('tap', function() {
+				var address = mui("#cmbProvince")[0].value + mui("#cmbCity")[0].value + mui("#cmbArea")[0].value;
+				var user = JSON.parse(localStorage.getItem('tuser'));
+				var id = user.id;
+				if(id != null && "" != id) {
+					if(address != null && "" != address) {
+						mui.ajax({
+							url: 'http://172.19.129.6:86/touser/updateUser',
+							type: 'post',
+							dataType: 'json',
+							data: {
+								id: id,
+								address: address
+							},
+							success: function(data) {
+								if(data.ms.status == true) {
+									mui.openWindow({
+										url: '../sets.html',
+										id: '../sets.html'
+									});
+								} else {
+									alert(data.ms.msg);
+								}
+							}
+						})
+
+					} else {
+						mui.alert("你没有选择地址");
+					}
+				} else {
+					mui.alert("获取用户失败");
+				}
+			})
+		</script>
+	</body>
+
+</html>
