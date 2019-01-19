@@ -9,52 +9,12 @@
 		<script src="../../../../js/mui.min.js"></script>
 		<script src="../../../../js/template-web.js"></script>
 		<style>
-			#headers {
-				background-color: black;
-			}
-			
-			#headers h1 {
-				color: white;
-			}
-			.main_content ul li img{
-				width:50px;height:50px;border-radius: 50%;
-			}
-			.main_content span {
-				display: block;
-			}
-			
-			.main_content span:first-child {
-				font-size: 16px;
-				overflow: hidden;
-			}
-			
-			.main_content span:last-child,
-			.main_content_v {
-				font-size: 14px;
-				color: #929292;
-			}
-			.endState span{
-				font-size: 16px;color: #007AFF;
-			}
-			.countAll{
-				margin: 10px 0px 20px 20px;
-			}
-			.countAll span{
-				color: #6D6D72;
-			}
-			.countAll #counts{
-				color: #007AFF;
-			}
-			.countAllo{
-				display: inline-block;padding-top: 5px;
-			}
-			.countAll button{
-				width: 90px;
-			}
+			@import url("../../../../css/partTime/viewPerson.css");
 		</style>
 	</head>
 
 	<body>
+		<script src="../../../../js/part/viewPerson.js"></script>
 		<script type="text/javascript">
 			mui.init()
 		</script>
@@ -101,116 +61,6 @@
 				</script>
 			</div>
 		</div>
-		<script>
-			var personCount = 0;
-			var persons  = 0;
-			var pkPlurid = "";
-			var list = new Array();
-			mui.plusReady(function() {
-				mui("#counts")[0].innerText = 0;	
-				window.addEventListener('toSign', function(ef) {
-					var signstate = ef.detail.signstate;
-					pkPlurid      = ef.detail.pkPlurid;
-					persons       = ef.detail.persons;
-					mui.ajax({
-						url: 'http://172.19.129.6:86/sign/getSignupAll',
-						type: 'post',
-						timeout     :10000,
-						async   : false,
-						data: {
-							pkPlurid: pkPlurid,
-							signstate: signstate
-						},
-						dataType: 'json',
-						success: function(data) {
-							var html = template('thisign', data);
-							document.getElementById('signUser').innerHTML = html;
-						},
-						error: function(xhr, type, errorThrown) {
-							mui.alert("请求超时...")
-						}
-					})
-				})
-			})
-			mui("#signUser").on('tap','li',function(){
-				var pkUid = this.getAttribute('id');
-				var truename = this.getAttribute('name');
-				var btnArray = ['取消', '确定'];
-				var thisclass = this;
-				if(personCount<=(persons-1)){
-					mui.confirm('是否确认，由'+truename+'接取该工作？', '岗位接取', btnArray, function(e) {
-						list.push(pkUid);
-					if(e.index == 1) {
-						thisclass.style.display = "none";
-						personCount++;
-						mui("#counts")[0].innerText = personCount;
-					} else {
-						mui("#counts")[0].innerText = personCount;
-					}
-				})
-				}else{
-					mui.alert("您的需求人员已经满员");
-				}
-			})
-			document.getElementById('updateSignstate').addEventListener('tap',function(){
-				var btnArray = ['取消', '确定'];
-				if(0==personCount){
-					mui.alert("您没有选择工作人员");
-				}else if(personCount>0&&personCount<persons){
-					mui.confirm('工作人员尚未满员，是否进行该工作？', '岗位接取', btnArray, function(e) {
-						if(e.index == 1) {
-							mui.ajax({
-								url  : 'http://172.19.129.6:86/sign/updateSigns',
-								type : 'post',
-								data : {pkPlurid:pkPlurid,list:list},
-								timeout : 5000,
-								dataType: 'json',
-								success : function(data){
-									if(data.mss.status==true){
-										mui.alert("提交成功")
-									}else{
-										mui.alert("提交失败")
-									}
-									mui.openWindow({
-										url : '../../goParttime.html',
-										id  : '../../goParttime.html'
-									})
-								},
-								error   : function(timeout,xhr,type,errorThrown){
-									mui.alert("请求超时...")
-								}
-							})
-						} 
-					  })
-				}else{
-					mui.confirm('工作人员满员，是否进行该工作？', '岗位接取', btnArray, function(e) {
-						if(e.index == 1) {
-							mui.ajax({
-								url  : 'http://172.19.129.6:86/sign/updateSigns',
-								type : 'post',
-								data : {pkPlurid:pkPlurid,"list":list},
-								timeout : 5000,
-								dataType: 'json',
-								success : function(data){
-									if(data.mss.status==true){
-										mui.alert("提交成功")
-									}else{
-										mui.alert("提交失败")
-									}
-									mui.openWindow({
-										url : '../../goParttime.html',
-										id  : '../../goParttime.html'
-									})
-								},
-								error   : function(timeout,xhr,type,errorThrown){
-									mui.alert("人员请求超时...")
-								}
-							})
-						} 
-					  })
-				  }
-			})
-		</script>
 	</body>
 
 </html>

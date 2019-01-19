@@ -1,4 +1,4 @@
-
+var service_url = "http://192.168.0.101/";
 function updatePword() {
 	//设置昵称的正则表达式
 	var pwReg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{5,20}$/;
@@ -20,7 +20,7 @@ function updatePword() {
 				if(pword == repword) {
 					console.log("repword:"+repword)
 					mui.ajax({
-						url: 'http://172.19.129.6:86/touser/updateUser',
+						url: service_url+'touser/updateUser',
 						type: 'post',
 						dataType: 'json',
 						data: {
@@ -50,7 +50,10 @@ function updatePword() {
 			mui.alert("原密码错误");
 		}
 	} else {
-		mui.toast("密码的时候获取用户失败")
+		mui.openWindow({
+			url : '../error.html',
+			id  : '../error.html'
+		})
 	}
 
 }

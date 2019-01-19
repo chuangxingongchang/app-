@@ -19,7 +19,7 @@
 				}]
 			});
 			$(function() {
-				var internet = "http://172.19.129.6:86";
+				var internet = "http://192.168.0.101";
 				/*
 				 * 获取活动列表，并通过mlist、arttemplate展示
 				 */
@@ -56,7 +56,7 @@
 				$("#number").click(function() {
 					$.ajax({
 						type: "post",
-						url: "http://172.19.129.6:86/activity/getnumber",
+						url: internet+"/activity/getnumber",
 						async: true,
 						dateType: "json",
 						success: function(data) {

@@ -6,47 +6,15 @@
 		<title></title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<script src="../../js/mui.min.js"></script>
 		<script src="../../js/openwindow.js"></script>
 		<style>
-			.title {
-				padding: 20px 15px 10px;
-				color: #6d6d72;
-				font-size: 15px;
-				background-color: #fff;
-			}
-			#my_img img{
-				width: 100px;height: 100px;border-radius: 50%;
-			}
-			#my_nick{
-				margin-left: 30px;
-			}
-			.main{
-				margin-top: 30px;
-			}
-			.main ul li a span:first-child{
-				font-size: 16px;color: #555555;
-			}
-			#my_nick{
-				margin:20px 120px;
-			}
-			#my_nick span{
-				display: block;margin-bottom: 20px;
-			}
-			
-			#my_header,.main{
-				color: #6D6D72;
-			}
-		   .main ul li a span:last-child{
-		   		margin-right: 20px;
-		   }
-		   .main ul li a img{
-		   	width: 24px;vertical-align: middle;
-		   }
+			@import url("../../css/first/centero.css");
 		</style>
 	</head>
 
 	<body>
-		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/first/centero.js"></script>
 		<script type="text/javascript">
 			mui.init()
 		</script>
@@ -128,64 +96,5 @@
 			</div>
 		</div>
 	</body>
-	<script type="text/javascript">
-		var phoneno = localStorage.getItem('phone');
-		var nickname = "";
-		var balance  = "";
-		var avatar   = "";
-		var user = "";
-		var schoolname = "";
-		mui.plusReady(function(){
-			if(phoneno != null) {
-				mui.ajax({
-					url: 'http://172.19.129.6:86/touser/getUser',
-					type: 'post',
-					async : false,
-					data: {
-						phoneno,
-						phoneno
-					},
-					dataType: 'json',
-					success: function(data) {
-						if(data.scms.status==false){
-							mui.alert("设置获取用户失败");
-						}else{
-							user = data.tuser;
-							schoolname = data.scms.msg;
-						}
-					}
-				})
-			}
-			if(user!=null){
-				nickname = user.nickname;
-				phoneno = user.phoneno;
-				balance = user.balance;
-				avatar  = user.avatar;
-			} 
-				if(avatar != null&&avatar!="") {
-					mui("#myImg")[0].src = user.avatar;
-				} else{
-					mui("#myImg")[0].src = "../../image/percenter/imgno.png";
-				}
-				if(nickname!=null&&nickname!=""){
-						mui("#my_nickname")[0].innerHTML = user.nickname;
-				}
-				if(phoneno!=null&&phoneno!=""){
-						mui("#my_account")[0].innerHTML = user.phoneno;
-				}
-				if(balance!=null&&balance!=""){
-					mui("#my_money")[0].innerHTML = user.balance+"元";
-				}
-			open('sets',"../percenter/controll/sets.html");
-			open('moneys',"../percenter/controll/moneys.html");
-			open('my_activity',"../h_activity/myActivity.html");
-			open('myMass',"../mass/mass_next/WDST.html");
-			open('myWork',"../partjob/myjob.html");
-			open("firstp",'first.html');
-			open("parttp",'part.html');
-			open("jobtp",'job.html');
-			open("centertp",'centero.html');
-		})
-	</script>
 
 </html>

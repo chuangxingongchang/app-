@@ -1,3 +1,4 @@
+var service_url = "http://192.168.0.101/";
 var schoolname = "";
 var user = "";
 var phoneno = "";
@@ -17,7 +18,7 @@ mui.plusReady(function() {
    
 	if(phoneno != null&&phoneno!="") {
 		mui.ajax({
-			url: 'http://172.19.129.6:86/touser/getUser',
+			url: service_url+'touser/getUser',
 			type: 'post',
 			async : false,
 			data: {
@@ -96,7 +97,7 @@ mui.plusReady(function() {
 function attrJobByAccountTime(){
 	if(schoolname!=null&&""!=schoolname){
 		mui.ajax({
-			url  : 'http://172.19.129.6:86/plur/plurByaccountAndtimeDesc',
+			url  : service_url+'plur/plurByaccountAndtimeDesc',
 			type : 'post',
 			data : {schoolname :schoolname},
 			dataType : 'json',

@@ -5,43 +5,16 @@
 		<title></title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/template-web.js"></script>
+		<script src="../../js/job/jobon.js"></script>
 		<style>
-			.main_content span {
-				display: block;
-			}
-			
-			.main_content span:first-child,.thetitle {
-				font-size: 20px;
-				overflow: hidden;
-			}
-			
-			.main_content span:last-child,
-			.main_content_v {
-				font-size: 14px;
-				color: #000000;
-			}
-			.main_content_v{
-				color: #6641E2;
-				}
-			.mui-table-view-cell .mui-badge {
-				font-size: 16px;
-				color: red;
-			}
-			#thenothings{
-				height: 600px;text-align: center;
-			}
-			
-			#thenothings span{
-				font-size: 16px;padding-top: 10px;
-				color: #EC971F;display: block;
-			}
+			@import url("../../css/job/search.css");
 		</style>
 	</head>
 
 	<body>
-		<script src="../../js/mui.min.js"></script>
-		<script src="../../js/template-web.js"></script>
-		<script src="../../js/job/jobon.js"></script>
+		<script src="../../js/job/search.js"></script>
 		<script type="text/javascript">
 			mui.init()
 		</script>
@@ -85,43 +58,4 @@
 			</div>
 		</div>
 	</body>
-	<script>
-		var schoolname = "";
-		var seachna  = "";
-		if(localStorage.getItem("schoolname")!=null){
-			   schoolname = localStorage.getItem("schoolname");
-		   }
-		mui.plusReady(function(){
-			window.addEventListener('tosearchs', function(event) {
-				 seachna  = event.detail.searchf;
-				if(schoolname != null&&schoolname!="") {
-					if(seachna != null&&seachna!=""){
-						mui.ajax({
-							url: 'http://172.19.129.6:86/plur/jobsearch',
-							type: 'post',
-							data: {
-								searchname:seachna,schoolname:schoolname
-							},
-							dataType: 'json',
-							success: function(data) {
-								var html = template('allJobBySearch', data);
-								document.getElementById('jobSearch').innerHTML = html;
-							}
-						})
-					}else{
-						mui.openWindow({
-							url : '../zmain/error.html',
-							id : '../zmain/error.html'
-						})
-					}
-				} else {
-					mui.openWindow({
-						url : '../zmain/error.html',
-						id : '../zmain/error.html'
-					})
-				}
-			
-			}, false);
-		})
-	</script>
 </html>
