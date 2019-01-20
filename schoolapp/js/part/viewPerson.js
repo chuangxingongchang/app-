@@ -4,7 +4,6 @@ var persons = 0;
 var pkPlurid = "";
 var list = new Array();
 mui.plusReady(function() {
-	// mui("#counts")[0].innerText = 0;
 	window.addEventListener('toSign', function(ef) {
 		var signstate = ef.detail.signstate;
 		pkPlurid = ef.detail.pkPlurid;
@@ -42,7 +41,7 @@ mui.plusReady(function() {
 							pkPlurid: pkPlurid,
 							list: list
 						},
-						timeout: 5000,
+						timeout: 10000,
 						dataType: 'json',
 						success: function(data) {
 							if (data.mss.status == true) {
@@ -52,7 +51,12 @@ mui.plusReady(function() {
 							}
 							mui.openWindow({
 								url: '../../goParttime.html',
-								id: '../../goParttime.html'
+								id: '../../goParttime.html',
+								createNew: true,
+								waiting: {
+									autoShow: true,
+									titile: '正在加载...'
+								}
 							})
 						},
 						error: function(timeout, xhr, type, errorThrown) {
@@ -74,7 +78,7 @@ mui.plusReady(function() {
 							pkPlurid: pkPlurid,
 							"list": list
 						},
-						timeout: 5000,
+						timeout: 10000,
 						dataType: 'json',
 						success: function(data) {
 							if (data.mss.status == true) {
@@ -84,7 +88,12 @@ mui.plusReady(function() {
 							}
 							mui.openWindow({
 								url: '../../goParttime.html',
-								id: '../../goParttime.html'
+								id: '../../goParttime.html',
+								createNew: true,
+								waiting: {
+									autoShow: true,
+									titile: '正在加载...'
+								}
 							})
 						},
 						error: function(timeout, xhr, type, errorThrown) {
@@ -99,24 +108,26 @@ mui.plusReady(function() {
 		}
 	})
 	
-})
-mui("#signUser").on('tap', 'li', function() {
-	var pkUid = this.getAttribute('id');
-	var truename = this.getAttribute('name');
-	var btnArray = ['取消', '确定'];
-	var thisclass = this;
-	if (personCount <= (persons - 1)) {
-		mui.confirm('是否确认，由' + truename + '接取该工作？', '岗位接取', btnArray, function(e) {
-			list.push(pkUid);
-			if (e.index == 1) {
-				thisclass.style.display = "none";
-				personCount++;
-				mui("#counts")[0].innerText = personCount;
-			} else {
-				mui("#counts")[0].innerText = personCount;
-			}
-		})
-	} else {
-		mui.alert("您的需求人员已经满员");
-	}
+	
+	mui("#signUser").on('tap', 'li', function() {
+		var pkUid = this.getAttribute('id');
+		var truename = this.getAttribute('name');
+		var btnArray = ['取消', '确定'];
+		var thisclass = this;
+		if (personCount <= (persons - 1)) {
+			mui.confirm('是否确认，由' + truename + '接取该工作？', '岗位接取', btnArray, function(e) {
+				list.push(pkUid);
+				if (e.index == 1) {
+					thisclass.style.display = "none";
+					personCount++;
+					mui("#counts")[0].innerText = personCount;
+				} else {
+					mui("#counts")[0].innerText = personCount;
+				}
+			})
+		} else {
+			mui.alert("您的需求人员已经满员");
+		}
+	})
+	
 })

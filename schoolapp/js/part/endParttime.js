@@ -1,16 +1,17 @@
 var service_url = "http://192.168.0.101/";
 var user = JSON.parse(localStorage.getItem('tuser'));
-var fkPublishers = "";
+var fkPus = "";
 if (user != null) {
-	fkPublishers = user.id;
+	fkPus = user.id;
 }
 mui.plusReady(function() {
-	if (!fkPublishers && fkPublishers != "") {
+	toBefore("../zmain/part.html");
+	if (fkPus!=null && fkPus != "") {
 		mui.ajax({
 			url: service_url+'plur/publisher',
 			type: 'post',
 			data: {
-				fkPublisher: fkPublishers
+				fkPublisher: fkPus
 			},
 			dataType: 'json',
 			success: function(data) {

@@ -90,4 +90,26 @@ body {
 #slider{
 	border-bottom: 1px solid #8A6DE9;
 }
+.job_one span {
+	font-size: 15px;
+	color: #007AFF;
+	padding-top: 5px;
+}
+
+.navigation {
+	display: inline;
+}
+
+.navigation ul li {
+	width: 25%;
+}
+
+.mui-col-sm-3 span img {
+	width: 30px;
+	height: 30px;
+}
+#signjob .mui-media-body{
+	color: #007AFF;
+}
+
 

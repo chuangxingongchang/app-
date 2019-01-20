@@ -8,7 +8,7 @@ mui.plusReady(function() {
 			url: service_url+'sign/signupEnd',
 			type: 'post',
 			timeout : 10000,
-			async   : flase,
+			async   : false,
 			data: {
 				pkPlurid: pkPlurid,
 				signstate: signstate

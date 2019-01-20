@@ -112,7 +112,15 @@ mui.plusReady(function() {
 			if (e.index == 1) {
 				localStorage.removeItem('phone');
 				localStorage.removeItem('tuser');
-				plus.webview.create('../../zmain/first.html').show();
+				mui.openWindow({
+					url : '../../zmain/first.html',
+					id : '../../zmain/first.html',
+					createNew: true,
+					waiting: {
+						autoShow: true,
+						titile: '正在加载...'
+					}
+				})
 			} else {
 				mui.toast("欢迎回来");
 			}

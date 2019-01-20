@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../../css/mui.min.css" rel="stylesheet" />
 		<script src="../../js/mui.min.js"></script>
-		<script src="../../js/template-web.js"></script>
+		<script src="../../js/template-web.js"></script> 
 		<script src="../../js/openwindow.js"></script>
 		<script src="../../js/job/jobon.js"></script>
 		<style>
@@ -21,6 +21,10 @@
 		<script type="text/javascript">
 			mui.init()
 		</script>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-icon mui-icon-left-nav mui-pull-left" id="topart"></a> 
+			<h1 class="mui-title">进行中的兼职</h1>
+		</header>
 		<div class="mui-content">
 			<div class="oldse">
 			 <p>在进行任务中，记录了岗位信息和岗位工作人员信息及确认<strong>人员工资</strong>，您可以点击<strong>确认完成</strong>，结束工作！</p>
@@ -46,7 +50,7 @@
 						{{/if}} 
 						{{if ms1.status==false}}
 						<div class="mui-table-view-cell mui-media jobNothing">
-							<img src="../../image/nothing/没有任务.png" /> 
+							<img src="../../image/nothing/nocontent.png" /> 
 							<span id="nothings">没有新发布的任务</span>
 						</div>
 						{{/if}}

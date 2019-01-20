@@ -8,6 +8,7 @@
 		<link href="../../../css/mui.min.css" rel="stylesheet" />
 		<script src="../../../js/mui.min.js"></script>
 		<script src="../../../js/template-web.js"></script>
+		<script src="../../../js/openwindow.js"></script>
 		<style>
 			@import url("../../../css/partTime/detailsWork.css");
 		</style>
@@ -19,8 +20,9 @@
 			mui.init()
 		</script>
 		<header class="mui-bar mui-bar-nav" id="headers">
-			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left">返回</a>
+			<a class="mui-icon mui-icon-left-nav mui-pull-left" id="topart">返回</a>
 			<h1 class="mui-title">岗位详情</h1>
+			<button class="mui-btn-link mui-pull-right" id="delplur">删除</button>
 		</header>
 		<div class="mui-content">
 			<div id="thisJob">
@@ -78,12 +80,32 @@
 						<p>{{thisplur.workcontent}}</p>
 					</div>
 			</div>
+			<div class="mui-content-padded">
+					<button type="button" class="mui-btn mui-btn-block mui-btn-primary" onclick="toNewSign(this)">查看报名</button>
+			</div>
 			</script>
 		</div>
-		<div class="mui-content-padded">
-				<button id='toSignup' type="button" class="mui-btn mui-btn-block mui-btn-primary">查看报名</button>
-		</div>
-
+		<script>
+			function toNewSign(e){
+				var pageSign = plus.webview.getWebviewById("workHandle/viewPerson.html");
+				var signstate = "报名";
+				var pkPlurid = mui(".word_one")[0].id;
+				var persons = mui(".word_two")[0].id;
+				mui.fire(pageSign, "toSign", {
+					pkPlurid: pkPlurid,
+					signstate: signstate,
+					persons: persons
+				});
+				mui.openWindow({
+					id  : "workHandle/viewPerson.html",
+					createNew: true,
+					waiting: {
+						autoShow: true,
+						titile: '正在加载...'
+					}
+				})
+			}
+		</script>
 	</body>
 
 </html>

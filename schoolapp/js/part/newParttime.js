@@ -154,7 +154,12 @@ mui.plusReady(function() {
 												if (data.ms.status == true) {
 													mui.openWindow({
 														url: '../zmain/part.html',
-														id: '../zmain/part.html'
+														id : '../zmain/part.html',
+														createNew: true,
+														waiting: {
+															autoShow: true,
+															titile: '正在加载...'
+														}
 													})
 												} else {
 													mui.openWindow({

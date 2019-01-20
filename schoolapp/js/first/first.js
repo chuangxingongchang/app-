@@ -47,9 +47,7 @@ mui.plusReady(function() {
 				})
 			}
 		})
-// 		window.addEventListener('refresh',function(e){
-// 			window.location.reload();
-// 		})
+
 		open("parttp",'part.html');
 		open("centertp",'centero.html');
 		open("jobtp",'job.html');
@@ -59,31 +57,55 @@ mui.plusReady(function() {
 		document.getElementById("persons").addEventListener('tap',function(){
 			mui.openWindow({
 				url : "../person/login.html",
-				id : "goback"
+				id : "goback",
+				createNew: true,
+				waiting: {
+					autoShow: true,
+					titile: '正在加载...'
+				}
 			})
 		})
 		document.getElementById("parttp").addEventListener('tap',function(){
 			mui.openWindow({
 				url : "../person/login.html",
-				id : "goback"
+				id : "goback",
+				createNew: true,
+				waiting: {
+					autoShow: true,
+					titile: '正在加载...'
+				}
 			})
 		})
 		document.getElementById("centertp").addEventListener('tap',function(){
 			mui.openWindow({
 				url : "../person/login.html",
-				id : "goback"
+				id : "goback",createNew: true,
+					waiting: {
+						autoShow: true,
+						titile: '正在加载...'
+					}
 			})
 		})
 		document.getElementById("jobtp").addEventListener('tap',function(){
 			mui.openWindow({
 				url : "../person/login.html",
-				id : "goback"
+				id : "goback",
+				createNew: true,
+					waiting: {
+						autoShow: true,
+						titile  : '正在加载...'
+					}
 			})
 		})
 		document.getElementById("forums").addEventListener('tap',function(){
 			mui.openWindow({
 				url : "../person/login.html",
-				id : "goback"
+				id : "goback",
+				createNew: true,
+					waiting: {
+						autoShow: true,
+						titile: '正在加载...'
+					}
 			})
 		})
 	}

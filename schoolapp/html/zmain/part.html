@@ -9,40 +9,79 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link rel="stylesheet" href="../../css/mui.min.css">
 		<script src="../../js/mui.min.js"></script>
-		<script src="../../resource/webviewGroup.js"></script>
+		<script src="../../js/template-web.js"></script>
+		<script src="../../js/job/jobon.js"></script>
 		<script src="../../js/openwindow.js"></script>
 		<style>
 			@import url("../../css/partTime/part.css");
+			@import url("../../css/partTime/signup.css")
 		</style>
 	</head>
 	<body>
-		<script src="../../js/first/part.js"></script>
-		<script>
-			mui.init();
-		</script>
 		<header class="mui-bar mui-bar-nav">
-			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title">发布</h1>
 		</header>
 		<div class="mui-content">
-			<div id="slider" class="mui-slider mui-fullscreen">
-				<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
-					<div class="mui-scroll">
-						<a class="mui-control-item ss mui-active " href="#item1mobile" data-wid="../parttime/signup.html">
-							待接取
-						</a>
-						<a class="mui-control-item ss" href="#item2mobile" data-wid="../parttime/goParttime.html">
-							进行
-						</a>
-						<a class="mui-control-item ss" href="#item3mobile" data-wid="../parttime/endParttime.html">
-							已完成
-						</a>
-						<a class="mui-control-item" id="newcreate">
-							新建岗位
-						</a>
-					</div>
-				</div>
+			<div class="navigation">
+			<ul class="mui-table-view mui-grid-view mui-grid-9">
+			<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3" id="signjob">
+				<a href="#">
+				
+					<div class="mui-media-body">待接取</div>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3" id="gojob">
+				<a href="#">
+					<div class="mui-media-body">进行</div>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3" id="endjob">
+				<a href="#">
+					<div class="mui-media-body">已完成</div>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3" id="newcreate">
+				<a href="#">
+					<div class="mui-media-body">新建岗位</div>
+				</a>
+			</li>
+				</ul>
 			</div>
+			
+			<div class="thisse">
+			 <p>新发布，记录最新发布的任务，当人员足够自动下架到<strong>进行任务</strong>功能页面</p>
+			</div>
+			<div class="newse" id="publisherPlur">
+				<script id="pubsher" type="text/html">
+					<ul class="mui-table-view">
+						{{if ms.status==true}} {{each publisher pu}}
+						<li class="mui-table-view-cell mui-media" id="{{pu.id}}" name="{{pu.fkPublisher}}">
+							<a class="mui-navigate-right">
+								<div class="mui-media-body">
+									<span>{{pu.subject}}</span>
+									<span class="mui-ellipsis">招聘人数 :{{pu.persons}}人</span>
+									<span class="mui-ellipsis">发布日期  :{{pu.releasetime}}</span>
+									<span class="mui-ellipsis">当前状态  :招募中</span>
+								</div>
+								<div class="mui-badge mui-badge-inverted">
+									<span id="seMony">详情</span>
+								</div>
+							</a>
+						</li>
+						{{/each}} 
+						<div id="noth"><p>没有更多信息了</p></div>
+						{{/if}}
+						{{if ms.status==false}}
+						<div class="mui-table-view-cell mui-media jobNothing">
+							<img src="../../image/nothing/nocontent.png" /> 
+							<span id="nothings">没有新发布的任务</span>
+						</div>
+						{{/if}}
+						
+					</ul>
+				</script>
+			</div>
+			
 			<div class="butts">
 				<nav class="mui-bar mui-bar-tab">
 					<a class="mui-tab-item" id="firstp">
@@ -64,13 +103,9 @@
 				</nav>
 			</div>
 		</div>
+		<script src="../../js/first/part.js"></script>
+		<script>
+			mui.init();
+		</script>
 	</body>
-	<script>
-		document.getElementById("newcreate").addEventListener('tap', function() {
-			mui.openWindow({
-				url: '../parttime/newParttime.html',
-				id: '../parttime/newParttime.html'
-			})
-		})
-	</script>
 </html>

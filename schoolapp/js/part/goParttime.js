@@ -6,6 +6,7 @@ if (user != null) {
 	fkPublishers = user.id;
 }
 mui.plusReady(function() {
+	toBefore("../zmain/part.html");
 	if (fkPublishers != null && "" != fkPublishers) {
 		mui.ajax({
 			url: service_url+'plur/publisher',

@@ -36,10 +36,13 @@ function myLogin(){
 								localStorage.setItem('tuser',tuser);
 								mui.openWindow({
 									url : '../zmain/first.html',
-									id  : '../zmain/first.html'
+									id  : '../zmain/first.html',
+									createNew: true,
+									waiting: {
+										autoShow: true,
+										titile: '正在加载...'
+									}
 								})
-// 								mui.fire('../zmain/first.html','refresh',{})
-// 								plus.webview.getWebviewById('../zmain/first.html').show();
 							}
 						}
 					})

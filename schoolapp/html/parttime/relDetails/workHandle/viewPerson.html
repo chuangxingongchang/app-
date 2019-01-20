@@ -1,6 +1,5 @@
 <!doctype html>
 <html>
-
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
@@ -19,7 +18,7 @@
 			mui.init()
 		</script>
 		<header class="mui-bar mui-bar-nav" id="topart">
-			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" id="backs"></a>
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" id="topart"></a>
 			<h1 class="mui-title">报名信息</h1>
 		</header>
 		<div class="mui-content">
@@ -37,7 +36,7 @@
 						{{if ms.status==true}}
 						{{each signup si}}
 						<li class="mui-table-view-cell mui-media" id="{{si.id}}" name="{{si.truename}}">
-							<img class="mui-media-object mui-pull-left" src="{{si.avatar}}" alt="图片">
+							<img class="mui-media-object mui-pull-left" src="{{si.avatar}}" alt="头像">
 							<div class=" mui-media-body main_content">
 								<span>姓名：{{si.truename}}</span>
 								<span class="main_content_v">电话：{{si.phoneno}}</span>
