@@ -34,7 +34,12 @@ function myLogin(){
 								var tuser = JSON.stringify(data.tuser);
 								localStorage.setItem('phone',data.tuser.phoneno);
 								localStorage.setItem('tuser',tuser);
-								plus.webview.create('../zmain/first.html').show();
+								mui.openWindow({
+									url : '../zmain/first.html',
+									id  : '../zmain/first.html'
+								})
+// 								mui.fire('../zmain/first.html','refresh',{})
+// 								plus.webview.getWebviewById('../zmain/first.html').show();
 							}
 						}
 					})

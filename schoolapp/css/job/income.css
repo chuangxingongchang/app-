@@ -1,0 +1,47 @@
+#headers {
+	background-color: black;
+}
+
+#headers a {
+	color: white;
+	font-size: 16px;
+	margin-top: 5px;
+}
+
+#headers h1 {
+	color: white;
+}
+
+.main_content span {
+	display: block;
+}
+
+.main_content span:first-child {
+	font-size: 20px;
+	overflow: hidden;
+}
+
+.main_content span:last-child {
+	font-size: 14px;
+	color: #929292;
+}
+
+.mui-table-view-cell .mui-badge {
+	font-size: 22px;
+	color: green;
+}
+
+#icomNothing {
+	height: 600px;
+}
+
+#icomNothing img {
+	margin-top: 50px;
+	text-align: center;
+}
+
+#icomNothing span {
+	font-size: 20px;
+	color: #6D6D72;
+	margin-left: 50px;
+}

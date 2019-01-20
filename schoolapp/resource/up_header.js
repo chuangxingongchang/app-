@@ -1,3 +1,4 @@
+var service_url = "http://192.168.0.101/";
 var user = JSON.parse(localStorage.getItem('tuser'));
 var id  = "";
 mui.plusReady(function() {
@@ -102,7 +103,7 @@ mui.plusReady(function() {
 		images.onload = function(){
 			var imgData = getBase64Image(images);
 			mui.ajax({
-			    url: 'http://172.19.129.6:86/file/upload',
+			    url: service_url+'file/upload',
 				data: {
 					'baseData': imgData
 				},
@@ -111,7 +112,7 @@ mui.plusReady(function() {
 				success: function(datas) {
 						if(datas != null) {
 							mui.ajax({
-								url : "http://172.19.129.6:86/touser/updateUser",
+								url : service_url+"touser/updateUser",
 								type: 'post',
 								data: {id :id,avatar:datas},
 								dataType : 'json',

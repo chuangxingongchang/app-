@@ -15,7 +15,6 @@ function updatePword() {
 	
 	if(id != null && "" != id) {
 		if(user.pword == oldpword) {
-			console.log("接发的所发生的积分")
 			if(pwReg.test(pword)) {
 				if(pword == repword) {
 					console.log("repword:"+repword)
@@ -30,10 +29,14 @@ function updatePword() {
 						success: function(data) {
 							console.log("data:"+data.ms.status)
 							if(data.ms.status == true) {
-								
 								mui.openWindow({
 									url: '../sets.html',
-									id: '../sets.html'
+									id: '../sets.html',
+									createNew: true,
+									waiting: {
+										autoShow: true,
+										titile: '正在加载...'
+									}
 								});
 							} else {
 								mui.alert(data.ms.msg);

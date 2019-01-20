@@ -48,52 +48,13 @@
 				<select id="cmbProvince" name="cmbProvince"></select>
 				<select id="cmbCity" name="cmbCity"></select>
 				<select id="cmbArea" name="cmbArea"></select>
-				<input type="text" placeholder="详细地址" />
+				<input type="text" placeholder="详细地址" id="detailaddress" />
 			</div>
 		</div>
 		<script src="../../../../js/mui.min.js"></script>
-		<script>
-		</script>
+		<script src="../../../../js/center/address.js"></script>
 		<script type="text/javascript">
 			mui.init()
-			var service_url = "http://192.168.0.101/";
-			addressInit('cmbProvince', 'cmbCity', 'cmbArea');
-			document.getElementById("complete").addEventListener('tap', function() {
-				var address = mui("#cmbProvince")[0].value + mui("#cmbCity")[0].value + mui("#cmbArea")[0].value;
-				var user = JSON.parse(localStorage.getItem('tuser'));
-				var id = user.id;
-				if(id != null && "" != id) {
-					if(address != null && "" != address) {
-						mui.ajax({
-							url: service_url+'touser/updateUser',
-							type: 'post',
-							dataType: 'json',
-							data: {
-								id: id,
-								address: address
-							},
-							success: function(data) {
-								if(data.ms.status == true) {
-									mui.openWindow({
-										url: '../sets.html',
-										id: '../sets.html'
-									});
-								} else {
-									alert(data.ms.msg);
-								}
-							}
-						})
-
-					} else {
-						mui.alert("你没有选择地址");
-					}
-				} else {
-					mui.openWindow({
-						url : '../error.html',
-						id  : '../error.html'
-					})
-				}
-			})
 		</script>
 	</body>
 

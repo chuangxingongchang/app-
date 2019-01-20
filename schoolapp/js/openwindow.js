@@ -3,7 +3,12 @@ function open(id, e) {
 	document.getElementById(id).addEventListener('tap', function() {
 		mui.openWindow({
 			url : e,
-			id  : e
+			id  : e,
+			createNew : true,
+			waiting: {
+				autoShow : true,
+				titile   : '正在加载...'
+			}
 		});
 	});
 }
@@ -34,6 +39,14 @@ function bottomopen(id, e, f) {
 }
 function toBefore(beforehtml){
 	document.getElementById('topart').addEventListener('tap',function(){
-				plus.webview.create(beforehtml).show();
+			mui.openWindow({
+				url : beforehtml,
+				id  : beforehtml,
+				createNew : true,
+				waiting: {
+					autoShow : true,
+					titile   : '正在加载...'
+				}
+			});	
 		})
 }

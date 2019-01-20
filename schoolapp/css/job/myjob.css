@@ -1,0 +1,54 @@
+#headers {
+	background-color: black;
+}
+
+#headers a {
+	color: white;
+	font-size: 16px;
+	margin-top: 5px;
+}
+
+#headers h1 {
+	color: white;
+}
+
+.description p {
+	margin-left: 10px;
+	text-indent: 2em;
+	margin-top: 20px;
+}
+
+.main_content span {
+	display: block;
+}
+
+.main_content span:first-child {
+	font-size: 20px;
+	overflow: hidden;
+}
+
+.main_content span:last-child,
+.main_content_v {
+	font-size: 14px;
+	color: #929292;
+}
+
+.endState span {
+	font-size: 16px;
+	color: #007AFF;
+}
+
+.jobNothing {
+	height: 490px;
+}
+
+.jobNothing span {
+	font-size: 20px;
+	padding-top: 10px;
+	margin-left: 90px;
+	color: #797979;
+}
+
+.jobNothing img {
+	margin-left: 60px;
+}

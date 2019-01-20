@@ -1,0 +1,58 @@
+body {
+	padding: 0;
+	margin: 0;
+}
+
+#heads,
+#heads button {
+	background-color: black;
+}
+
+#heads button {
+	color: green;
+	font-size: 16px;
+}
+
+.pt p {
+	margin: 20px 20px;
+}
+
+#complete {
+	float: right;
+	margin-top: 5px;
+	border: none;
+}
+
+.sex,
+.myinput,
+.pt span {
+	margin-left: 18px;
+}
+
+.sex label {
+	margin-left: 27px;
+}
+
+.myinput input {
+	width: 75%;
+}
+
+.sex {
+	margin-bottom: 20px;
+}
+
+.myinput {
+	margin-bottom: 10px;
+}
+
+.sex label,
+.myinput span,
+.pt span,
+.myinput {
+	font-size: 16px;
+	color: #999999;
+}
+
+.sex span {
+	color: #007AFF;
+}

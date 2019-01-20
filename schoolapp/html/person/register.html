@@ -7,7 +7,6 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../../css/mui.min.css" rel="stylesheet" />
 		<script src="../../js/mui.min.js"></script>
-		<script src="../../js/first/register.js"></script>
 		<style>
 			@import url("../../css/first/register.css");
 		</style>
@@ -30,7 +29,7 @@
 			<div id="reg_two">
 				<div class="mui-input-row" id="input-one">
 					<input id="phoneno" type="text" class="mui-input" placeholder="请输入电话号码" />
-					<button class="mui-badge-success" id="sends">发送验证码</button>
+					<button class="mui-badge-success" data-loading-icon="mui-spinner mui-spinner-custom" id="sends">发送验证码</button>
 				</div>
 				<div class="mui-input-row" id="input-two">
 					<input name="code" type="text" class="mui-input-clear mui-input" placeholder="请输入验证码" id="codes" />
@@ -47,5 +46,4 @@
 			</div>
 		</div>
 	</body>
-
 </html>

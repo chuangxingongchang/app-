@@ -1,0 +1,42 @@
+.job_content .job_content_one ul li .content_a .mui-media-body span {
+	display: block;
+}
+
+.content_money {
+	color: red;
+}
+
+.main_content span {
+	display: block;
+}
+
+.main_content span:first-child {
+	font-size: 20px;
+	overflow: hidden;
+}
+
+.main_content span:last-child,
+.main_content_v {
+	font-size: 14px;
+	color: #929292;
+}
+
+.mui-table-view-cell .mui-badge {
+	font-size: 16px;
+	color: red;
+}
+
+.jobNothing {
+	height: 490px;
+}
+
+.jobNothing span {
+	font-size: 20px;
+	padding-top: 10px;
+	margin-left: 90px;
+	color: #797979;
+}
+
+.jobNothing img {
+	margin-left: 60px;
+}
