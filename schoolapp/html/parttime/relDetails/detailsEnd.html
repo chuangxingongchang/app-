@@ -55,7 +55,7 @@
 						</ul>
 					</div>
 					<div class="word_four">
-						<ul class="mui-table-view">
+						<ul class="mui-table-view" style="background-image:url(../../../image/background/mapt.jpg);">
 							<li class="mui-table-view-cell">
 								<label>
 		    	                	工作地点：
@@ -75,13 +75,34 @@
 						<label>工作描述：</label>
 						<p>{{thisplur.workcontent}}</p>
 					</div>
-
+					<div class="mui-content-padded">
+						<button type="button" class="mui-btn mui-btn-block mui-btn-primary" onclick="topay(this)">发放工资</button>
+					</div>
 				</script>
 			</div>
-			<div class="mui-content-padded">
-				<button id='topay' type="button" class="mui-btn mui-btn-block mui-btn-primary">发放工资</button>
-			</div>
 		</div>
+		<script>
+			
+			mui.openWindow({
+				id: "workHandle/payWage.html"
+			})
+			function topay(e){
+				var pageSign = plus.webview.getWebviewById("workHandle/payWage.html");
+				var signstate = "完成";
+				var pkPlurid = mui(".word_one")[0].id;
+				mui.fire(pageSign, "topayWage", {
+					pkPlurid: pkPlurid,
+					signstate: signstate
+				});
+				mui.openWindow({
+					id: "workHandle/payWage.html",
+					createNew: true,
+					waiting: {
+						autoShow: true,
+						titile: '正在加载...'
+					}
+				})
+			}
+		</script>
 	</body>
-
 </html>

@@ -36,4 +36,5 @@ mui.plusReady(function() {
 		}
 
 	}, false);
+	toPage("#jobSearch","job_details/job_one.html");
 })

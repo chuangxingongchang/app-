@@ -29,6 +29,6 @@ mui.plusReady(function() {
 		}
 
 	}, false);
-	
+	toBefore('../../zmain/job.html');
 })
 

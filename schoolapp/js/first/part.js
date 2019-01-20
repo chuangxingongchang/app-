@@ -1,8 +1,8 @@
 var service_url = "http://192.168.0.101/";
 var user = JSON.parse(localStorage.getItem('tuser'));
 var fkPublisher = "";
+var phoneno = "";
 mui.plusReady(function() {
-	
 	if (user != null) {
 		fkPublisher = user.id;
 	}

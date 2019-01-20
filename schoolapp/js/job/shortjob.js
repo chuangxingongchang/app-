@@ -48,5 +48,6 @@ mui.plusReady(function() {
 			}
 		})
 	}
-	toPage("#shortcontent", "job_details/job_one.html");
+	toPage("#shortcontent", "job_details/job_three.html");
+	toBefore("../zmain/job.html");
 })

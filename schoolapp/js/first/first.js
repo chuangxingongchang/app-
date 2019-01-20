@@ -47,7 +47,6 @@ mui.plusReady(function() {
 				})
 			}
 		})
-
 		open("parttp",'part.html');
 		open("centertp",'centero.html');
 		open("jobtp",'job.html');

@@ -61,7 +61,11 @@ ul li span:last-child {
 
 .word_four .mui-table-view {
 	height: 80px;
-	background-image: url(../../../image/background/fcf60785366872dcd25e2268e3120eac.jpg);
+	background-image: url(../../image/background/mapo.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+	background-size: cover;
 }
 
 .word_four ul li {

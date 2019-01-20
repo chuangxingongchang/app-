@@ -81,6 +81,15 @@
 							</li>
 							<li class="mui-table-view-cell">
 								<label>岗位状态&nbsp;：</label>
+								{{if thisplur.fkWorkstate==2}}
+								<span>进行中</span>
+								{{/if}}
+								{{if thisplur.fkWorkstate==3||thisplur.fkWorkstate==4}}
+								<span>完成</span>
+								{{/if}}
+							</li>
+							<li class="mui-table-view-cell">
+								<label>信用等级&nbsp;：</label>
 								{{if pushuser.credit<40}}
 								<span>☆☆</span>
 								{{/if}}
@@ -94,10 +103,6 @@
 								<span>☆☆☆☆☆</span>
 								{{/if}}
 							</li>
-							<li class="mui-table-view-cell">
-								<label>信用等级&nbsp;：</label>
-								<span>{{pushuser.credit}}</span>
-							</li>
 						</ul>
 					</div>
 				</script>
@@ -106,7 +111,6 @@
 		<script src="../../../js/job/job_two.js"></script>
 		<script type="text/javascript">
 			mui.init()
-			
 		</script>
 	</body>
 

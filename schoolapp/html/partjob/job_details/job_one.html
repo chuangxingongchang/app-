@@ -8,6 +8,7 @@
 		<link href="../../../css/mui.min.css" rel="stylesheet" />
 		<script src="../../../js/mui.min.js"></script>
 		<script src="../../../js/template-web.js"></script>
+		<script src="../../../js/openwindow.js"></script>
 		<style>
 			@import url("../../../css/job/job_one.css");
 		</style>
@@ -15,7 +16,7 @@
 
 	<body>
 		<header class="mui-bar mui-bar-nav" id="headers">
-			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left">返回</a>
+			<a class="mui-icon mui-icon-left-nav mui-pull-left" id="topart">返回</a>
 			<h1 class="mui-title">岗位详情</h1>
 		</header>
 		<div class="mui-content">
@@ -57,7 +58,7 @@
 							<li class="mui-table-view-cell">
 								<label>
 		    	                	工作地点：
-		    	            </label>
+		    	               </label>
 								<span>{{thisplur.workaddress}}</span>
 								<span class="mui-icon mui-icon-location mui-pull-right"></span>
 							</li>

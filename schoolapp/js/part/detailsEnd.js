@@ -29,17 +29,4 @@ mui.plusReady(function() {
 		url: "workHandle/payWage.html",
 		id: "workHandle/payWage.html"
 	});
-	document.getElementById("topay").addEventListener('tap', function() {
-		var pageSign = plus.webview.getWebviewById("workHandle/payWage.html");
-		var signstate = "完成";
-		var pkPlurid = mui(".word_one")[0].id;
-		mui.fire(pageSign, "topayWage", {
-			pkPlurid: pkPlurid,
-			signstate: signstate
-		});
-		mui.openWindow({
-			id: "workHandle/payWage.html"
-		})
-	})
-	
 })

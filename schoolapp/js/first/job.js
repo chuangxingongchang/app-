@@ -6,6 +6,7 @@ if(localStorage.getItem("schoolname")!=null){
    }
 mui.plusReady(function() {
 	if(schoolname!=null&&schoolname!=""){
+		mui("#Myschool")[0].innerText = schoolname;
 		mui.ajax({
 			url: service_url+'school/getSchool',
 			type: 'post',
@@ -38,11 +39,9 @@ mui.plusReady(function() {
 	open('shortjob', "../partjob/shortjob.html");
 	open('longjob', "../partjob/longjob.html");
 	open('job_income', "../partjob/income.html");
-	open('toschool', "../percenter/controll/controllchild/school.html");
 	toPage('#item1mobile', '../partjob/job_details/job_one.html');
 	toPage('#item2mobile', '../partjob/job_details/job_one.html');
 	toPage('#item3mobile', '../partjob/job_details/job_one.html');
-	
 })
 	
 //获取所有兼职信息，并按照时间进行排序（先显示后面发布的，后查看先发布的）
