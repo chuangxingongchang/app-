@@ -1,0 +1,59 @@
+#headers {
+	background-color: black;
+}
+
+#headers h1 {
+	color: white;
+}
+
+.mui-content {
+	background-color: white;
+}
+
+.newcon .newimg img {
+	width: 25px;
+	height: 25px;
+	margin-left: 20px;
+}
+
+.newcon .newimg {
+	width: 50px;
+	display: inline-block;
+}
+
+.newcon input {
+	border-top-width: 0;
+	border-right-width: 0;
+	border-left-width: 0;
+}
+
+.newcon .newinputo {
+	width: 85%;
+}
+
+.newcon .newinputt {
+	width: 42%;
+}
+
+.newcon .tt {
+	margin-left: 53px;
+}
+
+#newtitle {
+	margin-top: 10px;
+}
+
+#theContent {
+	overflow: hidden;
+	margin-left: 10px;
+	height: 200px;
+	width: 360px;
+}
+
+.mui-content input {
+	color: #333333;
+}
+
+#the {
+	display: inline-block;
+}

@@ -49,45 +49,9 @@
 				<select id="cmbArea" name="cmbArea"></select>
 			</div>
 		</div>
-		
+		<script src="../../../../js/center/school.js"></script>
 		<script type="text/javascript">
 			mui.init()
-			addressInit('cmbProvince', 'cmbCity', 'cmbArea');
-			document.getElementById("complete").addEventListener('tap', function() {
-				var schoolcity = mui("#cmbProvince")[0].value;
-				var school = mui("#cmbArea")[0].value;
-				var user = JSON.parse(localStorage.getItem('tuser'));
-				var id = "";
-				if(user!=null){
-					id = user.id
-				}
-				if(school != null && school != "") {
-					if(id!=null&&""!=id){
-						mui.ajax({
-							url: 'http://172.19.129.6:86/school/updateMyschool',
-							type: 'post',
-							dataType: 'json',
-							data: {
-								id: user.id,
-								schoolname: school,
-								schoolcity: schoolcity
-							},
-							success: function(data) {
-								if(data.ms.status == true) {
-									mui.openWindow({
-										url: '../sets.html',
-										id: '../sets.html'
-									});
-								} else {
-									alert(data.ms.msg);
-								}
-							}
-						})
-					}
-				} else {
-					mui.alert("输入学校错误");
-				}
-			})
 		</script>
 	</body>
 

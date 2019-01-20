@@ -10,28 +10,23 @@
 		<script src="../../js/openwindow.js"></script>
 		<script src="../../js/first/login.js"></script>
 		<style>
-			.infoName{
-				height:220px;
-			}
-			#headers{
-				width:100px;margin: 50px auto;
-			}
-			.userImg{
-				width: 100px;height: 100px;border-radius: 50%;
-			}
-			#reg,#forgetPassword{
-				color: #0062CC;
-			}
+			@import url("../../css/first/login.css");
 		</style>
 	</head>
 
 	<body>
 		
 		<script type="text/javascript">
-			mui.init();
+			mui.init({
+				beforeback : function(){
+					var list = plus.webview.getWebviewById('goback');
+					mui.fire(list,'refresh');
+					return true;
+				}
+			});
 		</script>
 		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <a class="mui-icon mui-icon-left-nav mui-pull-left" id="tofirst"></a>
 		    <h1 class="mui-title">登录</h1> 
 		</header>
 		
@@ -72,10 +67,15 @@
 		 </div>
 	</body>
 	<script>
-		mui.plusReady(function(){
-			document.getElementById('login').addEventListener('tap',function(){
-				myLogin();
+		
+		document.getElementById('tofirst').addEventListener('tap',function(){
+			mui.openWindow({
+				url : '../zmain/first.html',
+				id  : '../zmain/first.html'
 			})
+		})
+		document.getElementById('login').addEventListener('tap',function(){
+			myLogin();
 		})
 	</script>
 </html>

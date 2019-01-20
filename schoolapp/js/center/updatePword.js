@@ -1,4 +1,4 @@
-
+var service_url = "http://192.168.0.101/";
 function updatePword() {
 	//设置昵称的正则表达式
 	var pwReg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{5,20}$/;
@@ -15,12 +15,11 @@ function updatePword() {
 	
 	if(id != null && "" != id) {
 		if(user.pword == oldpword) {
-			console.log("接发的所发生的积分")
 			if(pwReg.test(pword)) {
 				if(pword == repword) {
 					console.log("repword:"+repword)
 					mui.ajax({
-						url: 'http://172.19.129.6:86/touser/updateUser',
+						url: service_url+'touser/updateUser',
 						type: 'post',
 						dataType: 'json',
 						data: {
@@ -30,10 +29,14 @@ function updatePword() {
 						success: function(data) {
 							console.log("data:"+data.ms.status)
 							if(data.ms.status == true) {
-								
 								mui.openWindow({
 									url: '../sets.html',
-									id: '../sets.html'
+									id: '../sets.html',
+									createNew: true,
+									waiting: {
+										autoShow: true,
+										titile: '正在加载...'
+									}
 								});
 							} else {
 								mui.alert(data.ms.msg);
@@ -50,7 +53,10 @@ function updatePword() {
 			mui.alert("原密码错误");
 		}
 	} else {
-		mui.toast("密码的时候获取用户失败")
+		mui.openWindow({
+			url : '../error.html',
+			id  : '../error.html'
+		})
 	}
 
 }

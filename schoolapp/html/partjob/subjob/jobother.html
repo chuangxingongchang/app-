@@ -10,48 +10,12 @@
 		<script src="../../../js/template-web.js"></script>
 		<script src="../../../js/job/jobon.js"></script>
 		<style>
-			.job_content .job_content_one ul li .content_a .mui-media-body span {
-				display: block;
-			}
-			
-			.content_money {
-				color: red;
-			}
-			
-			.main_content span {
-				display: block;
-			}
-			
-			.main_content span:first-child {
-				font-size: 20px;
-				overflow: hidden;
-			}
-			
-			.main_content span:last-child,
-			.main_content_v {
-				font-size: 14px;
-				color: #929292;
-			}
-			
-			.mui-table-view-cell .mui-badge {
-				font-size: 16px;
-				color: red;
-			}
-			
-			.jobNothing{
-				height: 490px;
-			}
-			.jobNothing span{
-				font-size: 20px;padding-top: 10px;
-				margin-left: 90px;color: #797979;
-			}
-			.jobNothing img{
-				margin-left: 60px;
-			}
+			@import url("../../../css/job/jobother.css");
 		</style>
 	</head>
 
 	<body>
+		<script src="../../../js/job/jobother.js"></script>
 		<script type="text/javascript">
 			mui.init()
 		</script>
@@ -91,40 +55,4 @@
 				</div>
 		</div>
 	</body>
-	<script>
-		var user = JSON.parse(localStorage.getItem('tuser'));
-		var fkSchoolId ="";
-		mui.plusReady(function(){
-			attrMainJob();
-			toPage("#jobContent", '../job_details/job_one.html');
-		})
-		//获取兼职信息
-		function attrMainJob() {
-			if(user!=null){
-				fkSchoolId = user.fkSchoolId;
-			}
-			if(fkSchoolId != null&&fkSchoolId!="") {
-				mui.ajax({
-					url: 'http://172.19.129.6:86/plur/selectPlurSchool',
-					type: 'post',
-					data: {
-						fkSchoolId: user.fkSchoolId
-					},
-					dataType: 'json',
-		
-					success: function(data) {
-						var html = template('plur', data);
-						document.getElementById('jobContent').innerHTML = html;
-					},
-					error: function() {}
-				})
-			} else {
-				mui.alert("获取学校失败,请先设置学校");
-				mui.openWindow({
-					url: '../../percenter/controll/controllchild/school.html',
-					id: '../../percenter/controll/controllchild/school.html'
-				})
-			}
-		}
-	</script>
 </html>

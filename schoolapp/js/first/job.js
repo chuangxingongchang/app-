@@ -1,4 +1,4 @@
-
+var service_url = "http://192.168.0.101/";
 var fkSchoolId = "";
 var schoolname = "";
 if(localStorage.getItem("schoolname")!=null){
@@ -6,9 +6,8 @@ if(localStorage.getItem("schoolname")!=null){
    }
 mui.plusReady(function() {
 	if(schoolname!=null&&schoolname!=""){
-		mui("#backs")[0].innerHTML = schoolname;
 		mui.ajax({
-			url: 'http://172.19.129.6:86/school/getSchool',
+			url: service_url+'school/getSchool',
 			type: 'post',
 			async : false,
 			data: {
@@ -31,15 +30,15 @@ mui.plusReady(function() {
 	attrMainJob();
 	attrPopularJob();
 	attrRestJob();
+	open("firstp", 'first.html');
+	open("parttp", 'part.html');
+	open("jobtp", 'job.html');
+	open("centertp", 'centero.html');
 	open('job_myjob', "../partjob/myjob.html");
 	open('shortjob', "../partjob/shortjob.html");
 	open('longjob', "../partjob/longjob.html");
 	open('job_income', "../partjob/income.html");
 	open('toschool', "../percenter/controll/controllchild/school.html");
-	open("firstp",'first.html');
-	open("parttp",'part.html');
-	open("jobtp",'job.html');
-	open("centertp",'centero.html');
 	toPage('#item1mobile', '../partjob/job_details/job_one.html');
 	toPage('#item2mobile', '../partjob/job_details/job_one.html');
 	toPage('#item3mobile', '../partjob/job_details/job_one.html');
@@ -50,8 +49,9 @@ mui.plusReady(function() {
 function attrMainJob() {
 	if (fkSchoolId != null && fkSchoolId != "") {
 		mui.ajax({
-			url: 'http://172.19.129.6:86/plur/selectPlurSchool',
+			url: service_url+'plur/selectPlurSchool',
 			type: 'post',
+			timeout : 10000,
 			data: {
 				fkSchoolId: fkSchoolId
 			},
@@ -60,7 +60,12 @@ function attrMainJob() {
 				var html = template('allJobByTime', data);
 				document.getElementById('item1mobile').innerHTML = html;
 			},
-			error: function() {}
+			error: function(timeout,xhr,type) {
+				mui.openWindow({
+					url : 'error.html',
+					id  : 'error.html'
+				})
+			}
 		})
 	}
 }
@@ -68,8 +73,9 @@ function attrMainJob() {
 function attrPopularJob() {
 	if (fkSchoolId != null && fkSchoolId != "") {
 		mui.ajax({
-			url: 'http://172.19.129.6:86/plur/selectPlurSchoolByCount',
+			url: service_url+'plur/selectPlurSchoolByCount',
 			type: 'post',
+			timeout : 10000,
 			data: {
 				fkSchoolId: fkSchoolId
 			},
@@ -78,7 +84,12 @@ function attrPopularJob() {
 				var html = template('allJobByCount', data);
 				document.getElementById('item2mobile').innerHTML = html;
 			},
-			error: function() {}
+			error: function(timeout,xhr,type) {
+				mui.openWindow({
+					url : 'error.html',
+					id  : 'error.html'
+				})
+			}
 		})
 	}
 }
@@ -87,8 +98,9 @@ function attrRestJob() {
 	
 	if (fkSchoolId != null && fkSchoolId != "") {
 		mui.ajax({
-			url: 'http://172.19.129.6:86/plur/selectPlurSchoolBycredit',
+			url: service_url+'plur/selectPlurSchoolBycredit',
 			type: 'post',
+			timeout : 10000,
 			data: {
 				fkSchoolId: fkSchoolId
 			},
@@ -97,7 +109,12 @@ function attrRestJob() {
 				var html = template('allJobByCredit', data);
 				document.getElementById('item3mobile').innerHTML = html;
 			},
-			error: function() {}
+			error: function(timeout,xhr,type) {
+				mui.openWindow({
+					url : 'error.html',
+					id  : 'error.html'
+				})
+			}
 		})
 	}
 }

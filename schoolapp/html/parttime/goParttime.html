@@ -11,50 +11,16 @@
 		<script src="../../js/openwindow.js"></script>
 		<script src="../../js/job/jobon.js"></script>
 		<style>
-			.oldse p{
-				padding: 10px;text-indent: 2em;
-			}
-			.newse ul li span {
-				display: block;
-				font-size: 16px;
-				color: #6D6D72;
-			}
-			
-			.newse ul li span:first-child {
-				font-size: 20px;
-				color: black;
-				font-weight: 400;
-				margin: 10px 0;
-			}
-			
-			#seMony {
-				font-size: 18px;
-				color: #6D6D72;
-			}
-			
-			#nothings {
-				font-size: 18px;
-			}
-			.buttondel{
-				width: 100px;height:40px;
-			}
-			#noth p{
-				height: 30px;text-indent: 1em;color: #007AFF;
-			}
-			.jobNothing{
-				height: 395px;
-			}
-			.jobNothing span{
-				font-size: 20px;padding-top: 10px;
-				margin-left: 90px;color: #EC971F;
-			}
+		   @import url("../../css/partTime/goParttime.css");
 		</style>
-		<script type="text/javascript">
-			mui.init()
-		</script>
+		
 	</head>
 
 	<body>
+		<script src="../../js/part/goParttime.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
 		<div class="mui-content">
 			<div class="oldse">
 			 <p>在进行任务中，记录了岗位信息和岗位工作人员信息及确认<strong>人员工资</strong>，您可以点击<strong>确认完成</strong>，结束工作！</p>
@@ -89,31 +55,4 @@
 			</div>
 		</div>
 	</body>
-	<script type="text/javascript">
-		var user = JSON.parse(localStorage.getItem('tuser'));
-		var fkPublishers = "";
-		if(user!=null){
-			fkPublishers =  user.id;
-		}
-		mui.plusReady(function() {
-			if(fkPublishers!=null&&""!=fkPublishers){
-				mui.ajax({
-					url: 'http://172.19.129.6:86/plur/publisher',
-					type: 'post',
-					async : false,
-					data: {
-						fkPublisher: fkPublishers
-					},
-					dataType: 'json',
-					success: function(data) {
-						var html = template("pubsher", data);
-						document.getElementById('publisherPlur').innerHTML = html;
-					}
-				})
-			}
-			
-			toPage("#publisherPlur", 'relDetails/detailsGo.html');
-		})
-		
-	</script>
 </html>

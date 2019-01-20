@@ -1,70 +1,29 @@
-#headers a:first-child {
-	margin: 8px -5px;
-}
-
-#headers {
-	background-color: black;
-	height: 60px;
-}
-
-#headers #backs {
-	font-size: 18px;
-	color: white;
-	margin-top: 8px;
-	text-align: center;
-}
-
-#headers form {
-	margin-top: 8px;
-	display: inline-block;
-	margin-left: 10px;
-	width: 70%;
-	height: 65%;
-}
-
-.mui-content {
-	margin-top: 30px;
+.mysc {
+	padding-top: 10px;
 }
 
 .job_one {
 	margin: 0 20px;
 }
 
-.job_two .job_two-one {
-	display: inline-block;
-	margin-left: 20px;
+.job_one span {
+	font-size: 15px;
+	color: #007AFF;
+	padding-top: 5px;
 }
 
-.job_two .job_two-one span {
-	display: block;
+.navigation {
+	margin-left: 30px;
+	display: inline;
 }
 
-.job_two .job_two-one span img {
-	width: 50px;
-	height: 50px;
+.navigation ul li {
+	width: 25%;
 }
 
-.job_three {
-	width: 100%;
-	margin: 30px auto;
-	border: 1px solid #CCCCCC;
-	color: #929292;
-}
-
-#top .top .menu ul li:after {}
-
-.triangle {
-	display: inline-block;
-	width: 0;
-	height: 0;
-	line-height: 0;
-	border: 5px solid transparent;
-	border-top-color: #929292;
-	border-bottom-width: 0;
-}
-
-.job_three span {
-	margin-left: 3px;
+.mui-col-sm-3 span img {
+	width: 30px;
+	height: 30px;
 }
 
 .job_content .job_content_one ul li .content_a .mui-media-body span {
@@ -79,7 +38,8 @@
 	display: block;
 }
 
-.main_content span:first-child {
+.main_content span:first-child,
+.thetitle {
 	font-size: 20px;
 	overflow: hidden;
 }
@@ -87,10 +47,44 @@
 .main_content span:last-child,
 .main_content_v {
 	font-size: 14px;
-	color: #929292;
+	color: #000000;
+}
+
+.main_content_v {
+	color: #6641E2;
 }
 
 .mui-table-view-cell .mui-badge {
 	font-size: 16px;
 	color: red;
+}
+
+#slider {
+	margin-top: 20px;
+}
+
+.job_content {
+	clear: both;
+}
+
+#nothings {
+	color: red;
+}
+
+#thenothings {
+	height: 300px;
+	text-align: center;
+}
+
+#thenothings span {
+	font-size: 16px;
+	padding-top: 10px;
+	color: #EC971F;
+	display: block;
+}
+
+#item1mobile,
+#item2mobile,
+#item3mobile {
+	margin-bottom: 60px;
 }

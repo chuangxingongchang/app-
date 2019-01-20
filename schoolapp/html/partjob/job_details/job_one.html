@@ -9,89 +9,7 @@
 		<script src="../../../js/mui.min.js"></script>
 		<script src="../../../js/template-web.js"></script>
 		<style>
-			#headers {
-				background-color: black;
-			}
-			
-			#headers a {
-				color: white;
-				font-size: 16px;
-				margin-top: 5px;
-			}
-			
-			#headers h1 {
-				color: white;
-			}
-			
-			.word_one {
-				width: 100%;
-				position: relative;
-				height: 70px;
-			}
-			
-			.word_one .word_one-one {
-				width: 60%;
-				float: left;
-				font-size: 20px;
-				margin: 20px 0px 0 20px;
-				overflow: hidden;
-			}
-			
-			.word_one .word_one-two {
-				width: 28%;
-				float: right;
-				color: red;
-				margin-top: 20px;
-			}
-			
-			.word_two .word_two-one {
-				display: inline-block;
-				margin-left: 20px;
-				font-size: 13px;
-				color: #929292;
-			}
-			
-			.word_three ul {
-				list-style: none;
-				padding: 20px;
-			}
-			
-			.word_three ul li {
-				color: ;
-				font-size: 15px;
-				
-			}
-			ul li span:first-child{
-				color: #929292;
-			}
-			ul li span:last-child{
-				color: #007AFF;
-			}
-			.word_four .mui-table-view {
-				height: 80px;
-				background-image: url(../../../image/background/fcf60785366872dcd25e2268e3120eac.jpg);
-			}
-			
-			.word_four ul li {
-				padding-top: 30px;
-				color: #797979;
-			}
-			
-			.word_content label {
-				margin-left: 20px;
-				color: #797979;
-			}
-			
-			.word_content p {
-				text-indent: 2em;
-				margin: 1em;
-				text-align: justify;
-				line-height: 2;
-				font-size: 15px;
-			}
-			#creditpu span{
-				font-size: 24px;color: red;padding-top: 20px;
-			}
+			@import url("../../../css/job/job_one.css");
 		</style>
 	</head>
 
@@ -189,66 +107,50 @@
 							</li>
 						</ul>
 					</div>
+					<div class="mui-content-padded" id='toSignup'>
+						<button  type="button" class="mui-btn mui-btn-block mui-btn-primary" onclick="toSignup(this)">报名</button>
+					</div>
 				</script>
 			</div>
-			<div class="mui-content-padded">
-				<button id='toSignup' type="button" class="mui-btn mui-btn-block mui-btn-primary">报名</button>
-			</div>
 		</div>
-
+		<script src="../../../js/job/job_one.js"></script>
 		<script type="text/javascript">
 			mui.init()
-			var id  = "";
-			var user = JSON.parse(localStorage.getItem('tuser'));
-			mui.plusReady(function() {
-				window.addEventListener('myid', function(event) {
-					 id  = event.detail.jobid;
-					 uid = event.detail.uid;
-					if(id != null) {
-						mui.ajax({
-							url: 'http://172.19.129.6:86/plur/getThisPlur',
-							type: 'post',
-							data: {
-								id: id,fkPublisher:uid
-							},
-							dataType: 'json',
-							success: function(data) {
-								var html = template('thisplur', data);
-								document.getElementById('thisJob').innerHTML = html;
-							}
-						})
-					} else {
-						mui.alert("获取数据失败");
-					}
-
-				}, false);
-			})
-			document.getElementById("toSignup").addEventListener('tap',function(){
+		</script>
+		<script>
+				function toSignup(e){
 				mui.ajax({
-					url : 'http://172.19.129.6:86/sign/startSignup',
+					url:service_url+'sign/startSignup',
 					type: 'post',
 					data: {
-						pkPlurid : id,
-						pkUid    : user.id,
+						pkPlurid: id,
+						pkUid: user.id,
 						signmoney: 0,
 						signstate: '报名',
-						
+			
 					},
-					timeout : 10000,
+					timeout: 10000,
 					dataType: 'json',
-					success : function(data){
-						if(data.startms.status==true){
+					success: function(data) {
+						if (data.startms.status == true) {
 							mui.alert("报名成功");
-							 mui.openWindow({
-								url : "../../zmain/job.html",
-								id  : "../../zmain/job.html"
+							mui.openWindow({
+								url: "../../zmain/job.html",
+								id: "../../zmain/job.html"
 							})
-						}else{
-						  mui.alert("error")	
+						} else {
+							if(data.startms.msg=="报名失败"){
+							mui.openWindow({
+								url : '../error.html',
+								id  : '../error.html'
+							})
+							}else{
+								mui.alert(data.startms.msg)
+							}
 						}
 					}
 				})
-			})
+			}
 		</script>
 	</body>
 

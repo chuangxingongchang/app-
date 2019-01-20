@@ -60,6 +60,7 @@
 			</div>
 		</div>
 		<script>
+			var service_url = "http://192.168.0.101/";
 			var codes = "";
 			document.getElementById("updatepw").addEventListener("tap", function() {
 				var pwReg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{5,20}$/;
@@ -76,7 +77,7 @@
 								if(pword == repword) {
 									console.log("进入ajax")
 									mui.ajax({
-										url: "http://172.19.129.6:86/touser/forgetpword",
+										url: service_url+"touser/forgetpword",
 										type: 'post',
 										dataType: 'json',
 										data: {
@@ -115,7 +116,7 @@
 			document.getElementById("sends").addEventListener("tap", function() {
 				mui.ajax({
 					type: "post",
-					url: "http://172.19.129.6:86/touser/mycode",
+					url: service_url+"touser/mycode",
 					data: {
 						phoneno: mui("#phoneno")[0].value
 					},

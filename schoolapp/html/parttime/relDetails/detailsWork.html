@@ -9,88 +9,15 @@
 		<script src="../../../js/mui.min.js"></script>
 		<script src="../../../js/template-web.js"></script>
 		<style>
-			#headers {
-				background-color: black;
-			}
-			
-			#headers a {
-				color: white;
-				font-size: 16px;
-				margin-top: 5px;
-			}
-			
-			#headers h1 {
-				color: white;
-			}
-			
-			.word_one {
-				width: 100%;
-				position: relative;
-				height: 70px;
-			}
-			
-			.word_one .word_one-one {
-				width: 60%;
-				float: left;
-				font-size: 20px;
-				margin: 20px 0px 0 20px;
-				overflow: hidden;
-			}
-			
-			.word_one .word_one-two {
-				width: 28%;
-				float: right;
-				color: red;
-				margin-top: 20px;
-			}
-			
-			.word_two .word_two-one {
-				display: inline-block;
-				margin-left: 20px;
-				font-size: 13px;
-				color: #929292;
-			}
-			
-			.word_three ul {
-				list-style: none;
-				padding: 20px;
-			}
-			
-			.word_three ul li {
-				color:#6D6D72 ;
-				font-size: 15px;
-				
-			}
-			
-			ul li span:last-child{
-				color: #007AFF;
-			}
-			.word_four .mui-table-view {
-				height: 80px;
-				background-image: url(../../../image/background/d37933f71718013cbba6217f2cb41b84.jpg);
-			}
-			
-			.word_four ul li {
-				padding-top: 30px;
-				color: #797979;
-			}
-			
-			.word_content label {
-				margin-left: 20px;
-				color: #797979;
-			}
-			
-			.word_content p {
-				text-indent: 2em;
-				margin: 1em;
-				text-align: justify;
-				line-height: 2;
-				font-size: 15px;
-			}
+			@import url("../../../css/partTime/detailsWork.css");
 		</style>
 	</head>
 
 	<body>
+		<script src="../../../js/part/detailsWork.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
 		<header class="mui-bar mui-bar-nav" id="headers">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left">返回</a>
 			<h1 class="mui-title">岗位详情</h1>
@@ -157,46 +84,6 @@
 				<button id='toSignup' type="button" class="mui-btn mui-btn-block mui-btn-primary">查看报名</button>
 		</div>
 
-		<script type="text/javascript">
-			mui.init()
-			mui.plusReady(function() {
-				window.addEventListener('myid', function(event) {
-					var id  = event.detail.jobid;
-					var uid = event.detail.uid;
-					if(id != null) {
-						mui.ajax({
-							url: 'http://172.19.129.6:86/plur/getThisPlur',
-							type: 'post',
-							data: {
-								id: id,fkPublisher:uid
-							},
-							dataType: 'json',
-							success: function(data) {
-								var html = template('thisplur', data);
-								document.getElementById('thisJob').innerHTML = html;
-							}
-						})
-					} else {
-						mui.alert("获取数据失败");
-					}
-
-				}, false);
-			})
-			var detailPages = mui.preload({
-				url: "workHandle/viewPerson.html",
-				id: "workHandle/viewPerson.html"
-			});
-			document.getElementById("toSignup").addEventListener('tap',function(){
-				var pageSign = plus.webview.getWebviewById("workHandle/viewPerson.html");
-				var signstate = "报名";
-				var pkPlurid  = mui(".word_one")[0].id;
-				var persons   = mui(".word_two")[0].id;
-				mui.fire(pageSign,"toSign",{pkPlurid:pkPlurid,signstate:signstate,persons:persons});
-				mui.openWindow({
-					id : "workHandle/viewPerson.html"
-				})
-			})
-		</script>
 	</body>
 
 </html>

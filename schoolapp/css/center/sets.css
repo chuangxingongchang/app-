@@ -1,0 +1,25 @@
+.listing ul li:first-child a img {
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	float: right;
+}
+
+#imgheader {
+	margin-top: 30px;
+	font-size: 16px;
+	color: #555555;
+}
+
+.listing ul li {
+	margin-bottom: 8px;
+}
+
+.listing ul li span {
+	margin-right: 15px;
+}
+
+.listing ul li span:first-child {
+	float: right;
+	color: #777777;
+}

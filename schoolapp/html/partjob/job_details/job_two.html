@@ -9,84 +9,7 @@
 		<script src="../../../js/mui.min.js"></script>
 		<script src="../../../js/template-web.js"></script>
 		<style>
-			#headers {
-				background-color: black;
-			}
-			
-			#headers a {
-				color: white;
-				font-size: 16px;
-				margin-top: 5px;
-			}
-			
-			#headers h1 {
-				color: white;
-			}
-			
-			.word_one {
-				width: 100%;
-				position: relative;
-				height: 70px;
-			}
-			
-			.word_one .word_one-one {
-				width: 60%;
-				float: left;
-				font-size: 20px;
-				margin: 20px 0px 0 20px;
-				overflow: hidden;
-			}
-			
-			.word_one .word_one-two {
-				width: 28%;
-				float: right;
-				color: red;
-				margin-top: 20px;
-			}
-			
-			.word_two .word_two-one {
-				display: inline-block;
-				margin-left: 20px;
-				font-size: 13px;
-				color: #929292;
-			}
-			
-			.word_three ul {
-				list-style: none;
-				padding: 20px;
-			}
-			
-			.word_three ul li {
-				color: ;
-				font-size: 15px;
-				
-			}
-			
-			ul li span:last-child{
-				color: #007AFF;
-			}
-			.word_four .mui-table-view {
-				height: 80px;
-				background-image: url(../../../image/background/7548d5d9df913029f13ab9f57061b34b.jpg);
-			}
-			
-			.word_four ul li {
-				padding-top: 30px;
-				color: #797979;
-			}
-			
-			.word_content label {
-				margin-left: 20px;
-				color: #797979;
-			}
-			
-			.word_content p {
-				text-indent: 2em;
-				margin: 1em;
-				text-align: justify;
-				line-height: 2;
-				font-size: 15px;
-			}
+			@import url("../../../css/job/job_two.css");
 		</style>
 	</head>
 
@@ -180,32 +103,10 @@
 				</script>
 			</div>
 		</div>
-
+		<script src="../../../js/job/job_two.js"></script>
 		<script type="text/javascript">
 			mui.init()
-			mui.plusReady(function() {
-				window.addEventListener('myid', function(event) {
-					var id  = event.detail.jobid;
-					var uid = event.detail.uid;
-					if(id != null) {
-						mui.ajax({
-							url: 'http://172.19.129.6:86/plur/getThisPlur',
-							type: 'post',
-							data: {
-								id: id,fkPublisher:uid
-							},
-							dataType: 'json',
-							success: function(data) {
-								var html = template('thisplur', data);
-								document.getElementById('thisJob').innerHTML = html;
-							}
-						})
-					} else {
-						mui.alert("获取数据失败");
-					}
-
-				}, false);
-			})
+			
 		</script>
 	</body>
 

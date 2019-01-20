@@ -1,3 +1,4 @@
+var service_url = "http://192.168.0.101/";
 mui.plusReady(function(){
 	open('reg',"register.html");
 	open('forgetPassword',"forget.html");
@@ -6,7 +7,7 @@ mui.plusReady(function(){
 function myLogin(){
 	
 	mui.ajax({
-		url  : 'http://172.19.129.6:86/touser/logins',
+		url  : service_url+'touser/logins',
 		type : 'post',
 		async : false,
 		timeout : 10000,
@@ -18,7 +19,7 @@ function myLogin(){
 			}else{
 				if(phoneno != null) {
 					mui.ajax({
-						url: 'http://172.19.129.6:86/touser/getUser',
+						url: service_url+'touser/getUser',
 						type: 'post',
 						async : false,
 						data: {
@@ -28,12 +29,17 @@ function myLogin(){
 						dataType: 'json',
 						success: function(data) {
 							if(data.scms.status==false){
-								mui.alert("获取第一页用户失败");
+								mui.toast("获取用户失败");
 							}else{
 								var tuser = JSON.stringify(data.tuser);
 								localStorage.setItem('phone',data.tuser.phoneno);
 								localStorage.setItem('tuser',tuser);
-								plus.webview.create('../zmain/first.html').show();
+								mui.openWindow({
+									url : '../zmain/first.html',
+									id  : '../zmain/first.html'
+								})
+// 								mui.fire('../zmain/first.html','refresh',{})
+// 								plus.webview.getWebviewById('../zmain/first.html').show();
 							}
 						}
 					})
