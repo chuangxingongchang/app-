@@ -73,15 +73,16 @@
 			if(""!=localStorage.getItem('schoolname')&&localStorage.getItem('schoolname')!=null){
 				schoolname = localStorage.getItem('schoolname');
 			}
-			var detailPage = mui.preload({
-					url: "html/zmain/selectSchool.html",
-					id: 'html/zmain/selectSchool.html'
-				});
-			var schoolPage = mui.preload({
-				url : "html/zmain/first.html",
-				id  : 'html/zmain/first.html'
-			})
+			
 			mui.plusReady(function() {
+				var detailPage = mui.preload({
+						url: "html/zmain/selectSchool.html",
+						id: 'html/zmain/selectSchool.html'
+					});
+				var schoolPage = mui.preload({
+					url : "html/zmain/first.html",
+					id  : 'html/zmain/first.html'
+				})
 				var slider = mui('.mui-slider');
 				slider.slider({
 					interval:500
@@ -91,11 +92,13 @@
 			document.getElementById('pass').addEventListener('tap', function() {
 					if(!schoolname||""==schoolname){
 						mui.openWindow({
+							url: "html/zmain/selectSchool.html",
 							id: 'html/zmain/selectSchool.html'
 						})
 					}else{
 						mui.openWindow({
-							id: 'html/zmain/first.html'
+							url : "html/zmain/first.html",
+							id  : 'html/zmain/first.html'
 						})
 					}
 				})

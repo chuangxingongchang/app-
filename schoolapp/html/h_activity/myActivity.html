@@ -18,7 +18,7 @@
 					id: "userActivity.html"
 				}]
 			})
-			var internet = "http://172.19.129.6:86";
+			var internet = "http://192.168.0.104";
 			var user = JSON.parse(localStorage.getItem('tuser'));
 			$(function() {
 				/*
@@ -61,28 +61,26 @@
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title">我的活动</h1>
 		</header>
-		<div class="mui-content">
-			<div id="">
+		<div class="mui-content">			
+			<div id="text">
 				<ul class="mui-table-view">
 					<li class="mui-table-view-cell mui-collapse">
 						<a class="mui-navigate-right" href="#">我的活动</a>
 						<div class="mui-collapse-content">
-							<div id="or_list">
-								<ol id="myActivityList">
-									<script type="text/html" id="tpl">
-										<%for(var i=0; i<userActivity.length; i++){%>
-											<li id="<%=userActivity[i].id%>">
-											<a href="" style="color: yellowgreen"><%=userActivity[i].titles%></a>
-											</li>
-										<%}%>
-									</script>
-								</ol>
-							</div>
+							<ol id="myActivityList">
+								<script type="text/html" id="tpl">
+									<%for(var i=0; i<userActivity.length; i++){%>
+										<li id="<%=userActivity[i].id%>">
+										<a href="" style="color: yellowgreen"><%=userActivity[i].titles%></a>
+										</li>
+									<%}%>
+								</script>
+							</ol>
 						</div>
 					</li>
 					<li class="mui-table-view-cell mui-collapse">
 						<a class="mui-navigate-right" href="#">已报名活动</a>
-						<div class="mui-collapse-content">
+							<div class="mui-collapse-content">
 							<div id="activity_list">
 								<ul>
 									<li>活动标题1&nbsp;&nbsp;<span style="color: red;">审核中...</span></li>
@@ -91,12 +89,11 @@
 							</div>
 						</div>
 					</li>
-				</ul>
-			</div>
-			<div id="">
-				<ul class="mui-table-view">
-					<li class="mui-table-view-cell">
-						<a href="organization.html">发布活动</a>
+					<li class="mui-table-view-cell mui-collapse">
+						<a class="mui-navigate-right" href="#">发布活动</a>
+						<div class="mui-collapse-content">
+							<a href="organization.html">发布活动</a>
+						</div>
 					</li>
 				</ul>
 			</div>
