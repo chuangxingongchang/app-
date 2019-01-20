@@ -100,6 +100,19 @@
 					})
 			});
 			
+			document.getElementById('pass').addEventListener('tap', function() {
+					if(!schoolname||""==schoolname){
+						mui.openWindow({
+							url: "html/zmain/selectSchool.html",
+							id: 'html/zmain/selectSchool.html'
+						})
+					}else{
+						mui.openWindow({
+							url : "html/zmain/first.html",
+							id  : 'html/zmain/first.html'
+						})
+					}
+				})
 		</script>
 	</body>
 
