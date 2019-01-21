@@ -233,7 +233,7 @@ mui('#main').on('tap', 'mind>button', function() {
 			dataType: 'json',
 			type: 'post',
 			data: {
-				userId: 2,
+				userId: user.id,
 				deid: article_user_id
 			},
 			success: function(data, su, http) {
@@ -258,7 +258,7 @@ mui('#main').on('tap', 'mind>button', function() {
 			dataType: 'json',
 			type: 'post',
 			data: {
-				mindUserId: 2,
+				mindUserId: user.id,
 				decideUserId: article_user_id
 			},
 			success: function(data, su, http) {
@@ -308,6 +308,7 @@ mui('.difination-maggin15px').on('tap', 'label', function() {
 	var type = this.getAttribute('name')
 	var sign = document.querySelectorAll('.difination-maggin15px>label')
 	var id_article = parseInt(sessionStorage.getItem('article_id'))
+	console.log(type)
 	if(type == 'yes') {
 		sign[0].style.display = 'none'
 		sign[1].style.display = 'block'
@@ -333,7 +334,7 @@ mui('.difination-maggin15px').on('tap', 'label', function() {
 		sign[0].style.display = 'block'
 		sign[1].style.display = 'none'
 		mui.ajax({
-			url: service_url + 'sign/delete',
+			url: service_url + 'sign/add',
 			data: {
 				userId: user.id,
 				articleId: id_article
@@ -390,6 +391,7 @@ mui('.difination-maggin15px').on('tap', 'span', function() {
 	var type = this.getAttribute('name')
 	var applaud = document.querySelectorAll('.difination-maggin15px>span')
 	var id_article = parseInt(sessionStorage.getItem('article_id'))
+	console.log(type)
 	if(type == 'yes') {
 		applaud[0].style.display = 'none'
 		applaud[1].style.display = 'block'
@@ -405,7 +407,7 @@ mui('.difination-maggin15px').on('tap', 'span', function() {
 			type: 'post',
 			success: function(data, su, http) {
 				if(http.readyState == 4 && http.status == 200) {
-
+					
 				}
 			},
 			error: function(http, er) {
@@ -417,7 +419,7 @@ mui('.difination-maggin15px').on('tap', 'span', function() {
 		applaud[0].style.display = 'block'
 		applaud[1].style.display = 'none'
 		mui.ajax({
-			url: service_url + 'sign/delete',
+			url: service_url + 'applaud/add',
 			data: {
 				userId: user.id,
 				articleId: id_article
@@ -427,6 +429,7 @@ mui('.difination-maggin15px').on('tap', 'span', function() {
 			type: 'post',
 			success: function(data, su, http) {
 				if(http.readyState == 4 && http.status == 200) {
+					console.log(data)
 
 				}
 			},

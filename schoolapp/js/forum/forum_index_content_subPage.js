@@ -187,7 +187,7 @@ function pullUpRefresh() {
 						}
 						mui.toast("为你推荐了" + leng + "篇文章");
 					} else {
-						mui.toast("没有最新文章");
+						mui.toast("没有更多数据");
 					}
 				}
 				mui('#templates_li').pullRefresh().endPullup();
@@ -209,13 +209,14 @@ function pullUpRefresh() {
 function addUpData(data) {
 	var table = document.body.querySelector('.mui-table-view');
 	for(var i = 0; i < data.listTypeForumVo.length; i++) {
-
+		//console.log(data.listTypeForumVo[i].fkUserKey.id)  
 		var li = document.createElement('li');
 		li.innerHTML =
 			'<li class="mui-table-view-cell mui-media">' +
+			'<label name="'+data.listTypeForumVo[i].id+'">'+
 			'<div class="mui-media-body">' +
 			'<span>' + data.listTypeForumVo[i].title + '</span>' +
-			'<p class="mui-ellipsis">' + data.listTypeForumVo[i].contentDescribe + '</p></div>' +
+			'<p class="mui-ellipsis">' + data.listTypeForumVo[i].contentDescribe + '</p></div></label>' +
 			'<div class="difination-div-top5px"><p class="mui-ellipsis">' +
 			'<img class="difination-img-radius" src="' + data.listTypeForumVo[i].fkUserKey.avatar + '" />' +
 			'<span>' + data.listTypeForumVo[i].fkUserKey.nickname + '</span>' +

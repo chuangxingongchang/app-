@@ -75,7 +75,13 @@
 						return p(e, n)
 					} catch(f) {
 						if(!t.compileDebug) return t.cache = !1, t.compileDebug = !0, u(t)(e, n);
+						try{
+							
+					
 						if(f = new o(f), t.bail) throw f;
+							}catch(e){
+							//TODO handle the exception
+						}
 						return s(f, t)()
 					}
 				};

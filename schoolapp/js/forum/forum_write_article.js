@@ -113,10 +113,11 @@ document.getElementById('submit').addEventListener('tap', function() {
 										mui.trigger(document.getElementById('personal_id'),'tap')
 									}
 								}, 1000)
-								location.reload()
 							}
 						}
-
+						setTimeout(function(){
+							location.reload()
+						},8090)
 					},
 					error: function(http, er) {
 						errorAJAX(http)
@@ -400,5 +401,7 @@ document.getElementById('personal_id').addEventListener('tap', function() {
 /*------------------------------content-----end-----------------------------------------------------*/
 //返回箭头
 document.getElementById('back_a').addEventListener('tap', function() {
-	location.reload()
+	setTimeout(function(){
+		location.reload()
+	},500)
 })

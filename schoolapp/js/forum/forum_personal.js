@@ -107,3 +107,4 @@ mui('#main').on('tap','hot>ul',function(){
 		id:'forum_article_main_content.html'
 	})
 })
+
