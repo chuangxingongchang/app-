@@ -12,6 +12,7 @@
 		<script src="../../js/template-web.js"></script>
 		<script src="../../js/openwindow.js"></script>
 		<script src="../../js/job/jobon.js"></script>
+		<script src="../../js/js_util/activityon.js"></script>
 		<style>
 			@import url("../../css/first/first.css");
 		</style>
@@ -24,7 +25,7 @@
 		</script>
 		<header class="mui-bar mui-bar-nav">
 			<h1 id="title" class="mui-title">首页</h1>
-			<img class="mui-pull-right" src="../../image/header/header.jpg" id="persons" />
+			<img class="mui-pull-right" src="../../image/percenter/imgno.png" id="persons" />
 		</header>
 		<div class="mui-content">
 			<div class="mains">
@@ -121,7 +122,7 @@
 								<div class=" mui-media-body main_content">
 									<span class="thetitle">{{pl.subject}}</span>
 									<span class="main_content_v">发布于:{{pl.releasetime}}</span>
-									<span class="mui-ellipsis">{{pl.workcontent}}</span>
+									<span class="mui-ellipsis">详情:&nbsp;{{pl.workcontent}}</span> 
 								</div>
 								<div class="mui-badge mui-badge-inverted">
 									￥<span>{{pl.money}}</span> 
@@ -158,17 +159,34 @@
 					</div>
 					<div id="specialActivity">
 						<script id="specialac" type="text/html">
-							<ul class="mui-table-view">
-								<li class="mui-table-view-cell mui-media">
-									<a href="javascript:;" class="mui-navigate-right">
-										<img class="mui-media-object mui-pull-left" src="../../image/first/today/3.jpg">
-										<div class="mui-media-body">
-											篮球
-											<p class="mui-ellipsis">能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
+							{{if ayms.status==true}}
+							<ul>
+							  {{each alist as al}}
+								<li id="{{al.id}}" name="{{al.fkUserid}}">
+									<div class="mui-card">
+										<div class="mui-card-header mui-card-media" style="height:40vw; background-image:url({{al.images}})"></div>
+										<div class="mui-card-content">
+											<div class="mui-card-content-inner">
+												<span><i class="aci">主题:</i>{{al.titles}}</span>
+												<span class="mui-pull-right"><i class="aci">发布于:</i>{{al.createtime}}</span>
+												<span class="mui-ellipsis"><i class="aci">内容:&nbsp;</i>{{al.content}}</span>
+											</div>
 										</div>
-									</a>
+									</div>
 								</li>
+								{{/each}}
 							</ul>
+							{{/if}}
+							{{if ayms.status==false}}
+							<div class="mui-card">
+								<div class="mui-card-header mui-card-media" style="height:40vw;background-image:url(../../image/img_activity/other.jpg)"></div>
+								<div class="mui-card-content">
+									<div class="mui-card-content-inner">
+										<p style="color: #333;">当前学校无活动，敬请等待...</p>
+									</div>
+								</div>
+							</div>
+							{{/if}}
 						</script>
 					</div>
 					<div class="butts">
@@ -195,9 +213,5 @@
 	</body>
 	<script type="text/javascript">
 			mui.init()
-			mui.plusReady(function() {
-				open('activity', "../h_activity/activitys.html");
-				
-			})
 		</script>
 </html>

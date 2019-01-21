@@ -54,7 +54,7 @@
 						</ul>
 					</div>
 					<div class="word_four">
-						<ul class="mui-table-view">
+						<ul class="mui-table-view" style="background-image: url(../../../image/background/mapo.jpg);">
 							<li class="mui-table-view-cell">
 								<label>
 		    	                	工作地点：
@@ -119,7 +119,12 @@
 			mui.init()
 		</script>
 		<script>
-				function toSignup(e){
+			var phoneno = "";
+			if(localStorage.getItem('phone')!=null){
+					phoneno = localStorage.getItem('phone');
+			 }
+			function toSignup(e){
+			   if(phoneno != null&&phoneno!="") {	
 				mui.ajax({
 					url:service_url+'sign/startSignup',
 					type: 'post',
@@ -151,6 +156,12 @@
 						}
 					}
 				})
+			  }else{
+			  	mui.openWindow({
+			  		url  : '../../person/login.html',
+			  		id   : '../../person/login.html'
+			  	})
+			  }		
 			}
 		</script>
 	</body>

@@ -1,5 +1,5 @@
 
-var service_url = "http://192.168.0.101/";
+var service_url = "http://172.19.129.6/";
 var user = JSON.parse(localStorage.getItem('tuser'));
 var fkPublishers = "";
 if (user != null) {

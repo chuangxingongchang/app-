@@ -61,16 +61,12 @@ ul li span:last-child {
 
 .word_four .mui-table-view {
 	height: 80px;
-	background-image: url(../../image/background/mapo.jpg) no-repeat center center fixed;
-	-webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
 	background-size: cover;
 }
 
 .word_four ul li {
 	padding-top: 30px;
-	color: #797979;
+	color: #A52A2A;
 }
 
 .word_content label {

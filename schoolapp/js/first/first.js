@@ -1,4 +1,4 @@
-var service_url = "http://192.168.0.104/";
+var service_url = "http://172.19.129.6/";
 var schoolname = "";
 var user = "";
 var phoneno = "";
@@ -19,7 +19,6 @@ mui.plusReady(function() {
 	slider.slider({
 		interval: 2000
 	});
-	
 	if(phoneno != null&&phoneno!="") {
 		mui.ajax({
 			url: service_url+'touser/getUser',
@@ -47,66 +46,16 @@ mui.plusReady(function() {
 				})
 			}
 		})
+		
 		open("parttp",'part.html');
 		open("centertp",'centero.html');
-		open("jobtp",'job.html');
 		open("forums",'../forum/forum_index.html');
 	}else{
 		document.getElementById("persons").src = "../../image/header/header.jpg";
-		document.getElementById("persons").addEventListener('tap',function(){
-			mui.openWindow({
-				url : "../person/login.html",
-				id : "goback",
-				createNew: true,
-				waiting: {
-					autoShow: true,
-					titile: '正在加载...'
-				}
-			})
-		})
-		document.getElementById("parttp").addEventListener('tap',function(){
-			mui.openWindow({
-				url : "../person/login.html",
-				id : "goback",
-				createNew: true,
-				waiting: {
-					autoShow: true,
-					titile: '正在加载...'
-				}
-			})
-		})
-		document.getElementById("centertp").addEventListener('tap',function(){
-			mui.openWindow({
-				url : "../person/login.html",
-				id : "goback",createNew: true,
-					waiting: {
-						autoShow: true,
-						titile: '正在加载...'
-					}
-			})
-		})
-		document.getElementById("jobtp").addEventListener('tap',function(){
-			mui.openWindow({
-				url : "../person/login.html",
-				id : "goback",
-				createNew: true,
-					waiting: {
-						autoShow: true,
-						titile  : '正在加载...'
-					}
-			})
-		})
-		document.getElementById("forums").addEventListener('tap',function(){
-			mui.openWindow({
-				url : "../person/login.html",
-				id : "goback",
-				createNew: true,
-					waiting: {
-						autoShow: true,
-						titile: '正在加载...'
-					}
-			})
-		})
+		open("persons",'../person/login.html');
+		open("parttp",'../person/login.html');
+		open("centertp",'../person/login.html');
+		open("forums",'../person/login.html');
 	}
 
 	if(user!=null&&user!=""){
@@ -124,17 +73,21 @@ mui.plusReady(function() {
 		avatar  = user.avatar ;
 	}
 	
-	
+	open("jobtp",'job.html');
 	open("jobmore",'job.html');
 	open("activitymore",'../h_activity/activitys.html');
+	open('activity', "../h_activity/activitys.html");
 	if(schoolname!=null&&""!=schoolname){
 		attrJobByAccountTime();
 	}
+	if(schoolname!=null&&""!=schoolname){
+		getActivityByTime();
+	}
 	toPage("#specialjob","../partjob/job_details/job_one.html");
+    toAcTtivity("#specialActivity","../h_activity/activitydetails.html");
 });
 
 function attrJobByAccountTime(){
-	if(schoolname!=null&&""!=schoolname){
 		mui.ajax({
 			url  : service_url+'plur/plurByaccountAndtimeDesc',
 			type : 'post',
@@ -143,6 +96,7 @@ function attrJobByAccountTime(){
 			data : {schoolname :schoolname},
 			dataType : 'json',
 			success  : function(data){
+				
 				var html = template('allJobByaccountTime',data);
 				document.getElementById('specialjob').innerHTML = html;
 			},error  : function(timeout,xhr,type){
@@ -152,10 +106,23 @@ function attrJobByAccountTime(){
 				})
 			}
 		})
-	}else{
-		mui.openWindow({
-			url : 'error.html',
-			id  : 'error.html'
+}
+function getActivityByTime(){
+		mui.ajax({
+			url  : service_url+'activity/selectActivityByTimeDesc',
+			type : 'post',
+			async: false,
+			timeout : 20000,
+			data : {schoolname :schoolname},
+			dataType : 'json',
+			success  : function(data){
+				var html = template('specialac',data);
+				document.getElementById('specialActivity').innerHTML = html;
+			},error  : function(timeout,xhr,type){
+				mui.openWindow({
+					url : 'error.html',
+					id  : 'error.html'
+				})
+			}
 		})
-	}
 }

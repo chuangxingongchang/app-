@@ -1,20 +1,16 @@
 /*
  模拟用户登录
  * */
-var service_url = "http://172.19.129.6:86/"
-var tuser = { //模拟用户登录
-	"id": '1',
-	"nickname": 'xitao',
-	"avatar": 'http://img'
-
-}
-tuser = JSON.stringify(tuser)
-localStorage.setItem('tuser', tuser)
+var service_url = "http://172.19.129.6/"
 var user = JSON.parse(localStorage.getItem("tuser"))
 /*第一次初始化*/
 
 mui.plusReady(function() {
 	//获取类型
+	var personalPage = mui.preload({ 
+		url : 'forum_personal.html',
+		id : 'forum_personal.html'
+	})
 	mui.ajax({
 		url: service_url + 'type/all',
 		dataTyep: 'json',
@@ -40,7 +36,7 @@ document.getElementById('personal').addEventListener('tap', function() {
 		user_id: user.id
 	})
 	mui.openWindow({
-		url: "forum_personal.html",
+		id: "forum_personal.html",
 		show:{
 	      autoShow:true,//页面loaded事件发生后自动显示，默认为true
 	      duration:200//页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒；

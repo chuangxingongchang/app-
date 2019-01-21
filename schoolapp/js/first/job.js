@@ -1,9 +1,14 @@
-var service_url = "http://192.168.0.101/";
+var service_url = "http://172.19.129.6/";
 var fkSchoolId = "";
 var schoolname = "";
+var phoneno = "";
 if(localStorage.getItem("schoolname")!=null){
 	   schoolname = localStorage.getItem("schoolname");
    }
+
+if(localStorage.getItem('phone')!=null){
+	phoneno = localStorage.getItem('phone');
+}
 mui.plusReady(function() {
 	if(schoolname!=null&&schoolname!=""){
 		mui("#Myschool")[0].innerText = schoolname;
@@ -28,17 +33,23 @@ mui.plusReady(function() {
 		})
 	}
 	
+	if(phoneno != null&&phoneno!="") {
+		open('job_myjob', "../partjob/myjob.html");
+		open('job_income', "../partjob/income.html");
+		open("parttp", 'part.html');
+		open("centertp", 'centero.html');
+	}else{
+		open('job_myjob', "../person/login.html");
+		open('job_income', "../person/login.html");
+		open("parttp",'../person/login.html');
+		open("centertp",'../person/login.html');
+	}
 	attrMainJob();
 	attrPopularJob();
 	attrRestJob();
 	open("firstp", 'first.html');
-	open("parttp", 'part.html');
-	open("jobtp", 'job.html');
-	open("centertp", 'centero.html');
-	open('job_myjob', "../partjob/myjob.html");
 	open('shortjob', "../partjob/shortjob.html");
 	open('longjob', "../partjob/longjob.html");
-	open('job_income', "../partjob/income.html");
 	toPage('#item1mobile', '../partjob/job_details/job_one.html');
 	toPage('#item2mobile', '../partjob/job_details/job_one.html');
 	toPage('#item3mobile', '../partjob/job_details/job_one.html');

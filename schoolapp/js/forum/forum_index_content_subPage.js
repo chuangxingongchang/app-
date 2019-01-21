@@ -1,11 +1,5 @@
-var service_url = "http://172.19.129.6:86/"
-var tuser = { //模拟用户登录
-	"id": '1',
-	"uname": 'xitao'
-}
+var service_url = "http://172.19.129.6/"
 var leng = 0
-tuser = JSON.stringify(tuser)
-localStorage.setItem('tuser', tuser)
 var user = JSON.parse(localStorage.getItem("tuser"))
 //清除(每次加载 就执行ready查询)
 var count = 0

@@ -1,4 +1,4 @@
-var service_url = "http://192.168.0.101/";
+var service_url = "http://172.19.129.6/";
 	mui.plusReady(function() {
 		addressInit('cmbProvince', 'cmbCity', 'cmbArea');
 		document.getElementById("complete").addEventListener('tap', function() {

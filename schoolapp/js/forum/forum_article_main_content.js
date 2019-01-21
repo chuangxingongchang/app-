@@ -1,7 +1,7 @@
  /*
  模拟用户登录
  * */
-var service_url = "http://172.19.129.6:86/"
+var service_url = "http://172.19.129.6/"
 //当前用户
 var user = JSON.parse(localStorage.getItem("tuser"))
 var comment_user_name //评论人

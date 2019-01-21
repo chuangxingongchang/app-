@@ -1,11 +1,11 @@
-var service_url = "http://192.168.0.101/";
+var service_url = "http://172.19.129.6/";
+var phReg = /^1(3|4|5|7|8)\d{9}$/;
 mui.plusReady(function(){
 	open('reg',"register.html");
 	open('forgetPassword',"forget.html");
 	
 })
 function myLogin(){
-	
 	mui.ajax({
 		url  : service_url+'touser/logins',
 		type : 'post',

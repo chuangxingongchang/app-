@@ -1,4 +1,4 @@
-var service_url = "http://172.19.129.6:86/"
+var service_url = "http://172.19.129.6/"
 var tuser = { //模拟用户登录
 	"id": '1',
 	"uname": 'xitao'

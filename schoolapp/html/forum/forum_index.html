@@ -76,13 +76,15 @@
 		</div>
 
 	</body>
-	<script src="../../js/forum/mui.js"></script>
-	<script src="../../js/forum/jquery3.3.js"></script>
+	<script src="../../js/mui.min.js"></script>
+	<script src="../../js/jquery.js"></script>
 	<script src="../../js/forum/forum_index.js"></script>
 	<script src="../../js/forum/template-web.js"></script>
 	<script src="../../js/common/alert_error.js"></script>
+	<script src="../../js/openwindow.js"></script>
 	<script>
-		mui.init({
+		mui.init(
+		{
 			subpages: [{
 				url: 'forum_index_content_subPage.html',
 				id: 'forum_index_content_subPage.html',
@@ -91,7 +93,8 @@
 					bottom: '45px'
 				}
 			}]
-		});
+		}
+		);
 		mui.plusReady(function(){
 			open("firstp",'first.html');
 			open("parttp",'part.html');

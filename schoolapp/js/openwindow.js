@@ -6,7 +6,6 @@ function open(id, e) {
 			id  : e,
 			createNew : true,
 			waiting: {
-				autoShow : true,
 				titile   : '正在加载...'
 			}
 		});

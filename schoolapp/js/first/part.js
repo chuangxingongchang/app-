@@ -1,4 +1,4 @@
-var service_url = "http://192.168.0.101/";
+var service_url = "http://172.19.129.6/";
 var user = JSON.parse(localStorage.getItem('tuser'));
 var fkPublisher = "";
 var phoneno = "";
@@ -31,7 +31,6 @@ mui.plusReady(function() {
 	}
 	toPage("#publisherPlur", '../parttime/relDetails/detailsWork.html');
 	open("firstp", 'first.html');
-	open("parttp", 'part.html');
 	open("jobtp", 'job.html');
 	open("centertp", 'centero.html');
 	open("newcreate", '../parttime/newParttime.html');

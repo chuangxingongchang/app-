@@ -1,4 +1,4 @@
-var service_url = "http://192.168.0.101/";
+var service_url = "http://172.19.129.6/";
 var schoolname = "";
 var seachna = "";
 if (localStorage.getItem("schoolname") != null) {

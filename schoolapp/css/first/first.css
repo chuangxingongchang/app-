@@ -1,6 +1,6 @@
 html,
 body {
-	background-color: #efeff4;
+	background-color: #efeff4;padding: 0px;margin: 0px;
 }
 
 .mui-bar-nav {
@@ -33,7 +33,6 @@ body {
 .jsotitle {
 	padding: 15px;
 	border-bottom: 1px solid #6D6D72;
-	margin-bottom: 3px;
 }
 
 .jsotitle span:last-child {
@@ -65,7 +64,28 @@ body {
 	font-size: 16px;
 	color: red;
 }
-
+#activitymore{
+	display: inline;
+}
 #specialActivity {
 	margin-bottom: 60px;
+}
+#specialActivity ul {
+	display: inline;
+}
+
+#specialActivity ul li .mui-card-content-inner span:last-child{
+	display: block;
+}
+#specialActivity ul li .mui-card-content-inner span{
+	color: #003366;
+}
+#specialActivity ul li .mui-card-content-inner span:first-child{
+	overflow: hidden;
+}
+#specialjob .mui-ellipsis,#specialActivity .mui-ellipsis{
+	color: #929292;
+}
+.aci{
+	margin-right:5px ;color: #929292;
 }

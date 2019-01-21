@@ -1,4 +1,4 @@
-var service_url = "http://172.19.129.6:86/"
+var service_url = "http://172.19.129.6/"
 var count = 0 //查询过点两次 没查询点一次
 mui.plusReady(function() {
 	//查询下有没有搜索记录
