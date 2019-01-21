@@ -60,7 +60,7 @@
 			</div>
 		</div>
 		<script>
-			var service_url = "http://192.168.0.101/";
+			var service_url = "http://172.19.129.6/";
 			var codes = "";
 			document.getElementById("updatepw").addEventListener("tap", function() {
 				var pwReg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{5,20}$/;
@@ -92,7 +92,11 @@
 												mui.alert(data.message.msg);
 												mui.openWindow({
 													url: 'login.html',
-													id: 'login.html'
+													id: 'login.html',
+													createNew : true,
+													waiting: {
+														titile   : '正在加载...'
+													}
 												})
 											}
 										}
@@ -101,7 +105,7 @@
 									mui.toast("两次密码不一致");
 								}
 							} else {
-								mui.toast("请输入密码");
+								mui.toast("您输入密码的不符合");
 							}
 						}else{
 							mui.toast("验证码输入有误");
@@ -123,11 +127,9 @@
 					dataType: "json",
 					success: function(data) {
 						if(!data.mss.status) {
-							mui.openWindow({
-								url : '../zmain/error.html',
-								id  : '../zmain/error.html'
-							})
+							mui.toast(data.mss.msg);
 						}else{
+							mui.toast("发送成功")
 							codes  = data.mss.data;
 						}
 					}

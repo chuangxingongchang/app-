@@ -25,5 +25,4 @@ mui.plusReady(function() {
 		})
 	}
 	toPage("#job_content", "job_details/job_two.html");
-	toBefore("../zmain/job.html");
 })
