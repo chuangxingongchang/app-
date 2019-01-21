@@ -169,145 +169,175 @@
         "adid" : "123881140412"
     },
     "dependencies" : {
-        "pages" : {
-            "index.html" : {
-                "resources" : [],
-                "refer" : [ "html/first.html" ],
-                "priority" : 0
-            },
-            "html/first.html" : {
-                "resources" : [ "html/button.html" ],
-                "refer" : [],
-                "priority" : 0
-            },
-            "html/button.html" : {
-                "resources" : [],
-                "refer" : [ "html/partjob/job.html" ],
-                "priority" : 0
-            },
-            "html/partjob/job.html" : {
-                "resources" : [ "html/button.html" ],
-                "refer" : [
-                    "html/partjob/job_details/job_one.html",
-                    "html/partjob/job_details/my_job_coke.html"
-                ],
-                "priority" : 0
-            },
-            "html/zmain/first.html" : {
-                "resources" : [],
-                "refer" : [
-                    "html/zmain/part.html",
-                    "html/zmain/job.html",
-                    "html/person/login.html",
-                    "html/zmain/centero.html"
-                ],
-                "priority" : 0
-            },
-            "html/zmain/centero.html" : {
-                "resources" : [
-                    "image/percenter/logo/江泰.png",
-                    "image/percenter/logo/职业用.png",
-                    "image/percenter/logo/设置用.png",
-                    "image/percenter/logo/我的同事用.png",
-                    "image/percenter/logo/荣誉用.png",
-                    "image/percenter/logo/银行用.png",
-                    "image/percenter/logo/我的保单用.png"
-                ],
-                "refer" : [
-                    "html/percenter/controll/moneys.html",
-                    "html/partjob/job_details/myjob.html",
-                    "html/zmain/first.html",
-                    "html/percenter/controll/sets.html",
-                    "html/mass/mass_next/WDST.html"
-                ],
-                "priority" : 0
-            },
-            "html/person/login.html" : {
-                "resources" : [],
-                "refer" : [ "html/zmain/first.html" ],
-                "priority" : 0
-            },
-            "html/zmain/part.html" : {
-                "resources" : [],
-                "refer" : [
-                    "html/parttime/relDetails/detailsWork.html",
-                    "html/parttime/goParttime.html",
-                    "html/parttime/endParttime.html"
-                ],
-                "priority" : 0
-            },
-            "html/zmain/job.html" : {
-                "resources" : [],
-                "refer" : [ "html/partjob/job_details/job_one.html", "html/zmain/first.html" ],
-                "priority" : 0
-            },
-            "html/parttime/goParttime.html" : {
-                "resources" : [],
-                "refer" : [ "html/zmain/part.html", "html/parttime/relDetails/detailsGo.html" ],
-                "priority" : 0
-            },
-            "html/parttime/endParttime.html" : {
-                "resources" : [],
-                "refer" : [ "html/parttime/relDetails/detailsEnd.html" ],
-                "priority" : 0
-            },
-            "html/partjob/job_details/myjob.html" : {
-                "resources" : [],
-                "refer" : [ "html/partjob/job_details/job_two.html" ],
-                "priority" : 0
-            }
-        },
-        "idle" : {
-            "resources" : [
-                "html/percenter/controll/controllchild/tels.html",
-                "image/first/lun/1.jpg",
-                "image/myjob/1183020.png",
-                "image/first/lun/2.jpg",
-                "html/percenter/controll/controllchild/nickname.html",
-                "image/myjob/1183047.png",
-                "html/person/forget.html",
-                "css/first/first.css",
-                "image/myjob/1183005.png",
-                "image/welcome/lun3.jpg",
-                "html/percenter/centero.html",
-                "js/mui.js",
-                "image/first/lun/4.jpg",
-                "image/welcome/lun4.jpg",
-                "image/welcome/lun1.jpg",
-                "fonts/mui.ttf",
-                "image/header/h2.jpg",
-                "image/first/today/4.jpg",
-                "image/first/today/5.jpg",
-                "css/mui.css",
-                "js/job/jobon.js",
-                "html/percenter/controll/controllchild/pass.html",
-                "html/percenter/controll/controllchild/address.html",
-                "image/job/1194998.png",
-                "image/first/lun/3.jpg",
-                "html/percenter/controll/controllchild/idcard.html",
-                "js/openwindow.js",
-                "css/first/login.css",
-                "image/first/today/6.jpg",
-                "image/job/1194976.png",
-                "image/10522656_131855290164_2.jpg",
-                "css/index.css",
-                "image/header/h1.jpg",
-                "image/myjob/1183038.png",
-                "js/mui.min.js",
-                "image/job/1194974.png",
-                "image/job/1194992.png",
-                "image/welcome/lun2.jpg",
-                "image/first/today/3.jpg",
-                "js/first/up_header.js",
-                "image/first/today/1.jpg",
-                "html/person/register.html",
-                "image/percenter/money.jpg",
-                "js/first/login.js",
-                "css/mui.min.css",
-                "image/background/background.jpg",
-                "js/first/first.js",
-                "image/first/today/2.jpg"
-            ]
-        }
-    }
+		"pages": {
+			"index.html": {
+				"resources": [],
+				"refer": [
+					"html/first.html",
+					"html/zmain/selectSchool.html",
+					"html/zmain/first.html"
+				],
+				"priority": 0
+			},
+			"html/first.html": {
+				"resources": [
+					"html/button.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"html/button.html": {
+				"resources": [],
+				"refer": [
+					"html/partjob/job.html"
+				],
+				"priority": 0
+			},
+			"html/partjob/job.html": {
+				"resources": [
+					"html/button.html"
+				],
+				"refer": [
+					"html/partjob/job_details/job_one.html",
+					"html/partjob/job_details/my_job_coke.html"
+				],
+				"priority": 0
+			},
+			"html/zmain/first.html": {
+				"resources": [],
+				"refer": [
+					"html/zmain/part.html",
+					"html/zmain/job.html",
+					"html/person/login.html",
+					"html/zmain/centero.html",
+					"html/partjob/job_details/job_one.html"
+				],
+				"priority": 0
+			},
+			"html/zmain/centero.html": {
+				"resources": [
+					"image/percenter/logo/江泰.png",
+					"image/percenter/logo/职业用.png",
+					"image/percenter/logo/设置用.png",
+					"image/percenter/logo/我的同事用.png",
+					"image/percenter/logo/荣誉用.png",
+					"image/percenter/logo/银行用.png",
+					"image/percenter/logo/我的保单用.png"
+				],
+				"refer": [
+					"html/percenter/controll/moneys.html",
+					"html/partjob/job_details/myjob.html",
+					"html/zmain/first.html",
+					"html/percenter/controll/sets.html",
+					"html/mass/mass_next/WDST.html"
+				],
+				"priority": 0
+			},
+			"html/person/login.html": {
+				"resources": [],
+				"refer": [
+					"html/zmain/first.html"
+				],
+				"priority": 0
+			},
+			"html/zmain/part.html": {
+				"resources": [],
+				"refer": [
+					"html/parttime/relDetails/detailsWork.html",
+					"html/parttime/goParttime.html",
+					"html/parttime/endParttime.html"
+				],
+				"priority": 0
+			},
+			"html/zmain/job.html": {
+				"resources": [],
+				"refer": [
+					"html/partjob/job_details/job_one.html",
+					"html/zmain/first.html"
+				],
+				"priority": 0
+			},
+			"html/parttime/goParttime.html": {
+				"resources": [],
+				"refer": [
+					"html/zmain/part.html",
+					"html/parttime/relDetails/detailsGo.html"
+				],
+				"priority": 0
+			},
+			"html/parttime/endParttime.html": {
+				"resources": [],
+				"refer": [
+					"html/parttime/relDetails/detailsEnd.html"
+				],
+				"priority": 0
+			},
+			"html/partjob/job_details/myjob.html": {
+				"resources": [],
+				"refer": [
+					"html/partjob/job_details/job_two.html"
+				],
+				"priority": 0
+			},
+			"html/zmain/selectSchool.html": {
+				"resources": [],
+				"refer": [
+					"html/zmain/first.html"
+				],
+				"priority": 0
+			}
+		},
+		"idle": {
+			"resources": [
+				"html/percenter/controll/controllchild/tels.html",
+				"image/first/lun/1.jpg",
+				"image/myjob/1183020.png",
+				"image/first/lun/2.jpg",
+				"html/percenter/controll/controllchild/nickname.html",
+				"image/myjob/1183047.png",
+				"html/person/forget.html",
+				"css/first/first.css",
+				"image/myjob/1183005.png",
+				"image/welcome/lun3.jpg",
+				"html/percenter/centero.html",
+				"js/mui.js",
+				"image/first/lun/4.jpg",
+				"image/welcome/lun4.jpg",
+				"image/welcome/lun1.jpg",
+				"fonts/mui.ttf",
+				"image/header/h2.jpg",
+				"image/first/today/4.jpg",
+				"image/first/today/5.jpg",
+				"css/mui.css",
+				"js/job/jobon.js",
+				"html/percenter/controll/controllchild/pass.html",
+				"html/percenter/controll/controllchild/address.html",
+				"image/job/1194998.png",
+				"image/first/lun/3.jpg",
+				"html/percenter/controll/controllchild/idcard.html",
+				"js/openwindow.js",
+				"css/first/login.css",
+				"image/first/today/6.jpg",
+				"image/job/1194976.png",
+				"image/10522656_131855290164_2.jpg",
+				"css/index.css",
+				"image/header/h1.jpg",
+				"image/myjob/1183038.png",
+				"js/mui.min.js",
+				"image/job/1194974.png",
+				"image/job/1194992.png",
+				"image/welcome/lun2.jpg",
+				"image/first/today/3.jpg",
+				"js/first/up_header.js",
+				"image/first/today/1.jpg",
+				"html/person/register.html",
+				"image/percenter/money.jpg",
+				"js/first/login.js",
+				"css/mui.min.css",
+				"image/background/background.jpg",
+				"js/first/first.js",
+				"image/first/today/2.jpg"
+			]
+		}
+	}
 }
