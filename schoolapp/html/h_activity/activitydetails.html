@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/js_util/template-web.js"></script>
+	</head>
+
+	<body>
+		<script src="../../js/js_util/activitydetails.js"></script>
+		<script type="text/javascript">
+			mui.init();
+		</script>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">活动详情</h1>
+		</header>
+		<div class="mui-content">
+			<div id="tpl_html">
+				<script type="text/html" id="tpl">
+					<div>
+						<p>主题：<b id="a_title">{{ay.titles}}</b></p>
+					</div>
+					<div id="">
+						<p>活动图片</p>
+					</div>
+					<div id="uploadImg">
+						<img src="{{ay.images}}" id="userImg" style="width:350px; height: 150px;" />
+					</div>
+					<div>
+						<p>内容：{{ay.content}}</p>
+					</div>
+					<div>
+						<p>地点：{{ay.address}}</p>
+					</div>
+					<div>
+						<p>注意事项：
+							{{ay.precautions}}
+						</p>
+					</div>
+					<div>
+						<p>要求：
+							{{ay.claim}}
+						</p>
+					</div>
+					<div>
+						<p>对象：
+							{{ay.objects}}
+						</p>
+					</div>
+					<div>
+						<p id="">当前报名人数：
+							<span id="currentNum">{{ay.currentnum}}</span>
+						</p>
+					</div>
+			</div>
+			<div>
+				<p>截止时间：<span id="endTime">{{ay.activitytime}}</span></p>
+			</div>
+			<div>
+				<p>组织者：<span id="organizer">{{usr.truename}}</span></p>
+				<p>联系电话：<span id="phone"></span>{{usr.phoneno}}</p>
+			</div>
+			<div>
+				<p>发布时间：<span id="releaseTime">{{ay.createtime}}</span></p>
+			</div>
+				<p id="butF"><button class="mui-btn mui-btn-primary mui-btn-outlined" onclick="toAcSignup(this)">报名参加</button></p>
+			</script>	
+		</div>
+		<script>
+			var phoneno = "";
+			if(localStorage.getItem('phone')!=null){
+				    phoneno = localStorage.getItem('phone');
+			 }
+				function toAcSignup(e){
+					if(phoneno != null&&phoneno!="") {
+						var user = JSON.parse(localStorage.getItem('tuser'));
+					mui.ajax({
+						url:service_url+'activityuser/intoSignupAc',
+						type: 'post',
+						data: {
+							acId: idnum,
+							userId: user.id
+						},
+						timeout: 10000,
+						dataType: 'json',
+						success: function(data) {
+							if (data.inms.status == true) {
+								mui.toast("报名成功");
+							} else {
+								mui.alert("您已经报名了");
+							}
+						}
+					})
+				}else{
+					mui.openWindow({
+						url  : '../person/login.html',
+						id   : '../person/login.html'
+					})
+				}	
+			}
+		</script>
+	</body>
+</html>
