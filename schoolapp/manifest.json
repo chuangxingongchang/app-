@@ -210,7 +210,9 @@
 					"html/zmain/job.html",
 					"html/person/login.html",
 					"html/zmain/centero.html",
-					"html/partjob/job_details/job_one.html"
+					"html/partjob/job_details/job_one.html",
+					"html/zmain/error.html",
+					"html/forum/forum_index.html"
 				],
 				"priority": 0
 			},
@@ -283,6 +285,55 @@
 				"resources": [],
 				"refer": [
 					"html/zmain/first.html"
+				],
+				"priority": 0
+			},
+			"html/forum/forum_index.html": {
+				"resources": [
+					"html/forum/forum_index_content_subPage.html"
+				],
+				"refer": [
+					"html/forum/forum_index_input_sub_page.html",
+					"html/forum/forum_personal.html",
+					"html/forum/forum_article_main_content.html"
+				],
+				"priority": 0
+			},
+			"html/forum/forum_index_input_sub_page.html": {
+				"resources": [],
+				"refer": [
+					"html/forum/forum_article_main_content.html"
+				],
+				"priority": 0
+			},
+			"html/forum/forum_personal.html": {
+				"resources": [],
+				"refer": [
+					"html/forum/forum_personale_mind_fans.html",
+					"html/forum/forum_article_sign.html",
+					"html/forum/forum_write_article.html",
+					"html/forum/forum_emit_article.html"
+				],
+				"priority": 0
+			},
+			"html/forum/forum_article_main_content.html": {
+				"resources": [],
+				"refer": [
+					"html/forum/forum_personal.html"
+				],
+				"priority": 0
+			},
+			"html/percenter/controll/sets.html": {
+				"resources": [],
+				"refer": [
+					"html/zmain/first.html"
+				],
+				"priority": 0
+			},
+			"html/forum/forum_article_sign.html": {
+				"resources": [],
+				"refer": [
+					"html/forum/forum_article_main_content.html"
 				],
 				"priority": 0
 			}

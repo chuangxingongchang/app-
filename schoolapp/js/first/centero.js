@@ -1,4 +1,4 @@
-var service_url = "http://192.168.0.104/";
+var service_url = "http://172.19.129.1/"
 var phoneno = localStorage.getItem('phone');
 var nickname = "";
 var balance = "";

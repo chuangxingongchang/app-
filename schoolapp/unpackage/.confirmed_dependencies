@@ -37,7 +37,9 @@
 			"html/zmain/job.html",
 			"html/person/login.html",
 			"html/zmain/centero.html",
-			"html/partjob/job_details/job_one.html"
+			"html/partjob/job_details/job_one.html",
+			"html/zmain/error.html",
+			"html/forum/forum_index.html"
 		]
 	},
 	"html/zmain/centero.html": {
@@ -55,7 +57,13 @@
 			"image/percenter/logo/\u0011�\f�(.png",
 			"image/percenter/logo/c�(.png",
 			"image/percenter/logo/�L(.png",
-			"image/percenter/logo/\u0011��U(.png"
+			"image/percenter/logo/\u0011��U(.png",
+			"image/percenter/logo/江泰.png",
+			"image/percenter/logo/职业用.png",
+			"image/percenter/logo/设置用.png",
+			"image/percenter/logo/我的同事用.png",
+			"image/percenter/logo/荣誉用.png",
+			"image/percenter/logo/银行用.png"
 		],
 		"refer": [
 			"html/percenter/controll/moneys.html",
@@ -102,6 +110,45 @@
 	"html/zmain/selectSchool.html": {
 		"refer": [
 			"html/zmain/first.html"
+		]
+	},
+	"html/forum/forum_index.html": {
+		"resources": [
+			"html/forum/forum_index_content_subPage.html"
+		],
+		"refer": [
+			"html/forum/forum_index_content_subPage.html",
+			"html/forum/forum_index_input_sub_page.html",
+			"html/forum/forum_personal.html",
+			"html/forum/forum_article_main_content.html"
+		]
+	},
+	"html/forum/forum_index_input_sub_page.html": {
+		"refer": [
+			"html/forum/forum_article_main_content.html"
+		]
+	},
+	"html/forum/forum_personal.html": {
+		"refer": [
+			"html/forum/forum_personale_mind_fans.html",
+			"html/forum/forum_article_sign.html",
+			"html/forum/forum_write_article.html",
+			"html/forum/forum_emit_article.html"
+		]
+	},
+	"html/forum/forum_article_main_content.html": {
+		"refer": [
+			"html/forum/forum_personal.html"
+		]
+	},
+	"html/percenter/controll/sets.html": {
+		"refer": [
+			"html/zmain/first.html"
+		]
+	},
+	"html/forum/forum_article_sign.html": {
+		"refer": [
+			"html/forum/forum_article_main_content.html"
 		]
 	}
 }

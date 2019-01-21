@@ -1,4 +1,4 @@
-var service_url = "http://192.168.0.101/";
+var service_url = "http://172.19.129.1/"
 mui.plusReady(function(){
 	open('reg',"register.html");
 	open('forgetPassword',"forget.html");

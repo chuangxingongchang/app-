@@ -1,4 +1,4 @@
-var service_url = "http://192.168.0.104/";
+var service_url = "http://172.19.129.1/";
 var schoolname = "";
 var user = "";
 var phoneno = "";
@@ -97,7 +97,7 @@ mui.plusReady(function() {
 			})
 		})
 		document.getElementById("forums").addEventListener('tap',function(){
-			mui.openWindow({
+			mui.openWindow({ 
 				url : "../person/login.html",
 				id : "goback",
 				createNew: true,
