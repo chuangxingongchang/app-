@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/template-web.js"></script> 
+		<script src="../../js/openwindow.js"></script>
+		<script src="../../js/job/jobon.js"></script>
+		<style>
+		   @import url("../../css/partTime/goParttime.css");
+		</style>
+		
+	</head>
+
+	<body>
+		<script src="../../js/part/goParttime.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-icon mui-icon-left-nav mui-pull-left" id="topart"></a> 
+			<h1 class="mui-title">进行中的兼职</h1>
+		</header>
+		<div class="mui-content">
+			<div class="oldse" style="background-image: url(../../image/background/pj.jpg);">
+			 <p>在进行任务中，记录了岗位信息和岗位工作人员信息及确认<strong>人员工资</strong>，您可以点击<strong>确认完成</strong>，结束工作！</p>
+			</div>
+			<div class="newse" id="publisherPlur">
+				<script id="pubsher" type="text/html">
+					<ul class="mui-table-view">
+						{{if ms1.status==true}} {{each gopublisher pu}}
+						<li class="mui-table-view-cell mui-media" id="{{pu.id}}" name="{{pu.fkPublisher}}">
+							<a class="mui-navigate-right">
+								<div class="mui-media-body">
+									<span>{{pu.subject}}</span>
+									<span class="mui-ellipsis">招聘人数 :{{pu.persons}}人</span>
+									<span class="mui-ellipsis"> 工作日期 :{{pu.wordtime}}</span>
+									<span class="mui-ellipsis">当前状态 :进行中</span>
+								</div>
+								<div class="mui-badge mui-badge-inverted">
+									<span id="seMony">详情</span>
+								</div>							</a>
+						</li>
+						{{/each}} 
+						<div id="noth"><p>没有更多信息了</p></div>
+						{{/if}} 
+						{{if ms1.status==false}}
+						<div class="mui-table-view-cell mui-media jobNothing">
+							<img src="../../image/nothing/nocontent.png" /> 
+							<span id="nothings">没有新发布的任务</span>
+						</div>
+						{{/if}}
+					</ul>
+				</script>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,4 +1,4 @@
-var service_url = "http://172.19.129.6/";
+var service_url = "http://192.168.43.4/";
 var fkSchoolId = "";
 var schoolname = "";
 var phoneno = "";

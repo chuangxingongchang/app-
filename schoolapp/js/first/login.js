@@ -1,4 +1,4 @@
-var service_url = "http://172.19.129.6/";
+var service_url = "http://192.168.43.4/";
 var phReg = /^1(3|4|5|7|8)\d{9}$/;
 mui.plusReady(function(){
 	open('reg',"register.html");

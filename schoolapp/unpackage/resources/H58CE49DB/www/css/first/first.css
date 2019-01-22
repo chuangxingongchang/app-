@@ -1,0 +1,91 @@
+html,
+body {
+	background-color: #efeff4;padding: 0px;margin: 0px;
+}
+
+.mui-bar-nav {
+	background-color: #007AFF;
+	height: 50px;
+}
+
+.mui-bar-nav h1 {
+	color: white;
+}
+
+.mui-bar-nav img {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	margin-top: 8px;
+}
+
+.title {
+	padding: 20px 15px 10px;
+	color: #6d6d72;
+	font-size: 15px;
+	background-color: #fff;
+}
+
+.one {
+	padding: 10px 0px;
+}
+
+.jsotitle {
+	padding: 15px;
+	border-bottom: 1px solid #6D6D72;
+}
+
+.jsotitle span:last-child {
+	color: #007AFF;
+	font-size: 16px;
+}
+
+.main_content span {
+	display: block;
+}
+
+.main_content span:first-child,
+.thetitle {
+	font-size: 20px;
+	overflow: hidden;
+}
+
+.main_content span:last-child,
+.main_content_v {
+	font-size: 14px;
+	color: #000000;
+}
+
+.main_content_v {
+	color: #6641E2;
+}
+
+.mui-table-view-cell .mui-badge {
+	font-size: 16px;
+	color: red;
+}
+#activitymore{
+	display: inline;
+}
+#specialActivity {
+	margin-bottom: 60px;
+}
+#specialActivity ul {
+	display: inline;
+}
+
+#specialActivity ul li .mui-card-content-inner span:last-child{
+	display: block;
+}
+#specialActivity ul li .mui-card-content-inner span{
+	color: #003366;
+}
+#specialActivity ul li .mui-card-content-inner span:first-child{
+	overflow: hidden;
+}
+#specialjob .mui-ellipsis,#specialActivity .mui-ellipsis{
+	color: #929292;
+}
+.aci{
+	margin-right:5px ;color: #929292;
+}

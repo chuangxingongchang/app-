@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../../../css/mui.min.css" rel="stylesheet" />
+		<link href="../../../../css/mui.picker.min.css" rel="stylesheet" />
+		<link href="../../../../css/mui.poppicker.css" rel="stylesheet" />
+		<script src="../../../../js/mui.min.js"></script>
+		<script src="../../../../resource/mui.picker.min.js"></script>
+		<script src="../../../../resource/mui.poppicker.js"></script>
+		<style>
+			@import url("../../../../css/center/idcard.css");
+		</style>
+	</head>
+
+	<body>
+		<script src="../../../../js/center/idcard.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		<header id="heads" class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<span class="mui-title" style="color: white;">实名验证</span>
+		</header>
+		<div class="mui-content">
+			<div class="pt">
+				<p>只有在实名通过的情况下，用户才能进行任务的发布和兼职，请保证自己和他人的权益！</p>
+			</div>
+			<div id="tels-form" class="muigroup">
+				<div class="mui-input-row myinput" id="mysexs">
+					<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;性别:</span>
+					<input type="text" placeholder="请点击选择性别" id="sex" />
+				</div>
+				<div class="mui-input-row myinput" id="mydate">
+					<span>出生日期:</span>
+					<input type="text" placeholder="请点击选择日期" id="date" readonly="readonly"/>
+				</div>
+
+				<div class="mui-input-row myinput">
+					<span>真实姓名:</span>
+					<input id="truename" type="text" placeholder="你的姓名" />
+				</div>
+				<div class="mui-input-row myinput">
+					<span>身份证号:</span>
+					<input id="idcard" type="text" placeholder="你的身份证号" />
+				</div>
+				<div class="pt">
+					<span>身份证号为15位或者18位。</span>
+				</div>
+			</div>
+			<button id='complete' type="button" class="mui-btn mui-btn-block mui-btn-primary">进行验证</button>
+		</div>
+
+	</body>
+
+</html>

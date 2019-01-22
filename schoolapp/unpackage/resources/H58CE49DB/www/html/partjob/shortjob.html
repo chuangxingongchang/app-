@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/template-web.js"></script>
+		<script src="../../js/job/jobon.js"></script>
+		<script src="../../js/openwindow.js"></script>
+		<style>
+			@import url("../../css/job/shortjob.css");
+		</style>
+	</head>
+
+	<body>
+		<script src="../../js/job/shortjob.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		<header class="mui-bar mui-bar-nav" id="headers">
+			<a class="mui-icon mui-icon-left-nav mui-pull-left" id="topart">返回</a>
+			<h1 class="mui-title">短期兼职</h1>
+		</header>
+		<div class="mui-content">
+			<div class="job_content">
+				<div class="job_content_one" id="shortcontent">
+					<script id="shortjob" type="text/html">
+						<ul class="mui-table-view" id="uls">
+							{{if mssl.status==true}}
+							{{ each slList as pl}}
+							<li class="mui-table-view-cell mui-media" id="{{pl.id}}" name="{{pl.fkPublisher}}">
+								{{each unit as wo}} {{if wo.id == pl.fkUnit}}
+								<img class="mui-media-object mui-pull-left" src="{{wo.iconlocation}}" alt="图片"> {{/if}} {{/each}}
+								<div class=" mui-media-body main_content">
+									<span class="thetitle">{{pl.subject}}</span>
+									<span class="main_content_v">{{pl.wordtime}}</span>
+									<span class="jobstyle">类型:短期兼职</span>
+									<span class="mui-ellipsis">{{pl.workcontent}}</span>
+								</div>
+								<div class="mui-badge mui-badge-inverted">
+									￥<span>{{pl.money}}</span> 
+									{{each unit as un}} 
+									{{if un.id == pl.fkUnit}}
+									<span class="{{un.style}}">{{un.style}}</span>
+									{{/if}} 
+									{{/each}}
+								</div>
+							</li>
+							{{/each}}
+							{{/if}}
+							{{if mssl.status==false}}
+							<div class="jobNothing">
+								<div id="jobno">
+									<span>没有数据!</span>
+								</div>
+							</div>
+							{{/if}}
+						</ul>
+					</script>
+				</div>
+		</div>
+	</body>
+
+</html>

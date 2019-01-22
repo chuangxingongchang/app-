@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../../../css/mui.min.css" rel="stylesheet" />
+		<script src="../../../../js/mui.min.js"></script>
+		<style>
+			@import url("../../../../css/center/tels.css");
+		</style>
+	</head>
+
+	<body>
+		<script src="../../../../js/center/tels.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		<header id="heads" class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<span class="mui-title" style="color: white;">更换手机号</span><button id="complete">完成</button>
+		</header>
+		<div class="mui-content">
+			<div class="pt">
+				<p>更换手机号之后，请使用新的手机号进行登录,用户的其他信息将不做修改</p>
+			</div>
+			<div id="tels-form" class="mui-input-group">
+				<div class="mui-input-row" id="input-one">
+					<input id="phoneno" type="text" class="mui-input" placeholder="请输入电话号码" />
+					<button class="mui-badge-blue" id="sends">发送验证码</button>
+				</div>
+				<div class="mui-input-row" id="input-two">
+					<input id="codes" type="text" class="mui-input-clear mui-input" placeholder="请输入验证码" />
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

@@ -1,4 +1,4 @@
-var service_url = "http://172.19.129.6/";
+var service_url = "http://192.168.43.4/";
 var schoolname = "";
 var user = "";
 var phoneno = "";
@@ -85,6 +85,18 @@ mui.plusReady(function() {
 	}
 	toPage("#specialjob","../partjob/job_details/job_one.html");
     toAcTtivity("#specialActivity","../h_activity/activitydetails.html");
+	var detailPage = mui.preload({
+		url : '../h_activity/activitydetails.html',
+		id  : '../h_activity/activitydetails.html'
+	});
+	mui("#slider").on('tap','div>div',function(){
+		var id   = this.getAttribute("name");
+		var pagetwos = plus.webview.getWebviewById('../h_activity/activitydetails.html');
+		mui.fire(pagetwos,"detailsPageEvent",{id:id});
+		mui.openWindow({
+			id: '../h_activity/activitydetails.html'
+		});
+	})
 });
 
 function attrJobByAccountTime(){

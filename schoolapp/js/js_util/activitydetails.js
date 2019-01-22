@@ -1,5 +1,5 @@
 var idnum = "";
-var service_url = "http://172.19.129.6/";
+var service_url = "http://192.168.43.4/";
 mui.plusReady(function(){
 	window.addEventListener("detailsPageEvent", function(e) {
 		//从当前的父页面li标签get id

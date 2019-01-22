@@ -1,0 +1,69 @@
+
+html,
+body {
+	background-color: #efeff4;
+}
+
+.mui-bar-nav {
+	background-color: #007AFF;
+	height: 50px;
+}
+
+.mui-bar-nav h1 {
+	color: white;
+}
+
+.mui-bar-nav img {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	margin-top: 8px;
+}
+
+.title {
+	padding: 20px 15px 10px;
+	color: #6d6d72;
+	font-size: 15px;
+	background-color: #fff;
+}
+#my_img img {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+}
+
+#my_nick {
+	margin-left: 30px;
+}
+
+.main {
+	margin-top: 30px;
+}
+
+.main ul li a span:first-child {
+	font-size: 16px;
+	color: #555555;
+}
+
+#my_nick {
+	margin: 20px 120px;
+}
+
+#my_nick span {
+	display: block;
+	margin-bottom: 20px;
+}
+
+#my_header,
+.main {
+	color: #6D6D72;
+}
+
+.main ul li a span:last-child {
+	margin-right: 20px;
+}
+
+.main ul li a img {
+	width: 24px;
+	vertical-align: middle;
+}

@@ -1,0 +1,169 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>岗位详情</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../../css/mui.min.css" rel="stylesheet" />
+		<script src="../../../js/mui.min.js"></script>
+		<script src="../../../js/template-web.js"></script>
+		<script src="../../../js/openwindow.js"></script>
+		<style>
+			@import url("../../../css/job/job_one.css");
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav" id="headers">
+			<a class="mui-icon mui-icon-left-nav mui-pull-left" id="topart">返回</a>
+			<h1 class="mui-title">岗位详情</h1>
+		</header>
+		<div class="mui-content">
+			<div id="thisJob">
+				<script id="thisplur" type="text/html">
+					<div class="word_one">
+						<div class="word_one-one">
+							<b>{{thisplur.subject}}</b>
+						</div>
+						{{each unit as un a}}
+						{{if thisplur.fkUnit==un.id}}
+						<div class="word_one-two">
+							￥<span>{{thisplur.money}}</span><span>{{un.style}}</span>
+						</div>
+						{{/if}}
+						{{/each}}
+					</div>
+					<div class="word_two">
+						<div class="word_two-one">
+							<span>{{thisplur.releasetime}}</span>发布
+						</div>
+						<div class="word_two-one">
+							<span>{{thisplur.counts}}</span>次浏览
+						</div>
+					</div>
+					<div class="word_three">
+						<ul>
+							<li><span>需要人数：</span><span>{{thisplur.persons}}人</span></li>
+							{{each settl st}}
+							{{if thisplur.fkSettle==st.id}}
+							<li><span>结款时间：</span><span>{{st.settlename}}</span></li>
+							{{/if}}
+							{{/each}}
+							<li><span>付款方式：</span><span>在线支付</span></li>
+						</ul>
+					</div>
+					<div class="word_four">
+						<ul class="mui-table-view" style="background-image: url(../../../image/background/mapo.jpg);">
+							<li class="mui-table-view-cell">
+								<label>
+		    	                	工作地点：
+		    	               </label>
+								<span>{{thisplur.workaddress}}</span>
+								<span class="mui-icon mui-icon-location mui-pull-right"></span>
+							</li>
+						</ul>
+					</div>
+					<div class="word_three">
+						<ul>
+							<li><span>工作日期：</span><span>{{thisplur.wordtime}}</span></li>
+							<li><span>报名截止：</span><span>{{thisplur.endtime}}</span></li>
+						</ul>
+					</div>
+					<div class="word_content">
+						<label>工作描述：</label>
+						<p>{{thisplur.workcontent}}</p>
+					</div>
+					<div class="worb_person">
+						<ul class="mui-table-view">
+							<li class="mui-table-view-cell">
+								<label>发布人&nbsp;&nbsp;&nbsp;&nbsp;：</label>
+								<span>{{pushuser.truename}}</span>
+							</li>
+							<li class="mui-table-view-cell">
+								<label>电话号码&nbsp;：</label>
+								<span>{{pushuser.phoneno}}</span>
+							</li>
+							<li class="mui-table-view-cell">
+								<label>岗位状态&nbsp;：</label>
+								<span>招募中</span>
+							</li>
+							<li class="mui-table-view-cell" id="creditpu">
+								<label>信用等级&nbsp;：</label>
+								{{if pushuser.credit<20}}
+								<span>☆</span>
+								{{/if}}
+								{{if pushuser.credit>=20&&pushuser.credit<40}}
+								<span>☆☆</span>
+								{{/if}}
+								{{if pushuser.credit>=40&&pushuser.credit<=60}}
+								<span>☆☆☆</span>
+								{{/if}}
+								{{if pushuser.credit>60&&pushuser.credit<=80}}
+								<span>☆☆☆☆</span>
+								{{/if}}
+								{{if pushuser.credit>80}}
+								<span>☆☆☆☆☆</span>
+								{{/if}}
+							</li>
+						</ul>
+					</div>
+					<div class="mui-content-padded" id='toSignup'>
+						<button  type="button" class="mui-btn mui-btn-block mui-btn-primary" onclick="toSignup(this)">报名</button>
+					</div>
+				</script>
+			</div>
+		</div>
+		<script src="../../../js/job/job_three.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		<script>
+			var phoneno = "";
+			if(localStorage.getItem('phone')!=null){
+					phoneno = localStorage.getItem('phone');
+			 }
+			function toSignup(e){
+			 if(phoneno != null&&phoneno!="") {
+				mui.ajax({
+					url:service_url+'sign/startSignup',
+					type: 'post',
+					data: {
+						pkPlurid: id,
+						pkUid: user.id,
+						signmoney: 0,
+						signstate: '报名',
+			
+					},
+					timeout: 10000,
+					dataType: 'json',
+					success: function(data) {
+						if (data.startms.status == true) {
+							mui.alert("报名成功");
+							mui.openWindow({
+								url: "../../zmain/job.html",
+								id: "../../zmain/job.html"
+							})
+						} else {
+							if(data.startms.msg=="报名失败"){
+							mui.openWindow({
+								url : '../error.html',
+								id  : '../error.html'
+							})
+							}else{
+								mui.alert(data.startms.msg)
+							}
+						}
+					}
+				})
+				}else{
+					mui.openWindow({
+						url  : '../../person/login.html',
+						id   : '../../person/login.html'
+					})
+				}	
+			}
+		</script>
+	</body>
+
+</html>

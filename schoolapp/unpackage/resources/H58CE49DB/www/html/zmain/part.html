@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/template-web.js"></script>
+		<script src="../../js/job/jobon.js"></script>
+		<script src="../../js/openwindow.js"></script>
+		<style>
+			@import url("../../css/partTime/part.css");
+			@import url("../../css/partTime/signup.css")
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">发布</h1>
+		</header>
+		<div class="mui-content">
+			<div class="navigation">
+			<ul class="mui-table-view mui-grid-view mui-grid-9">
+			<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3" id="signjob">
+				<a href="#">
+					<div class="mui-media-body">待接取</div>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3" id="gojob">
+				<a href="#">
+					<div class="mui-media-body">进行</div>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3" id="endjob">
+				<a href="#">
+					<div class="mui-media-body">已完成</div>
+				</a>
+			</li>
+			<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3" id="newcreate">
+				<a href="#">
+					<div class="mui-media-body">新建岗位</div>
+				</a>
+			</li>
+				</ul>
+			</div>
+			 
+			<div class="thisse" style="background-image: url(../../image/background/pj.jpg);">
+			 <p>新发布，记录最新发布的任务，当人员足够自动下架到<strong>进行任务</strong>功能页面</p>
+			</div>
+			<div class="newse" id="publisherPlur">
+				<script id="pubsher" type="text/html">
+					<ul class="mui-table-view">
+						{{if ms.status==true}} {{each publisher pu}}
+						<li class="mui-table-view-cell mui-media" id="{{pu.id}}" name="{{pu.fkPublisher}}">
+							<a class="mui-navigate-right">
+								<div class="mui-media-body">
+									<span>{{pu.subject}}</span>
+									<span class="mui-ellipsis">招聘人数 :{{pu.persons}}人</span>
+									<span class="mui-ellipsis">发布日期  :{{pu.releasetime}}</span>
+									<span class="mui-ellipsis">当前状态  :招募中</span>
+								</div>
+								<div class="mui-badge mui-badge-inverted">
+									<span id="seMony">详情</span>
+								</div>
+							</a>
+						</li>
+						{{/each}} 
+						<div id="noth"><p>没有更多信息了</p></div>
+						{{/if}}
+						{{if ms.status==false}}
+						<div class="mui-table-view-cell mui-media jobNothing">
+							<img src="../../image/nothing/nocontent.png" /> 
+							<span id="nothings">没有新发布的任务</span>
+						</div>
+						{{/if}}
+						
+					</ul>
+				</script>
+			</div>
+			
+			<div class="butts">
+				<nav class="mui-bar mui-bar-tab">
+					<a class="mui-tab-item" id="firstp">
+						<span class="mui-icon mui-icon-home"></span>
+						<span class="mui-tab-label">首页</span>
+					</a>
+					<a class="mui-tab-item mui-active" id="parttp">
+						<span class="mui-icon mui-icon-paperplane"></span>
+						<span class="mui-tab-label">发布</span>
+					</a>
+					<a class="mui-tab-item" id="jobtp">
+						<span class="mui-icon mui-icon-flag"></span>
+						<span class="mui-tab-label">校园兼职</span>
+					</a>
+					<a class="mui-tab-item" id="centertp">
+					<span class="mui-icon mui-icon-gear"></span>
+						<span class="mui-tab-label">个人中心</span>
+					</a>
+				</nav>
+			</div>
+		</div>
+		<script src="../../js/first/part.js"></script>
+		<script>
+			mui.init();
+		</script>
+	</body>
+</html>

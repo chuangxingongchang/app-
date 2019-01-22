@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../../css/mui.min.css" rel="stylesheet" />
+		<script src="../../../js/mui.min.js"></script>
+		<script src="../../../resource/up_header.js"></script>
+		<script src="../../../js/openwindow.js"></script>
+		<style>
+			@import url("../../../css/center/sets.css");
+		</style>
+	</head>
+
+	<body>
+		<script src="../../../js/center/sets.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-icon mui-icon-left-nav mui-pull-left" id="topart"></a>
+			<h1 class="mui-title">设置</h1>
+		</header>
+		<div class="mui-content">
+			<div class="listing">
+				<ul class="mui-table-view" id="uls">
+					<li class="mui-table-view-cell">
+						<a class="userImg">
+							<span></span>
+							<span id="imgheader" class="mui-icon mui-icon-compose">头像</span>
+							<img src="../../../image/percenter/imgno.png" id="userImg" />
+						</a>
+					</li>
+					<li class="mui-table-view-cell" id="nickname">
+						<a class="mui-navigate-right"> 昵称<span id="my_nickname">无</span></a>
+					</li>
+					<li class="mui-table-view-cell" id="pass">
+						<a class="mui-navigate-right">密码<span>修改</span></a>
+					</li>
+					<li class="mui-table-view-cell" id="sexs">
+						<a>性别<span id="my_sex">未设置</span></a>
+					</li>
+					<li class="mui-table-view-cell" id="brithdays">
+						<a>生日<span id="my_brithday">未设置</span></a>
+					</li>
+					<li class="mui-table-view-cell" id="address">
+						<a class="mui-navigate-right">地址<span id="my_address">未设置</span></a>
+					</li>
+					<li class="mui-table-view-cell" id="school">
+						<a class="mui-navigate-right">所在学校<span id="my_school">未设置</span></a>
+					</li>
+					<li class="mui-table-view-cell" id="tels">
+						<a class="mui-navigate-right">电话号码<span id="my_tel">无</span></a>
+					</li>
+					<li class="mui-table-view-cell" id="idcard">
+						<a class="mui-navigate-right">身份认证<span id="my_idcard">验证</span></a>
+					</li>
+				</ul>
+			</div>
+			<div class="mui-content-padded">
+				<button id='loginout' type="button" class="mui-btn mui-btn-block mui-btn-primary">退出登录</button>
+			</div>
+		</div>
+	</body>
+
+</html>

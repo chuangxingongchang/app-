@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../../css/css_activity/activitys.css" />
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/js_util/template-web.js"></script>
+		<script type="text/javascript" src="../../js/jquery.js"></script>
+
+		<script type="text/javascript">
+			mui.init({
+				preloadPages: [{
+					url: "details.html",
+					id: "details.html"
+				}]
+			});
+			$(function() {
+				var internet = "106.13.35.57/myschool/";
+				/*
+				 * 获取活动列表，并通过mlist、arttemplate展示
+				 */
+				$.ajax({
+					type: "post",
+					url: internet+"/activity/getallActivity",
+					async: true,
+					dataType: "json",
+					success: function(data) {
+						var temp = template("tpl", data);
+						$("#tpl_html").html(temp);
+					}
+				});
+
+				/*
+				 *    最新时间排序
+				 */
+				$("#activityTime").click(function() {
+					$.ajax({
+						type: "post",
+						url: internet+"/activity/getCreateTime",
+						async: true,
+						dataType: "json",
+						success: function(data) {
+							var time = template("tpl", data);
+							$("#tpl_html").html(time);
+						}
+					});
+				});
+
+				/*
+				 *   热门活动 
+				 */
+				$("#number").click(function() {
+					$.ajax({
+						type: "post",
+						url: internet+"/activity/getnumber",
+						async: true,
+						dateType: "json",
+						success: function(data) {
+							var time = template("tpl", data);
+							$("#tpl_html").html(time);
+						}
+					});
+				});
+
+				/*
+				 * 监听事件
+				 */
+				mui("#tpl_html").on("tap", "li", function(e) {
+					var prPage = plus.webview.getWebviewById('details.html')
+					mui.fire(prPage, "detailsPageEvent", {
+						id: this.getAttribute("id")
+					});
+					mui.openWindow({
+						id: "details.html"
+					});
+				});
+
+			})
+		</script>
+
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">活动</h1>
+		</header>
+		<div class="mui-content">
+			<div id="type">
+				<ul>
+					<!-- 根据时间排序 -->
+					<li id="activityTime">最新活动</li>
+					<!-- 根据报名人数排序 -->
+					<li id="number">热门活动</li>
+				</ul>
+			</div>
+			<ul class="mui-table-view" id="tpl_html">
+				<script type="text/html" id="tpl">
+					<%for(var i=0; i<activity.length; i++){%>
+					<li class="mui-table-view-cell mui-media" id="<%=activity[i].id%>">
+						<a href="">
+							<img class="mui-media-object mui-pull-left" src="<%=activity[i].images%>">
+							<div class="mui-media-body">
+								<%=activity[i].titles%>
+								<p class="mui-ellipsis">
+									<%=activity[i].content%>
+								</p>
+							</div>
+						</a>
+					</li>
+					<%}%>
+				</script>
+			</ul>
+		</div>
+	</body>
+
+</html>

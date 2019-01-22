@@ -1,4 +1,4 @@
-var service_url = "http://172.19.129.1/"
+var service_url = "http://192.168.43.4/"
 var count = 0 //查询过点两次 没查询点一次
 mui.plusReady(function() {
 

@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.css" rel="stylesheet" />
+		<script src="../../js/mui.js"></script>
+		<script type="text/javascript" src="../../js/js_util/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="../../js/js_util/template-web.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			mui.plusReady(function() {
+				window.addEventListener("userDetailsPageEvent", function(e) {
+					var internet = "106.13.35.57/myschool/";
+					//从当前的父页面li标签get id
+					var idnum = e.detail.id;
+					console.log(idnum);
+					$.ajax({
+						type: "post",
+						url: internet + "/activity/getActivityById",
+						data: {
+							id: idnum
+						},
+						dataType: "json",
+						async: true,
+						success: function(data) {
+							var test = template("tpl", data);
+							$("#tpl_html").html(test);
+
+							var time = data.obj.activitytime;
+							var time1 = data.obj.createtime;
+							var endDate = new Date(time);
+							var releaseDate = new Date(time1);
+							/*
+							 * 毫秒数转换成时间格式
+							 */
+							var formatDate = function(date) {
+								var y = date.getFullYear();
+								var m = date.getMonth() + 1;
+								m = m < 10 ? ('0' + m) : m;
+								var d = date.getDate();
+								d = d < 10 ? ('0' + d) : d;
+								var h = date.getHours();
+								var minute = date.getMinutes();
+								minute = minute < 10 ? ('0' + minute) : minute;
+								var second = date.getSeconds();
+								second = minute < 10 ? ('0' + second) : second;
+								return y + '-' + m + '-' + d + ' ' + h + ':' + minute + ':' + second;
+							};
+							$("#endTime").text(formatDate(endDate));
+							$("#releaseTime").text(formatDate(releaseDate));
+
+							var uid = data.obj.fkUserid;
+							$.ajax({
+								type: "post",
+								url: internet + "/touser/getByIdUserName",
+								async: true,
+								data: {
+									uid: uid
+								},
+								dataType: "json",
+								success: function(data) {
+									var uName = data.user.nickname;
+									$("#organizer").text(uName);
+								}
+							});
+						}
+					});
+					/**
+					 * 删除活动
+					 */
+					$("#deleteBut").click(function() {
+						console.log("删除："+idnum);
+						$.ajax({
+							type: "post",
+							url: internet + "/activity/deleteActivity",
+							data: {
+								id: idnum,
+							},
+							dataType: "json",
+							async: true,
+							success: function(data) {
+								mui.alert("删除成功");
+								//跳转页面并刷新
+								mui.openWindow({
+									url : "myActivity.html",
+									id  : "myActivity.html"
+								})
+							}
+						})
+					});
+				})
+			})
+		</script>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">我的活动详情</h1>
+		</header>
+		<div class="mui-content">
+			<div id="tpl_html">
+				<script type="text/html" id="tpl">
+					<div>
+						<p>主题：<b id="a_title"><%=obj.titles%></b></p>
+					</div>
+					<div id="">
+						<p>活动图片</p>
+					</div>
+					<div id="uploadImg">
+						<img src="<%=obj.images%>" id="userImg" style="width:350px; height: 150px;" />
+					</div>
+					<div>
+						<p>内容：
+							<%=obj.content%>
+						</p>
+					</div>
+					<div>
+						<p>地点：
+							<%=obj.address%>
+						</p>
+					</div>
+					<div>
+						<p>注意事项：
+							<%=obj.precautions%>
+						</p>
+					</div>
+					<div>
+						<p>要求：
+							<%=obj.claim%>
+						</p>
+					</div>
+					<div>
+						<p>对象：
+							<%=obj.objects%>
+						</p>
+					</div>
+					<div>
+						<p>组织者：
+							<%=obj.organizer%>
+						</p>
+					</div>
+					<div>
+						<p>当前报名人数：
+							<%=obj.currentnum%>
+						</p>
+					</div>
+				</script>
+			</div>
+			<div>
+				<p>截止时间：<span id="endTime"></span></p>
+			</div>
+			<div>
+				<p>发布时间：<span id="releaseTime"></span></p>
+			</div>
+			<div id="but">
+				<button type="button" class="mui-btn mui-btn-danger mui-btn-outlined" id="deleteBut">删除</button>
+			</div>
+		</div>
+	</body>
+
+</html>

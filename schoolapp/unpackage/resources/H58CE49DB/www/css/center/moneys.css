@@ -1,0 +1,54 @@
+#heads,
+#heads button {
+	background-color: black;
+}
+
+#heads button {
+	color: green;
+	font-size: 16px;
+}
+
+.mui-content-padded button:last-child {
+	background-color: white;
+	color: black;
+	border-color: #8F8F94;
+}
+
+.my_money {
+	width: 160px;
+	margin: 60px auto;
+	height: 150px;
+}
+
+.my_money img {
+	width: 160px;
+	height: 160px;
+	border-radius: 50%;
+}
+
+.my_money label {
+	font-size: 16px;
+	margin-left: 50px;
+}
+
+.my_yu {
+	width: 200px;
+	text-align: center;
+	margin: 0 auto 20px auto;
+}
+
+.my_yu label,
+.my_yu span {
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.pt {
+	width: 200px;
+	text-align: center;
+	margin: 60px auto;
+}
+
+.pt p {
+	margin: 20px 20px;
+}

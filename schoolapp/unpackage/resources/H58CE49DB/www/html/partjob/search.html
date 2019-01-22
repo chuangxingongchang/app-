@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/template-web.js"></script>
+		<script src="../../js/job/jobon.js"></script>
+		<style>
+			@import url("../../css/job/search.css");
+		</style>
+	</head>
+
+	<body>
+		<script src="../../js/job/search.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">兼职搜索</h1>
+		</header>
+		<div class="mui-content">
+			<div id="jobSearch">
+				<script id="allJobBySearch" type="text/html">
+					<ul class="mui-table-view" id="uls">
+					{{if sems.status==true}}
+					{{ each selist as pl}}
+					<li class="mui-table-view-cell mui-media" id="{{pl.id}}" name="{{pl.fkPublisher}}">
+						{{each unse as wo}} {{if wo.id == pl.fkUnit}}
+						<img class="mui-media-object mui-pull-left" src="{{wo.iconlocation}}" alt="图片"> {{/if}} {{/each}}
+						<div class=" mui-media-body main_content">
+							<span class="thetitle">{{pl.subject}}</span>
+							<span class="main_content_v">发布于:{{pl.releasetime}}</span>
+							<span class="mui-ellipsis">{{pl.workcontent}}</span>
+						</div>
+						<div class="mui-badge mui-badge-inverted">
+							￥<span>{{pl.money}}</span> 
+							{{each unse as se}} 
+							{{if se.id == pl.fkUnit}}
+							<span class="{{se.style}}">{{se.style}}</span>
+							{{/if}} 
+							{{/each}}
+						</div>
+					</li>
+					{{/each}}
+					{{/if}}
+					{{if sems.status==false}}
+					<div class="mui-table-view-cell mui-media" id="thenothings">
+						<img src="../../image/job/searchnot.png" />
+						<span id="nothings">没有找到相关内容。</span>
+					</div>
+					{{/if}}
+				</ul>
+				</script>
+			</div>
+		</div>
+	</body>
+</html>

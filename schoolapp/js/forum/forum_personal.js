@@ -1,4 +1,4 @@
-var service_url = "http://172.19.129.1/"
+var service_url = "http://192.168.43.4/"
 var user = JSON.parse(localStorage.getItem("tuser"))
 /*第一次初始化*/
 mui.plusReady(function() {

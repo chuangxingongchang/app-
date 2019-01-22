@@ -1,0 +1,198 @@
+<!doctype html>
+<html>
+	<!-- 组织活动页面 -->
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../../css/css_activity/organization.css" />
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/js_util/timeFormat.js"></script>
+		<script type="text/javascript" src="../../js/js_util/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="../../js/js_util/distpicker.js"></script>
+		<script type="text/javascript" src="../../js/js_util/up_header.js"></script>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">发布活动</h1>
+		</header>
+		<div class="mui-content">
+			<div id="titles" class="equalsStyle">
+				<p>主题：<b><input type="text" name="" id="ac_title" value="" /></b></p>
+			</div>
+			<div id="">
+				<p>上传活动图片</p>
+			</div>
+			<div id="uploadImg">
+				<img src="" id="userImg" placeholder="点击，上传图片" style="width:350px; height: 150px;" />
+			</div>
+			<div id="" class="textareas">
+				<p>内容：<textarea cols="50" rows="2" placeholder="字数限制255以内" id="ac_content"></textarea></p>
+			</div>
+			<div id="">
+				<p>活动截止时间:<input type="text" id="activity_time"></p>
+			</div>
+			<div id="">
+				<p>地点：
+					<div id="distpicker3">
+						<select id="province"></select>
+						<select id="city"></select>
+						<select id="area"></select>
+					</div>
+					<input type="" name="" id="address" value="" placeholder="请输入详情地址..." />
+				</p>
+			</div>
+			<div id="" class="textareas">
+				<p>注意事项：<textarea cols="50" rows="2" id="ac_precautions"></textarea></p>
+			</div>
+			<div id="" class="textareas">
+				<p>要求：<textarea cols="50" rows="2" id="ac_claim"></textarea></p>
+			</div>
+			<div id="" class="equalsStyle">
+				<p>对象：<input type="text" name="" id="ac_object" value="" /></p>
+			</div>
+			<div id="buttons">
+				<button class="mui-btn mui-btn-primary mui-btn-outlined" id="but_creatActivity">发布</button>
+				<button class="mui-btn mui-btn-danger mui-btn-outlined" id="reClear">重置</button>
+			</div>
+		</div>
+		<script type="text/javascript">
+			mui.init();
+			var Internet = "106.13.35.57/myschool/";
+			var user = JSON.parse(localStorage.getItem('tuser'));
+			$(function() {
+				//获取当前登录userId
+				var userId = "";
+				if(user!=null){
+					userId = user.id;
+					userNickname = user.nickname;
+					console.log("wooeouo: "+userNickname)
+					console.log("wooeouo: "+userId)
+					//发布按钮功能
+					$("#but_creatActivity").click(function() {	
+						//获取详情地址
+						var pro = $("#province").val();
+						var cit = $("#city").val();
+						var are = $("#area").val();
+						var ad = $("#address").val();
+						var adder = pro + cit + are + ad;
+						console.log("地点" + adder);
+					
+						//获取活动时间
+						var times = $("#activity_time").val();
+						var activityTime = new Date().getTime(times)
+						console.log("活动截止时间" + times);
+					
+						//主题
+						var title = $("#ac_title").val();
+						console.log("主题" + title);
+					
+						//图片
+						var img = $("#userImg").val();
+						console.log("图片" + img);
+					
+						//内容
+						var content = $("#ac_content").val();
+						console.log("内容" + content);
+					
+						//注意事项
+						var precautions = $("#ac_precautions").val();
+						console.log("注意事项" + precautions);
+					
+						//要求
+						var claim = $("#ac_claim").val();
+						console.log("要求" + claim);
+					
+						//对象
+						var obj = $("#ac_object").val();
+						console.log("对象" + obj);
+						
+						
+						//获取当前发布时间
+						var d = new Date().getTime();
+						
+						$.ajax({
+							type: "post",
+							url: Internet + "/activity/addActivity",
+							async: false,
+							dataType: "json",
+							data: {
+								titles: title,
+								//images:	
+								content: content,
+								activitytime: activityTime,
+								address: adder,
+								precautions: precautions,
+								claim: claim,
+								objects: obj,
+								organizer: userNickname,
+								createtime: d,
+								fkUserid: userId,
+							},
+							success: function(data) {
+								if (data.ms.status == true) {
+									mui.alert("发布成功")
+								}
+							}
+						});
+					});
+				}
+				
+				//活动截止时间
+				$("#activity_time").click(function() {
+					var da = new Date();
+					da.setFullYear(2019, 0, 22);
+					var minDate = new Date();
+					minDate.setFullYear(1970, 0, 1);
+					var maxDate = new Date();
+					maxDate.setFullYear(2100, 0, 1);
+					plus.nativeUI.pickDate(
+						function(e){
+							var d = e.date;
+							mui.toast("你选的时间是：" + d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate());
+							var endDate = d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate();
+							$("#activity_time").val(endDate);
+						},
+						function(e){
+							mui.toast("你没有选择时间");
+						},
+						{
+							titel: '请选择日期',
+							date: da,
+							minDate:minDate,
+							maxDate:maxDate
+						}
+					);
+				});
+
+				//重置按钮
+				$("#reClear").click(function() {
+					location.reload();
+				});
+
+				//制定输入框最多255个字
+				$("textarea").blur(function() {
+					if ($(this).val().length > 255) {
+						alert("你最多只能输入255个字！");
+					}
+				});
+
+				//三级联动插件
+				$("#distpicker3").distpicker({
+					province: '四川省',
+					city: '成都市',
+					district: '锦江区'
+				});
+
+
+
+			});
+		</script>
+
+	</body>
+
+</html>

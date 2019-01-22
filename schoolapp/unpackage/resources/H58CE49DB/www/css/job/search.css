@@ -1,0 +1,36 @@
+.main_content span {
+	display: block;
+}
+
+.main_content span:first-child,
+.thetitle {
+	font-size: 20px;
+	overflow: hidden;
+}
+
+.main_content span:last-child,
+.main_content_v {
+	font-size: 14px;
+	color: #000000;
+}
+
+.main_content_v {
+	color: #6641E2;
+}
+
+.mui-table-view-cell .mui-badge {
+	font-size: 16px;
+	color: red;
+}
+
+#thenothings {
+	height: 600px;
+	text-align: center;
+}
+
+#thenothings span {
+	font-size: 16px;
+	padding-top: 10px;
+	color: #EC971F;
+	display: block;
+}

@@ -1,5 +1,5 @@
 var codes = "";
-var service_url = "http://172.19.129.6/";
+var service_url = "http://192.168.43.4/";
 var code    = "";
 var phoneno = "";
 var pwReg = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{5,20}$/;

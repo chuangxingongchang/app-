@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/template-web.js"></script>
+		<script src="../../js/job/jobon.js"></script>
+		<script src="../../js/openwindow.js"></script>
+		<style>
+			@import url("../../css/job/myjob.css");
+		</style>
+	</head>
+
+	<body>
+		<script src="../../js/job/myjob.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		<header class="mui-bar mui-bar-nav" id="headers">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left">返回</a>
+			<h1 class="mui-title">我的兼职</h1>
+		</header>
+		<div class="mui-content">
+			<div class="description ">
+				<p>在我的兼职里，你可以查看自己的当前进行中的兼职及完成的兼职。</p>
+			</div>
+			<div class="titles">
+				<div id="job_content">
+					<script id="myAllJob" type="text/html">
+						<div class="mui-segmented-control">
+							<a class="mui-control-item mui-active" href="#item1">进行中</a>
+							<a class="mui-control-item" href="#item2">完成</a>
+						</div>
+						<div class="mui-slider-group">
+							<div id="item1" class="mui-slider-item mui-control-content mui-active">
+								<ul class="mui-table-view">
+									{{if ms.status==true}}
+									{{each goplur go}}
+									<li class="mui-table-view-cell mui-media" id="{{go.id}}" name="{{go.fkPublisher}}">
+										{{each workicon wo}}
+										{{if go.fkUnit==wo.id}}
+										<img class="mui-media-object mui-pull-left" src="{{wo.iconlocation}}" alt="图片">
+										{{/if}}
+										{{/each}}
+										<div class=" mui-media-body main_content">
+											<span>{{go.subject}}</span>
+											<span class="main_content_v">{{go.wordtime}}</span>
+											<span class="mui-ellipsis">{{go.workcontent}}</span>
+										</div>
+										<div class="mui-badge mui-badge-inverted endState">
+											<span>进行</span>
+										</div>
+									</li>
+									{{/each}}
+									{{/if}}
+									{{if ms.status==false}}
+									<div class="jobNothing">
+										<img src="../../image/nothing/nomyco.png">
+										<div>
+											<span>没有正在<strong>进行</strong>的兼职!</span>
+										</div>
+									</div>
+									{{/if}}
+								</ul>
+							</div>
+							<div id="item2" class="mui-slider-item mui-control-content">
+								<ul class="mui-table-view">
+									{{if ms2.status==true}}
+									{{each endplur end}} 
+									<li class="mui-table-view-cell mui-media" id="{{end.id}}" name="{{end.fkPublisher}}">
+										{{each workicon wo}}
+										{{if end.fkUnit==wo.id}}
+										<img class="mui-media-object mui-pull-left" src="{{wo.iconlocation}}" alt="图片">
+										{{/if}}
+										{{/each}}
+										<div class=" mui-media-body main_content">
+											<span>{{end.subject}}</span>
+											<span class="main_content_v">{{end.wordtime}}</span>
+											<span class="mui-ellipsis">{{end.workcontent}}</span>
+										</div>
+										<div class="mui-badge mui-badge-inverted endState">
+											<span>完成</span>
+										</div>
+									</li>
+									{{/each}}
+									{{/if}}
+									{{if ms2.status==false}}
+									<div class="jobNothing">
+										<img src="../../image/nothing/nomyco.png">
+										<div>
+											<span>没有<strong>已完成</strong>的兼职!</span>
+										</div>
+									</div>
+									{{/if}}
+								</ul>
+							</div>
+						</div>
+					</script>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

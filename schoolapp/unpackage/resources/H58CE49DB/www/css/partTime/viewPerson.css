@@ -1,0 +1,54 @@
+#headers {
+	background-color: black;
+}
+
+#headers h1 {
+	color: white;
+}
+
+.main_content ul li img {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+}
+
+.main_content span {
+	display: block;
+}
+
+.main_content span:first-child {
+	font-size: 16px;
+	overflow: hidden;
+}
+
+.main_content span:last-child,
+.main_content_v {
+	font-size: 14px;
+	color: #929292;
+}
+
+.endState span {
+	font-size: 16px;
+	color: #007AFF;
+}
+
+.countAll {
+	margin: 10px 0px 20px 20px;
+}
+
+.countAll span {
+	color: #6D6D72;
+}
+
+.countAll #counts {
+	color: #007AFF;
+}
+
+.countAllo {
+	display: inline-block;
+	padding-top: 5px;
+}
+
+.countAll button {
+	width: 90px;
+}

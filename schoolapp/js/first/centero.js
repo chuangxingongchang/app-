@@ -1,4 +1,4 @@
-var service_url = "http://172.19.129.6/";
+var service_url = "http://192.168.43.4/";
 var phoneno = localStorage.getItem('phone');
 var nickname = "";
 var balance = "";
@@ -51,10 +51,9 @@ mui.plusReady(function() {
 	open('sets', "../percenter/controll/sets.html");
 	open('moneys', "../percenter/controll/moneys.html");
 	open('my_activity', "../h_activity/myActivity.html");
-	open('myMass', "../mass/mass_next/WDST.html");
+	// open('myMass', "../mass/mass_next/WDST.html");
 	open('myWork', "../partjob/myjob.html");
 	open("firstp", 'first.html');
 	open("parttp", 'part.html');
 	open("jobtp", 'job.html');
-	open("centertp", 'centero.html');
 })

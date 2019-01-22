@@ -1,4 +1,4 @@
-var service_url = "http://172.19.129.6/";
+var service_url = "http://192.168.43.4/";
 mui.plusReady(function() {
 	window.addEventListener('myid', function(event) {
 		var id = event.detail.jobid;

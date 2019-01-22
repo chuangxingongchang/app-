@@ -99,7 +99,7 @@ mui.plusReady(function(){
         var images=new Image();
         images.src=imgPath;
         var imgData=getBase64Image(images);
-        mui.ajax('http://172.19.129.6/uploadHeadImg',{
+        mui.ajax('http://192.168.43.4/uploadHeadImg',{
             data:{
                 'imgDatas':imgData
             },

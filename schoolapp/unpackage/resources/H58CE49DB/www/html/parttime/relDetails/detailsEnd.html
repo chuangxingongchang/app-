@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>历史详情</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../../css/mui.min.css" rel="stylesheet" />
+		<script src="../../../js/mui.min.js"></script>
+		<script src="../../../js/template-web.js"></script>
+		<style>
+			@import url("../../../css/partTime/detailsEnd.css");
+		</style>
+	</head>
+
+	<body>
+		<script src="../../../js/part/detailsEnd.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		<header class="mui-bar mui-bar-nav" id="headers">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left">返回</a>
+			<h1 class="mui-title">完成岗位详情</h1>
+		</header>
+		<div class="mui-content">
+			<div id="thisJob">
+				<script id="thisplur" type="text/html">
+					<div class="word_one" id="{{thisplur.id}}">
+						<div class="word_one-one">
+							<b>{{thisplur.subject}}</b>
+						</div>
+						{{each unit as un a}} {{if thisplur.fkUnit==un.id}}
+						<div class="word_one-two">
+							￥<span>{{thisplur.money}}</span><span>{{un.style}}</span>
+						</div>
+						{{/if}} {{/each}}
+					</div>
+					<div class="word_two">
+						<div class="word_two-one">
+							<span>{{thisplur.releasetime}}</span>发布
+						</div>
+						<div class="word_two-one">
+							<span>{{thisplur.counts}}</span>次浏览
+						</div>
+					</div>
+					<div class="word_three">
+						<ul>
+							<li><span>需要人数：</span><span>{{thisplur.persons}}人</span></li>
+							{{each settle st}}
+							{{if thisplur.fkSettle==st.id}}
+							<li><span>结款时间：</span><span>{{st.settlename}}</span></li>
+							{{/if}}
+							{{/each}}
+							<li><span>付款方式：</span><span>在线支付</span></li>
+						</ul>
+					</div>
+					<div class="word_four">
+						<ul class="mui-table-view" style="background-image:url(../../../image/background/mapt.jpg);">
+							<li class="mui-table-view-cell">
+								<label>
+		    	                	工作地点：
+		    	            </label>
+								<span>{{thisplur.workaddress}}</span>
+								<span class="mui-icon mui-icon-location mui-pull-right"></span>
+							</li>
+						</ul>
+					</div>
+					<div class="word_three">
+						<ul>
+							<li><span>工作日期：</span><span>{{thisplur.wordtime}}</span></li>
+							<li><span>工作状态：</span><span>已完成·</span></li>
+						</ul>
+					</div>
+					<div class="word_content">
+						<label>工作描述：</label>
+						<p>{{thisplur.workcontent}}</p>
+					</div>
+					<div class="mui-content-padded">
+						<button type="button" class="mui-btn mui-btn-block mui-btn-primary" onclick="topay(this)">发放工资</button>
+					</div>
+				</script>
+			</div>
+		</div>
+		<script>
+			
+			mui.openWindow({
+				id: "workHandle/payWage.html"
+			})
+			function topay(e){
+				var pageSign = plus.webview.getWebviewById("workHandle/payWage.html");
+				var signstate = "完成";
+				var pkPlurid = mui(".word_one")[0].id;
+				mui.fire(pageSign, "topayWage", {
+					pkPlurid: pkPlurid,
+					signstate: signstate
+				});
+				mui.openWindow({
+					id: "workHandle/payWage.html",
+					createNew: true,
+					waiting: {
+						autoShow: true,
+						titile: '正在加载...'
+					}
+				})
+			}
+		</script>
+	</body>
+</html>

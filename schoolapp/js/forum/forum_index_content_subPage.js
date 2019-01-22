@@ -1,4 +1,4 @@
-var service_url = "http://172.19.129.1/"
+var service_url = "http://192.168.43.4/"
 var leng = 0
 var user = JSON.parse(localStorage.getItem("tuser"))
 //清除(每次加载 就执行ready查询)

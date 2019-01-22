@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../../../css/mui.min.css" rel="stylesheet" />
+		<script src="../../../../js/mui.min.js"></script>
+		<script src="../../../../js/template-web.js"></script>
+		<style>
+			@import url("../../../../css/partTime/viewPerson.css");
+		</style>
+	</head>
+
+	<body>
+		<script src="../../../../js/part/viewPerson.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		<header class="mui-bar mui-bar-nav" id="topart">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" id="topart"></a>
+			<h1 class="mui-title">报名信息</h1>
+		</header>
+		<div class="mui-content">
+			<div class="countAll">
+				<div class="countAllo">
+					<span>您已选择</span>
+					<span id="counts">0</span>
+					<span>人,进行该工作岗位！</span>
+				</div>
+				<button type="button" class="mui-btn mui-btn-blue mui-btn-outlined" id="updateSignstate">确认</button>
+			</div>
+			<div class="allPerson" id="signUser">
+				<script id="thisign" type="text/html">
+					<ul class="mui-table-view">
+						{{if ms.status==true}}
+						{{each signup si}}
+						<li class="mui-table-view-cell mui-media" id="{{si.id}}" name="{{si.truename}}">
+							<img class="mui-media-object mui-pull-left" src="{{si.avatar}}" alt="头像">
+							<div class=" mui-media-body main_content">
+								<span>姓名：{{si.truename}}</span>
+								<span class="main_content_v">电话：{{si.phoneno}}</span>
+								<span class="mui-ellipsis">性别：{{si.sex}}</span>
+							</div>
+							<div class="mui-badge mui-badge-inverted endState">
+								<span>确认报名</span>
+							</div>
+						</li>
+						{{/each}}
+						{{/if}}
+						{{if ms.status==false}}
+						 <div class="mui-table-view-cell mui-media">
+							<img class="mui-media-object mui-pull-left" src="../../../../image/9.jpg" alt="图片">
+							<div class=" mui-media-body">
+								<span>当前无人报名，请您耐心等待！</span>
+							</div>
+						</div>
+						{{/if}}
+					</ul>
+				</script>
+			</div>
+		</div>
+	</body>
+
+</html>

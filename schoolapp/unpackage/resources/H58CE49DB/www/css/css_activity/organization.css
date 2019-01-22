@@ -1,0 +1,29 @@
+.equalsStyle p input{
+	width: 80%;
+	height: 40px;
+	border: none;
+}
+#buttons button{
+	display: inline-block;
+	margin-left: 20%;
+	width: 70px;
+	height: 30px;
+}
+.textareas p textarea{
+	width: 90%;
+	border: none;
+}
+#activity_time{
+	border: none;
+	height: 40px;
+	width: 67%;
+}
+#distpicker3 select{
+	width: 121px;
+	height: 40px;
+}
+#address{
+	height: 40px;
+	width: 90%;
+	border: none;
+}

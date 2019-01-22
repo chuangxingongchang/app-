@@ -1,0 +1,32 @@
+#heads,
+#heads button {
+	background-color: black;
+}
+
+#heads button {
+	color: green;
+	font-size: 16px;
+}
+
+.pt p {
+	margin: 20px 20px;
+}
+
+#complete {
+	float: right;
+	margin-top: 5px;
+	border: none;
+}
+
+#input-one input {
+	width: 70%;
+}
+
+#input-one button {
+	margin-top: 3px;
+}
+
+#input-two,
+#input-one {
+	margin-top: 10px;
+}

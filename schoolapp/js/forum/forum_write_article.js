@@ -1,4 +1,4 @@
-var service_url = "http://172.19.129.1/"
+var service_url = "http://192.168.43.4/"
 var render = '' //art-template
 var range; //光标位置
 var user = JSON.parse(localStorage.getItem("tuser"))

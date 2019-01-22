@@ -1,0 +1,19 @@
+.infoName {
+	height: 220px;
+}
+
+#headers {
+	width: 100px;
+	margin: 50px auto;
+}
+
+.userImg {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+}
+
+#reg,
+#forgetPassword {
+	color: #0062CC;
+}

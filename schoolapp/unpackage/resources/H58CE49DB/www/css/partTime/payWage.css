@@ -1,0 +1,47 @@
+#headers {
+	background-color: black;
+}
+
+#headers h1 {
+	color: white;
+}
+
+.main_content ul li img {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+}
+
+.main_content span {
+	display: block;
+}
+
+.main_content span:first-child {
+	font-size: 16px;
+	overflow: hidden;
+}
+
+.main_content span:last-child,
+.main_content_v {
+	font-size: 14px;
+	color: #929292;
+}
+
+.endState span {
+	font-size: 16px;
+	color: #007AFF;
+}
+
+#autMoney_v {
+	display: inline-block;
+	margin-top: 10px;
+	margin-right: 40px;
+}
+
+.autMoney button {
+	margin-bottom: 20px;
+}
+
+#moneyno {
+	margin-left: 10px;
+}

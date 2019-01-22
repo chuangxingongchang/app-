@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../../../css/mui.min.css" rel="stylesheet" />
+		<script src="../../../../js/mui.min.js"></script>
+		<script src="../../../../js/template-web.js"></script>
+		<style>
+			@import url("../../../../css/partTime/payWage.css");
+		</style>
+	</head>
+
+	<body>
+		<script src="../../../../js/part/payWage.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		<header class="mui-bar mui-bar-nav" id="headers">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">工资结算</h1>
+		</header>
+		<div class="mui-content">
+			<div class="allPerson" id="signUser">
+				<script id="thisign" type="text/html">
+					<ul class="mui-table-view">
+						{{each enduser eu}}
+						<li class="mui-table-view-cell mui-media" id="{{eu.id}}" name="{{eu.truename}}">
+							<img class="mui-media-object mui-pull-left" src="{{eu.avatar}}" alt="图片">
+							<div class=" mui-media-body main_content">
+								<span>姓名：{{eu.truename}}</span>
+								<span class="main_content_v">电话：{{eu.phoneno}}</span>
+								<span class="mui-ellipsis">性别：{{eu.sex}}</span>
+							</div>
+							<div class="mui-badge mui-badge-inverted endState">
+								{{each endMoney em}}
+								{{if em.pkUid==eu.id}}
+								<span>工资:{{em.signmoney}}元</span>
+								{{/if}}
+								{{/each}}
+							</div>
+						</li>
+						{{/each}}
+					</ul>
+					</script>
+			</div>
+			<div class="autMoney">
+				<nav class="mui-bar mui-bar-tab">
+				    <a class="mui-tab-item mui-active">
+				    	<div id="autMoney_v">
+				    		<span >您一共要支付:</span><span><i id="moneyno">0.0</i>元</span>
+				    	</div>
+				       <button id="topays" type="button" class="mui-btn mui-btn-blue mui-btn-outlined">确认支付</button>
+				    </a>
+				</nav>
+			</div>
+		</div>
+	</body>
+
+</html>

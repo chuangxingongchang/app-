@@ -6,7 +6,7 @@
 // 			//拼装完整日期格式
 // 			var today = now.getFullYear() + "-" + (month) + "-" + (day);
 // 			//完成赋值
-var service_url = "http://172.19.129.6/";
+var service_url = "http://192.168.43.4/";
 mui.plusReady(function() {
 	addsexPicker();
 	document.getElementById("mydate").addEventListener('tap', function() {

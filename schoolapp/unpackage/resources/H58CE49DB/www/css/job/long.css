@@ -1,0 +1,59 @@
+#headers {
+		background-color: black;
+	}
+
+	#headers a {
+		color: white;
+		font-size: 16px;
+		margin-top: 5px;
+	}
+
+	#headers h1 {
+		color: white;
+	}
+
+	.job_content .job_content_one ul li .content_a .mui-media-body span {
+		display: block;
+	}
+
+	.content_money {
+		color: red;
+	}
+
+	.main_content span {
+		display: block;
+	}
+
+	.main_content span:first-child,
+	.thetitle {
+		font-size: 20px;
+		overflow: hidden;
+	}
+
+	.main_content span:last-child,
+	.main_content_v,
+	.jobstyle {
+		font-size: 14px;
+		color: #929292;
+	}
+
+	.mui-table-view-cell .mui-badge {
+		font-size: 16px;
+		color: red;
+	}
+
+	.jobNothing {
+		height: 600px;
+	}
+
+	.jobNothing #jobno {
+		padding-top: 260px;
+		text-align: center;
+	}
+
+	.jobNothing span {
+
+		font-size: 20px;
+		: 300px;
+		color: #EC971F;
+	}

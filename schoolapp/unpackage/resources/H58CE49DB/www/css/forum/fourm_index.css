@@ -1,0 +1,39 @@
+.mui-pull-top-pocket {
+	margin-top: 110px;
+}
+
+.difination-div-top {
+	width: 100%;
+	height: 100px;
+	position: absolute;
+	background:#F10C0C;
+}
+
+.difination-input-soon {
+	background-image: url(../../image/input.png);
+	width: 100%;
+	height: 40px;
+	max-width: 400px;
+	margin-left: 20px;
+	background-size: contain
+}  
+
+.difination-label {
+	color: #E7481D;
+	font-size: 20px;
+}
+
+.difination-type-a {
+	color: #FFFFFF;
+}
+
+.difination-input {
+	width: 100%;
+	height: 50px;
+	margin-top: 20px;
+}
+
+.difination-input input {
+	background-color: rgba(255, 255, 255, 0.4);
+	border-radius: 15px;
+}

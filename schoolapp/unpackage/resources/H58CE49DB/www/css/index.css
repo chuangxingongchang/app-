@@ -1,0 +1,56 @@
+/*欢迎页*/
+
+html,
+body {
+	background-color: #003366;
+	padding: 0;
+	margin: 0;
+}
+
+.mui-content {
+	background-color: #003366;
+}
+
+.mui-slider {
+	width: 100%;
+	height: 450px;
+	margin-top: 80px;
+}
+
+.mui-slider-item {
+	width: 100%;
+	height: 450px;
+	text-align: center;
+}
+
+.mui-slider-item .mylun {
+	width: 200px;
+	height: 200px;
+	margin: auto;
+}
+
+.mui-slider-item .mycontent {
+	padding-top: 50px;
+}
+
+.mui-slider-item .mycontent span {
+	display: block;
+	margin-bottom: 30px;
+	color: white;
+}
+
+.mui-slider-item .mycontent span:first-child {
+	font-size: 24px;
+}
+
+.mui-slider-indicator {
+	margin-bottom: 10px;
+}
+
+.mui-button-row {
+	padding: 10px 30px;
+	background: #003366;
+	color: white;
+	border-color: white;
+	font-size: 18px;
+}

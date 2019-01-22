@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<script src="../../js/mui.min.js"></script>
+		<style>
+			@import url("../../css/first/register.css");
+		</style>
+	</head>
+
+	<body>
+		<script src="../../js/first/register.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		<header class="mui-bar mui-bar-nav" id="headers">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">注册</h1>
+		</header>
+		<div class="mui-content">
+			<div class="reg_one">
+				<span><img src="../../image/header/h2.jpg"/></span>
+			</div>
+
+			<div id="reg_two">
+				<div class="mui-input-row" id="input-one">
+					<input id="phoneno" type="text" class="mui-input" placeholder="请输入电话号码" />
+					<button class="mui-badge-success" data-loading-icon="mui-spinner mui-spinner-custom" id="sends">发送验证码</button>
+				</div>
+				<div class="mui-input-row" id="input-two">
+					<input name="code" type="text" class="mui-input-clear mui-input" placeholder="请输入6位验证码" id="codes" />
+				</div>
+				<div class="mui-input-row" id="input-three">
+					<input id="password" type="password" name="pword" class="mui-input-password" placeholder="请输入密码" />
+				</div>
+				<div class="pw-content">
+					<p>输入密码为5-20位，数字与字母组合</p>
+				</div>
+			</div>
+			<div class="mui-content-padded">
+				<button id='register' type="button" class="mui-btn mui-btn-block mui-btn-primary">注册</button>
+			</div>
+		</div>
+	</body>
+</html>

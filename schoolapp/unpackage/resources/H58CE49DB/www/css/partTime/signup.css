@@ -1,0 +1,43 @@
+.newse ul li span {
+	display: block;
+	font-size: 16px;
+	color: #6D6D72;
+}
+
+.newse ul li span:first-child {
+	font-size: 20px;
+	color: black;
+	font-weight: 400;
+	margin: 10px 0;
+}
+
+#seMony {
+	font-size: 18px;
+	color: #6D6D72;
+}
+
+#nothings {
+	font-size: 18px;
+}
+
+.thisse p {
+	padding: 10px;
+	text-indent: 2em;
+}
+
+#noth p {
+	height: 30px;
+	text-indent: 1em;
+	color: #007AFF;
+}
+
+.jobNothing {
+	height: 410px;
+}
+
+.jobNothing span {
+	font-size: 20px;
+	padding-top: 10px;
+	margin-left: 90px;
+	color: #EC971F;
+}
